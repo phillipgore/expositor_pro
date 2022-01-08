@@ -1,0 +1,125 @@
+<script>
+    import {settingsState} from '../../modules/stores/settingsStore.js';
+    import {segmentedControlsSetup, segmentedControlsState} from '../../modules/stores/segmentedControlsStore.js';
+    import {pullDownButtonsState} from '../../modules/stores/pullDownButtonsStore.js';
+    import {menusState} from '../../modules/stores/menusStore.js';
+    import {getIcon} from '../../modules/stores/iconsStore.js';
+    
+    export let _id = _id;
+    let hasLabels = $settingsState.toolbarButtons.hasLabels;
+    let segmentedControlSetup = $segmentedControlsSetup.find(segmentedControl => segmentedControl._id === _id);
+
+    $segmentedControlsState[_id] = {isActive: segmentedControlSetup.isActive};
+
+    const segmentedControlClick = (_id) => {
+
+    };
+</script>
+
+<style>
+    .btn-grouped {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0.0rem 0.3rem;
+    }
+
+    .btn-wrapper {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin: 0.0rem;
+    }
+
+    button {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 2.4rem;
+        margin:  0rem auto;
+        border: 0.1rem solid rgb(45, 44, 43);
+        background-color: rgb(112, 111, 110);
+        outline: 0;
+
+        border-left: none;
+        border-radius: 0.0rem;
+        width: 100%; 
+        min-width: 5.4rem;
+    }
+
+    .btn-grouped .btn-wrapper:first-of-type button {
+        border-radius: 0.3rem 0.0rem 0.0rem 0.3rem;
+    }
+
+    .btn-grouped .btn-wrapper:last-of-type button {
+        border-right: none;
+        border-radius: 0.0rem 0.3rem 0.3rem 0.0rem;
+    }
+
+    button:active,
+    button.active {
+        background-color: rgb(146, 145, 144);
+    }
+
+    .btn-no-under-label button,
+    .btn-no-under-label button {
+        height: 2.6rem;
+    }
+
+    .btn-no-under-label .btn-under-label {
+        display: none;
+    }
+
+    .icon {
+        height: 1.4rem;
+        max-width: 1.6rem;
+        margin: 0.0rem;
+        fill: rgb(242, 241, 240);
+    }
+
+    .caret-down {
+        width: 0.7rem;
+        margin-left: 0.3rem;
+        fill: rgb(242, 241, 240);
+    }
+
+    .btn-label {
+        font-size: 1.1rem;
+        color: rgb(242, 241, 240);
+    }
+
+    .btn-under-label {
+        text-align: center;
+        font-size: 1.1rem;
+        letter-spacing: 0.04rem;
+        color: rgb(242, 241, 240);
+        cursor: default;
+        padding: 0.0rem 0.3rem;
+        z-index: 10;
+        display: block;
+        fill: rgb(242, 241, 240);
+        margin-top:  0.4rem;
+    }
+</style>
+
+<div class="btn-grouped">
+    {#each segmentedControlSetup.segments as segment}
+        <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
+            <button id="{segment._id}" class="{$segmentedControlsState[_id].isActive ? 'active' : ''}" on:click={() => segmentedControlClick(segment._id)}>
+                {#if segment.iconName}
+                    <svg class="icon" viewBox="{getIcon(segment.iconName).viewBox}">
+                        <path d={getIcon(segment.iconName).d}/>
+                    </svg>
+                {:else if segment.label}
+                    <span class="btn-label">{segment.label}</span>
+                {:else}
+                    <span class="btn-label">No Text</span>
+                {/if}
+            </button>
+            {#if segment.underLabel}
+                <div class="btn-under-label">{segment.underLabel}</div>
+            {/if}
+        </div>
+    {/each}
+</div>

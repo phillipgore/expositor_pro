@@ -1,0 +1,77 @@
+:root {
+  --red-dark: #4D0809;
+  --red: #CC8F90;
+  --red-light: #FFD9D9;
+
+  --orange-dark: #4D2A08;
+  --orange: #CCAD8F;
+  --orange-light: #FFECD9;
+
+  --yellow-dark: #4D4D08;
+  --yellow: #CCCC8F;
+  --yellow-light: #FFFFD9;
+
+  --green-dark: #084D08;
+  --green: #8FCC8F;
+  --green-light: #D9FFD9;
+
+  --aqua-dark: #084D4D;
+  --aqua: #8FCCCC;
+  --aqua-light: #D9FFFF;
+
+  --blue-dark: #082A4D;
+  --blue: #8FADCC;
+  --blue-light: #D9ECFF;
+
+  --purple-dark: #2A084D;
+  --purple: #AD8FCC;
+  --purple-light: #ECD9FF;
+
+  --pink-dark: #4D084D;
+  --pink: #CC8FCC;
+  --pink-light: #FFD9FF;
+
+  --gray-dark: #2D2C2B;
+  --gray: #929190;
+  --gray-light: #F2F1F0;
+
+  --black: #000000;
+  --white: #FFFFFF;
+}
+
+html { 
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  line-height: 1.15;
+  font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+  background-image: url("bg.jpg");
+  background-size: cover;
+  background-position: center bottom;
+}
+
+*, *::before, *::after { 
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html, body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-size: 1.6rem;
+}
