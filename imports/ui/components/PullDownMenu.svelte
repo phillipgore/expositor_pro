@@ -50,7 +50,7 @@
             top: -0.1rem;
             left: 0.6rem;
             border: 0.1rem solid var(--gray-700);
-            background-color: var(--gray-900);
+            background-color: var(--gray-800);
             transform: rotate(45deg);
             transform-origin: 0 100%;
         }
@@ -62,15 +62,15 @@
             overflow-x: hidden; 
             overflow-x: auto; 
             padding: 0.4rem 0.0rem;
-            box-shadow: 0.0rem 0.0rem 0.8rem var(--black-alpha-15);
+            box-shadow: 0.0rem 0.0rem 0.8rem var(--black-alpha);
             -webkit-backdrop-filter: blur(1.0rem);
             backdrop-filter: blur(1.0rem);
-            border: 0.1rem solid var(--gray-700-alpha-65);
+            border: 0.1rem solid var(--gray-700-alpha);
         }
 
         .pull-down-pane:after {
             content: " ";
-            background-color: var(--gray-800-alpha-69);
+            background-color: var(--gray-900-alpha);
             position: absolute;
             z-index: -1;
             top: 0;
@@ -91,7 +91,7 @@
             top: 1.4rem;
             -webkit-backdrop-filter: none;
             backdrop-filter: none;
-            background-color: var(--gray-900);
+            background-color: var(--gray-800);
             border: 0.1rem solid var(--gray-700);
             box-shadow: none;
         }

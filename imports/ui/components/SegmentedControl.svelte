@@ -75,30 +75,30 @@
         height: 1.4rem;
         max-width: 1.6rem;
         margin: 0.0rem;
-        fill: var(--gray-900);
+        fill: var(--gray-800);
     }
 
     .caret-down {
         width: 0.7rem;
         margin-left: 0.3rem;
-        fill: var(--gray-900);
+        fill: var(--gray-800);
     }
 
     .btn-label {
         font-size: 1.1rem;
-        color: var(--gray-900);
+        color: var(--gray-800);
     }
 
     .btn-under-label {
         text-align: center;
         font-size: 1.1rem;
         letter-spacing: 0.04rem;
-        color: var(--gray-900);
+        color: var(--gray-800);
         cursor: default;
         padding: 0.0rem 0.3rem;
         z-index: 10;
         display: block;
-        fill: var(--gray-900);
+        fill: var(--gray-800);
         margin-top:  0.4rem;
     }
 </style>
