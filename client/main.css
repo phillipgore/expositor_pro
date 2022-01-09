@@ -1,42 +1,54 @@
 :root {
-  --red-dark: #4D0809;
-  --red: #CC8F90;
-  --red-light: #FFD9D9;
+  --red-dark: hsl(359, 81%, 17%);
+  --red: hsl(359, 37%, 68%);
+  --red-light: hsl(0, 100%, 93%);
 
-  --orange-dark: #4D2A08;
-  --orange: #CCAD8F;
-  --orange-light: #FFECD9;
+  --orange-dark: hsl(30, 81%, 17%);
+  --orange: hsl(30, 37%, 68%);
+  --orange-light: hsl(30, 100%, 93%);
 
-  --yellow-dark: #4D4D08;
-  --yellow: #CCCC8F;
-  --yellow-light: #FFFFD9;
+  --yellow-dark: hsl(60, 81%, 17%);
+  --yellow: hsl(60, 37%, 68%);
+  --yellow-light: hsl(60, 100%, 93%);
 
-  --green-dark: #084D08;
-  --green: #8FCC8F;
-  --green-light: #D9FFD9;
+  --green-dark: hsl(120, 81%, 17%);
+  --green: hsl(120, 37%, 68%);
+  --green-light: hsl(120, 100%, 93%);
 
-  --aqua-dark: #084D4D;
-  --aqua: #8FCCCC;
-  --aqua-light: #D9FFFF;
+  --aqua-dark: hsl(180, 81%, 17%);
+  --aqua: hsl(180, 37%, 68%);
+  --aqua-light: hsl(180, 100%, 93%);
 
-  --blue-dark: #082A4D;
-  --blue: #8FADCC;
-  --blue-light: #D9ECFF;
+  --blue-dark: hsl(210, 81%, 17%);
+  --blue: hsl(210, 37%, 68%);
+  --blue-light: hsl(210, 100%, 93%);
 
-  --purple-dark: #2A084D;
-  --purple: #AD8FCC;
-  --purple-light: #ECD9FF;
+  --purple-dark: hsl(270, 81%, 17%);
+  --purple: hsl(270, 37%, 68%);
+  --purple-light: hsl(270, 100%, 93%);
 
-  --pink-dark: #4D084D;
-  --pink: #CC8FCC;
-  --pink-light: #FFD9FF;
+  --pink-dark: hsl(300, 81%, 17%);
+  --pink: hsl(300, 37%, 68%);
+  --pink-light: hsl(300, 100%, 93%);
 
-  --gray-dark: #2D2C2B;
-  --gray: #929190;
-  --gray-light: #F2F1F0;
+  --black: hsl(0, 0%, 0%);
+  --black-alpha-15: hsla(0, 0%, 0%, 0.15);
 
-  --black: #000000;
-  --white: #FFFFFF;
+  --gray-200: hsl(30, 2%, 17%);
+  --gray-200-light-accent: hsl(30, 2%, 17%);
+  --gray-300: hsl(30, 1%, 33%);
+  --gray-400: hsl(30, 1%, 44%);
+  --gray-500: hsl(30, 1%, 53%);
+  --gray-600: hsl(30, 1%, 57%);
+  --gray-700: hsl(30, 1%, 71%);
+  --gray-700-alpha-65: hsla(30, 1%, 71%, 0.65);
+  --gray-700-light-accent: hsl(30, 1%, 71%);
+  --gray-800-alpha-69: hsla(0, 0%, 92%, 0.69);
+  --gray-900: hsl(30, 7%, 95%);
+
+  --white: hsl(0, 0%, 100%);
+
+  --interface-blue: hsl(210, 100%, 55%);
 }
 
 html { 
@@ -49,10 +61,6 @@ html {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   overflow: hidden;
-  
-  background-image: url("bg.jpg");
-  background-size: cover;
-  background-position: center bottom;
 }
 
 *, *::before, *::after { 
@@ -72,6 +80,6 @@ body {
   margin: 0;
   padding: 0;
   -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: var(--black);
   font-size: 1.6rem;
 }

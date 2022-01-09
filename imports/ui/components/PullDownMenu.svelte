@@ -15,7 +15,7 @@
     $menusState[_id] = {
         isActive: menuSetup.isActive,
         paneIntWidth: menuSetup.paneIntWidth,
-        paneRemWidth: `${menuSetup.paneIntWidth / 10}rem`,
+        paneRemWidth: `${menuSetup.paneIntWidth / $settingsState.baseFontSize}rem`,
     };
 </script>
 
@@ -49,8 +49,8 @@
             position: absolute;
             top: -0.1rem;
             left: 0.6rem;
-            border: 0.1rem solid rgb(181, 180, 179);
-            background-color: rgb(242, 241, 240);
+            border: 0.1rem solid var(--gray-700);
+            background-color: var(--gray-900);
             transform: rotate(45deg);
             transform-origin: 0 100%;
         }
@@ -62,15 +62,15 @@
             overflow-x: hidden; 
             overflow-x: auto; 
             padding: 0.4rem 0.0rem;
-            box-shadow: 0.0rem 0.0rem 0.8rem rgba(0, 0, 0, 0.15);
+            box-shadow: 0.0rem 0.0rem 0.8rem var(--black-alpha-15);
             -webkit-backdrop-filter: blur(1.0rem);
             backdrop-filter: blur(1.0rem);
-            border: 0.1rem solid rgba(181, 180, 179, 0.65);
+            border: 0.1rem solid var(--gray-700-alpha-65);
         }
 
         .dropdown-pane:after {
             content: " ";
-            background-color: rgba(235, 235, 235, 0.69);
+            background-color: var(--gray-800-alpha-69);
             position: absolute;
             z-index: -1;
             top: 0;
@@ -91,8 +91,8 @@
             top: 1.4rem;
             -webkit-backdrop-filter: none;
             backdrop-filter: none;
-            background-color: rgb(242, 241, 240);
-            border: 0.1rem solid rgb(181, 180, 179);
+            background-color: var(--gray-900);
+            border: 0.1rem solid var(--gray-700);
             box-shadow: none;
         }
 
@@ -119,8 +119,8 @@
             display: flex;
             width: 100%;
             align-items: center;
-            color: rgb(0, 0, 0);
-            background: rgb(255, 255, 255);
+            color: var(--black);
+            background: var(--white);
             border: none;
             border-radius: 0.3rem;
             text-decoration: none;
@@ -134,7 +134,7 @@
         }
 
         li button:disabled .main-text {
-            color: rgb(136, 135, 134)
+            color: var(--gray-500)
         }
 
         li button .text-right {
@@ -142,7 +142,7 @@
             width: 7.2rem;
             flex-grow: 4;
             display: none;
-            color: rgb(136, 135, 134)
+            color: var(--gray-500)
         }
 
         .icon-container,
@@ -157,7 +157,7 @@
 
         li button .icon-left {
             height: 1.7rem;
-            fill: rgb(84, 83, 82);
+            fill: var(--gray-300);
             max-width: 1.5rem;
         }
 
@@ -166,7 +166,7 @@
         }
 
         li button:disabled .icon-left {
-            fill: rgb(136, 135, 134)
+            fill: var(--gray-500)
         }
 
         li button .circle {
@@ -192,7 +192,7 @@
         li button:disabled .circle.aqua,
         li button:disabled .circle.blue,
         li button:disabled .circle.purple,
-        li button:disabled .circle.pink { border-color: var(--gray); background-color: var(--gray-light); }
+        li button:disabled .circle.pink { border-color: var(--gray-700); background-color: var(--gray-700); }
     }
 
     @media only screen and (min-width: 768px) {
@@ -214,8 +214,8 @@
         }
 
         li button:hover:enabled {
-            color: rgb(255, 255, 255);
-            background-color: rgb(26, 140, 255);
+            color: var(--white);
+            background-color: var(--interface-blue);
         }
 
         li button .main-text {
@@ -227,7 +227,7 @@
         }
 
         li button:hover:enabled .text-right {
-            color: rgb(255, 255, 255);
+            color: var(--white);
         }
 
         li button .icon-container,
@@ -242,7 +242,7 @@
         }
 
         li button:hover:enabled .icon-left {
-            fill: rgb(255, 255, 255);
+            fill: var(--white);
         }
 
         li button:hover:enabled .icon-left.inactive {

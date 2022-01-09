@@ -15,7 +15,7 @@
 	@media only screen and (min-width: 0px) {
         nav {
             height: 4.5rem;
-            background-color: rgb(44, 43, 42);
+            background-color: var(--gray-200);
             display: flex;
             align-items: center;
             position: fixed;

@@ -38,22 +38,22 @@
         
         let pullDownMenuPosition = {}
 
-        pullDownMenuPosition.remLeft = `${($pullDownButtonsState[_id].intOffsetLeft) / 10}rem`;
-        pullDownMenuPosition.remWidth = `${($pullDownButtonsState[_id].intWidth) / 10}rem`;
-        pullDownMenuPosition.paneRemMaxHeight = `${(windowHeight - ($pullDownButtonsState[_id].intHeight + $pullDownButtonsState[_id].intOffsetTop) - 23) / 10}rem`;
+        pullDownMenuPosition.remLeft = `${($pullDownButtonsState[_id].intOffsetLeft) / $settingsState.baseFontSize}rem`;
+        pullDownMenuPosition.remWidth = `${($pullDownButtonsState[_id].intWidth) / $settingsState.baseFontSize}rem`;
+        pullDownMenuPosition.paneRemMaxHeight = `${(windowHeight - ($pullDownButtonsState[_id].intHeight + $pullDownButtonsState[_id].intOffsetTop) - 23) / $settingsState.baseFontSize}rem`;
         
         if (hasArrows) {
-            pullDownMenuPosition.remTop = `${($pullDownButtonsState[_id].intOffsetTop + $pullDownButtonsState[_id].intHeight - 5)  / 10}rem`;
+            pullDownMenuPosition.remTop = `${($pullDownButtonsState[_id].intOffsetTop + $pullDownButtonsState[_id].intHeight - 5)  / $settingsState.baseFontSize}rem`;
         } else {
-            pullDownMenuPosition.remTop = `${($pullDownButtonsState[_id].intOffsetTop + $pullDownButtonsState[_id].intHeight + 2)  / 10}rem`;
+            pullDownMenuPosition.remTop = `${($pullDownButtonsState[_id].intOffsetTop + $pullDownButtonsState[_id].intHeight + 2)  / $settingsState.baseFontSize}rem`;
         }
 
         if ((menuSetup.paneIntWidth - $pullDownButtonsState[_id].intWidth)  / 2 > $pullDownButtonsState[_id].intOffsetLeft) {
-            pullDownMenuPosition.paneRemLeft = `${0 - (($pullDownButtonsState[_id].intOffsetLeft - 10) / 10)}rem`;
+            pullDownMenuPosition.paneRemLeft = `${0 - (($pullDownButtonsState[_id].intOffsetLeft - $settingsState.baseFontSize) / $settingsState.baseFontSize)}rem`;
         }
 
         if ($pullDownButtonsState[_id].intOffsetLeft + ((menuSetup.paneIntWidth + $pullDownButtonsState[_id].intWidth)  / 2) > windowWidth) {
-            pullDownMenuPosition.paneRemRight = `${0 - ((windowWidth - $pullDownButtonsState[_id].intOffsetRight - 10) / 10)}rem`;
+            pullDownMenuPosition.paneRemRight = `${0 - ((windowWidth - $pullDownButtonsState[_id].intOffsetRight - $settingsState.baseFontSize) / $settingsState.baseFontSize)}rem`;
         }
         $menusState[menuId] = {...$menusState[menuId], ...pullDownMenuPosition};
     };
@@ -104,14 +104,14 @@
         height: 2.4rem;
         width: 4.8rem; 
         margin:  0rem auto;
-        border: 0.1rem solid rgb(45, 44, 43);
-        background-color: rgb(112, 111, 110);
+        border: 0.1rem solid var(--gray-200-light-accent);
+        background-color: var(--gray-400);
         outline: 0;
     }
 
     button:active,
     button.active {
-        background-color: rgb(146, 145, 144);
+        background-color: var(--gray-600);
     }
 
     .btn-no-under-label button,
@@ -127,30 +127,30 @@
         height: 1.4rem;
         max-width: 1.6rem;
         margin: 0.0rem;
-        fill: rgb(242, 241, 240);
+        fill: var(--gray-900);
     }
 
     .caret-down {
         width: 0.7rem;
         margin-left: 0.3rem;
-        fill: rgb(242, 241, 240);
+        fill: var(--gray-900);
     }
 
     .btn-label {
         font-size: 1.1rem;
-        color: rgb(242, 241, 240);
+        color: var(--gray-900);
     }
 
     .btn-under-label {
         text-align: center;
         font-size: 1.1rem;
         letter-spacing: 0.04rem;
-        color: rgb(242, 241, 240);
+        color: var(--gray-900);
         cursor: default;
         padding: 0.0rem 0.3rem;
         z-index: 10;
         display: block;
-        fill: rgb(242, 241, 240);
+        fill: var(--gray-900);
         margin-top:  0.4rem;
     }
 </style>

@@ -38,8 +38,8 @@
         align-items: center;
         height: 2.4rem;
         margin:  0rem auto;
-        border: 0.1rem solid rgb(45, 44, 43);
-        background-color: rgb(112, 111, 110);
+        border: 0.1rem solid var(--gray-200-light-accent);
+        background-color: var(--gray-400);
         outline: 0;
 
         border-left: none;
@@ -59,7 +59,7 @@
 
     button:active,
     button.active {
-        background-color: rgb(146, 145, 144);
+        background-color: var(--gray-600);
     }
 
     .btn-no-under-label button,
@@ -75,30 +75,30 @@
         height: 1.4rem;
         max-width: 1.6rem;
         margin: 0.0rem;
-        fill: rgb(242, 241, 240);
+        fill: var(--gray-900);
     }
 
     .caret-down {
         width: 0.7rem;
         margin-left: 0.3rem;
-        fill: rgb(242, 241, 240);
+        fill: var(--gray-900);
     }
 
     .btn-label {
         font-size: 1.1rem;
-        color: rgb(242, 241, 240);
+        color: var(--gray-900);
     }
 
     .btn-under-label {
         text-align: center;
         font-size: 1.1rem;
         letter-spacing: 0.04rem;
-        color: rgb(242, 241, 240);
+        color: var(--gray-900);
         cursor: default;
         padding: 0.0rem 0.3rem;
         z-index: 10;
         display: block;
-        fill: rgb(242, 241, 240);
+        fill: var(--gray-900);
         margin-top:  0.4rem;
     }
 </style>
