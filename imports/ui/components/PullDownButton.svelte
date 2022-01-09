@@ -114,7 +114,6 @@
         background-color: var(--gray-600);
     }
 
-    .btn-no-under-label button,
     .btn-no-under-label button {
         height: 2.6rem;
     }

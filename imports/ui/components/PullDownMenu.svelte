@@ -21,18 +21,18 @@
 
 <style>
     @media only screen and (min-width: 0px) {
-        .dropdown {
+        .pull-down {
             display: none;
             justify-content: left;
             position: absolute;
             z-index: 15;
         }
 
-        .dropdown.has-dropdown-arrow {
+        .pull-down.has-pull-down-arrow {
             justify-content: center;
         }
 
-        .dropdown-arrow {
+        .pull-down-arrow {
             display: none;
             position: absolute;
             width: 4.0rem;
@@ -41,7 +41,7 @@
             overflow: hidden;
         }
 
-        .dropdown-arrow:after {
+        .pull-down-arrow:after {
             content: '';
             display: none;
             width: 1.9997rem;
@@ -55,7 +55,7 @@
             transform-origin: 0 100%;
         }
 
-        .dropdown-pane {
+        .pull-down-pane {
             position: absolute;
             z-index: 2;
             border-radius: 0.3rem;
@@ -68,7 +68,7 @@
             border: 0.1rem solid var(--gray-700-alpha-65);
         }
 
-        .dropdown-pane:after {
+        .pull-down-pane:after {
             content: " ";
             background-color: var(--gray-800-alpha-69);
             position: absolute;
@@ -79,15 +79,15 @@
             right: 0;
         }
         
-        .dropdown.has-dropdown-arrow .dropdown-arrow {
+        .pull-down.has-pull-down-arrow .pull-down-arrow {
             display: flex;
         }
         
-        .dropdown.has-dropdown-arrow .dropdown-arrow:after {
+        .pull-down.has-pull-down-arrow .pull-down-arrow:after {
             display: block;
         }
         
-        .dropdown.has-dropdown-arrow .dropdown-pane {
+        .pull-down.has-pull-down-arrow .pull-down-pane {
             top: 1.4rem;
             -webkit-backdrop-filter: none;
             backdrop-filter: none;
@@ -96,7 +96,7 @@
             box-shadow: none;
         }
 
-        .dropdown.has-dropdown-arrow .dropdown-pane:after {
+        .pull-down.has-pull-down-arrow .pull-down-pane:after {
             display: none;
         }
 
@@ -196,7 +196,7 @@
     }
 
     @media only screen and (min-width: 768px) {
-        .dropdown {
+        .pull-down {
             display: flex;
         }
 
@@ -259,7 +259,7 @@
 
 {#if $menusState[_id].isActive}
     <div 
-        class="dropdown {hasArrows ? 'has-dropdown-arrow' : ''}" 
+        class="pull-down {hasArrows ? 'has-pull-down-arrow' : ''}" 
         style="
             top: {$menusState[_id].remTop}; 
             left: {$menusState[_id].remLeft}; 
@@ -267,9 +267,9 @@
         out:fade="{{ delay: 0, duration: 100 }}"
     >
         {#if hasArrows}
-            <div class="dropdown-arrow {hasLabels ? 'has-button-labels' : ''}"></div>
+            <div class="pull-down-arrow {hasLabels ? 'has-button-labels' : ''}"></div>
         {/if}
-        <div class="dropdown-pane {hasLabels ? 'has-button-labels' : ''}" style="width: {$menusState[_id].paneRemWidth}; max-height: {$menusState[_id].paneRemMaxHeight}; left: {$menusState[_id].paneRemLeft}; right: {$menusState[_id].paneRemRight}">
+        <div class="pull-down-pane {hasLabels ? 'has-button-labels' : ''}" style="width: {$menusState[_id].paneRemWidth}; max-height: {$menusState[_id].paneRemMaxHeight}; left: {$menusState[_id].paneRemLeft}; right: {$menusState[_id].paneRemRight}">
             <ul>
                 {#each menuItems as menuItem}
                     {#if menuItem.componentType === 'Spacing'}
