@@ -2,7 +2,7 @@ import {readable, writable} from 'svelte/store';
 
 export const pullDownButtonsSetup = readable([
     {
-        _id: 'studiesPullDownButton',
+        _id: 'studies',
         menuId: 'studiesMenu',
         iconName:'book', 
         underLabel:'Studies', 
@@ -11,7 +11,7 @@ export const pullDownButtonsSetup = readable([
         isDisabled: false,
     },
     {
-        _id: 'zoomPullDownButton',
+        _id: 'zoom',
         menuId: 'zoomMenu',
         label:'100%',  
         underLabel:'Zoom', 
@@ -20,7 +20,7 @@ export const pullDownButtonsSetup = readable([
         isDisabled: false,
     },
     {
-        _id: 'outlinePullDownButton',
+        _id: 'outline',
         menuId: 'outlineMenu',
         iconName:'pin', 
         underLabel:'Outline', 
@@ -29,7 +29,7 @@ export const pullDownButtonsSetup = readable([
         isDisabled: false,
     },
     {
-        _id: 'textPullDownButton',
+        _id: 'text',
         menuId: 'textMenu',
         iconName:'text-join', 
         underLabel:'Text',  
@@ -38,7 +38,7 @@ export const pullDownButtonsSetup = readable([
         isDisabled: false,
     },
     {
-        _id: 'literaryPullDownButton',
+        _id: 'literary',
         menuId: 'literaryMenu',
         iconName:'literary-chiasim',  
         underLabel:'Literary', 
@@ -47,7 +47,7 @@ export const pullDownButtonsSetup = readable([
         isDisabled: false,
     },
     {
-        _id: 'colorPullDownButton',
+        _id: 'color',
         menuId: 'colorMenu',
         iconName:'paintbrush',  
         underLabel:'Color', 
@@ -56,7 +56,7 @@ export const pullDownButtonsSetup = readable([
         isDisabled: false,
     },
     {
-        _id: 'settingsPullDownButton',
+        _id: 'settings',
         menuId: 'settingsMenu',
         iconName:'ellipsis',
         underLabel:'Settings',   

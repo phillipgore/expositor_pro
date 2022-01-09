@@ -2,7 +2,7 @@ import {readable, writable} from 'svelte/store';
 
 export const segmentedControlsSetup = readable([
     {
-        _id: 'viewSegmentedControl',
+        _id: 'view',
         segments: [
             {
                 _id: 'structure', 
