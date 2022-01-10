@@ -1,18 +1,27 @@
 <script>
-    import {settingsState} from '../../modules/stores/settingsStore.js';
-    import {segmentedControlsSetup, segmentedControlsState} from '../../modules/stores/segmentedControlsStore.js';
-    import {pullDownButtonsState} from '../../modules/stores/pullDownButtonsStore.js';
-    import {menusState} from '../../modules/stores/menusStore.js';
-    import {getIcon} from '../../modules/stores/iconsStore.js';
+    import {settingsState} from '../../stores/settingsStore.js';
+    import {segmentedControlsSetup, segmentedControlsState} from '../../stores/segmentedControlsStore.js';
+    import {buttonsSetup, buttonsState} from '../../stores/buttonsStore.js';
+    import {getIcon} from '../../stores/iconsStore.js';
     
     export let _id = _id;
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
     let segmentedControlSetup = $segmentedControlsSetup.find(segmentedControl => segmentedControl._id === _id);
+    let components = segmentedControlSetup.components.map(component => component.componentId);
+    let segments = $buttonsSetup.filter(button => components.includes(button._id));
 
-    $segmentedControlsState[_id] = {isActive: segmentedControlSetup.isActive};
+    segments.forEach(segment => {
+        $buttonsState[segment._id] = {isSelected: segment.isSelected}
+    });
 
-    const segmentedControlClick = (_id) => {
-
+    const segmentedControlClick = (buttonId) => {
+        segments.forEach(segment => {
+            if (segment._id != buttonId) {
+                $buttonsState[segment._id].isSelected = false;
+            } else {
+                $buttonsState[segment._id].isSelected = true;
+            }
+        });
     };
 </script>
 
@@ -57,9 +66,8 @@
         border-radius: 0.0rem 0.3rem 0.3rem 0.0rem;
     }
 
-    button:active,
-    button.active {
-        background-color: var(--gray-600);
+    button.selected {
+        background-color: var(--gray-800);
     }
 
     .btn-no-under-label button,
@@ -78,10 +86,8 @@
         fill: var(--gray-800);
     }
 
-    .caret-down {
-        width: 0.7rem;
-        margin-left: 0.3rem;
-        fill: var(--gray-800);
+    button.selected .icon {
+        fill: var(--gray-300);
     }
 
     .btn-label {
@@ -104,9 +110,9 @@
 </style>
 
 <div class="btn-grouped">
-    {#each segmentedControlSetup.segments as segment}
+    {#each segments as segment}
         <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
-            <button id="{segment._id}" class="{$segmentedControlsState[_id].isActive ? 'active' : ''}" on:click={() => segmentedControlClick(segment._id)}>
+            <button id="{segment._id}" class="{$buttonsState[segment._id].isSelected ? 'selected' : ''}" on:click={() => segmentedControlClick(segment._id)}>
                 {#if segment.iconName}
                     <svg class="icon" viewBox="{getIcon(segment.iconName).viewBox}">
                         <path d={getIcon(segment.iconName).d}/>

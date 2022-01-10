@@ -1,13 +1,11 @@
 <script>
-    import {settingsState} from '../../modules/stores/settingsStore.js';
-    import {pushButtonsSetup} from '../../modules/stores/pushButtonsStore.js';
-    import {pullDownButtonsState} from '../../modules/stores/pullDownButtonsStore.js';
-    import {menusState} from '../../modules/stores/menusStore.js';
-    import {getIcon} from '../../modules/stores/iconsStore.js';
+    import {settingsState} from '../../stores/settingsStore.js';
+    import {buttonsSetup} from '../../stores/buttonsStore.js';
+    import {getIcon} from '../../stores/iconsStore.js';
 
     export let _id = _id;
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
-    let pushButtonSetup = $pushButtonsSetup.find(pushButton => pushButton._id === _id);
+    let pushButtonSetup = $buttonsSetup.find(pushButton => pushButton._id === _id);
     
     const pushButtonClick = () => {
 

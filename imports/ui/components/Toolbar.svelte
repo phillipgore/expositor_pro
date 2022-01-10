@@ -1,6 +1,6 @@
 <script>
-    import {settingsState} from '../../modules/stores/settingsStore.js';
-    import {toolbarsSetup, toolbarsState} from '../../modules/stores/toolbarsStore.js';
+    import {settingsState} from '../../stores/settingsStore.js';
+    import {toolbarsSetup, toolbarsState} from '../../stores/toolbarsStore.js';
     import PullDownButton from "./PullDownButton.svelte";
     import PushButton from "./PushButton.svelte";
     import SegmentedControl from "./SegmentedControl.svelte";

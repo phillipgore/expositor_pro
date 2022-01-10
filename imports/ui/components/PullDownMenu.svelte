@@ -1,14 +1,16 @@
 <script>
     import {fade} from 'svelte/transition';
-    import {settingsState} from '../../modules/stores/settingsStore.js';
-    import {menusSetup, menusState} from '../../modules/stores/menusStore.js';
-    import {getIcon} from '../../modules/stores/iconsStore.js';
+    import {settingsState} from '../../stores/settingsStore.js';
+    import {menusSetup, menusState} from '../../stores/menusStore.js';
+    import {buttonsSetup, buttonsState} from '../../stores/buttonsStore.js';
+    import {getIcon} from '../../stores/iconsStore.js';
     import Spacing from "./Spacing.svelte";
     
     export let _id = _id;
 
     let menuSetup = $menusSetup.find(menu => menu._id === _id);
-    let menuItems = menuSetup.menuItems;
+    let components = menuSetup.components.map(component => component.componentId);
+    let menuItems = $buttonsSetup.filter(button => components.includes(button._id));
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
     let hasArrows = $settingsState.pullDownMenus.hasArrows;
     

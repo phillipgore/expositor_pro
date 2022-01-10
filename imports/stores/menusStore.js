@@ -1,0 +1,105 @@
+import {readable, writable} from 'svelte/store';
+
+export const menusSetup = readable([
+    {
+        _id:'studiesMenu',
+        paneIntWidth: 221,
+        isActive: false,
+        components: [
+            {componentId: 'new', componentType: 'PullDownMenu'},
+            {componentId: 'open', componentType: 'PullDownMenu'},
+            {componentId: 'dividerHorizontal', componentType: 'Spacing'},
+            {componentId: 'newInner', componentType: 'PullDownMenu'},
+            {componentId: 'newOuter', componentType: 'PullDownMenu'},
+            {componentId: 'dividerHorizontal', componentType: 'Spacing'},
+            {componentId: 'newCompare', componentType: 'PullDownMenu'},
+        ],
+    },
+    {
+        _id: 'zoomMenu',
+        paneIntWidth: 97,
+        isChecked: true,
+        isActive: false,
+        components: [
+            {componentId: '25', componentType: 'PullDownMenu'},
+            {componentId: '50', componentType: 'PullDownMenu'},
+            {componentId: '75', componentType: 'PullDownMenu'},
+            {componentId: '100', componentType: 'PullDownMenu'},
+            {componentId: '125', componentType: 'PullDownMenu'},
+            {componentId: '150', componentType: 'PullDownMenu'},
+            {componentId: '200', componentType: 'PullDownMenu'},
+            {componentId: '300', componentType: 'PullDownMenu'},
+            {componentId: '400', componentType: 'PullDownMenu'},
+            {componentId: 'dividerHorizontal', componentType: 'Spacing'},
+            {componentId: 'fitWidth', componentType: 'PullDownMenu'},
+            {componentId: 'fitPage', componentType: 'PullDownMenu'},
+        ],
+    },
+    {
+        _id: 'outlineMenu',
+        paneIntWidth: 160,
+        isActive: false,
+        components: [
+            {componentId: 'section', componentType: 'PullDownMenu'},
+            {componentId: 'column', componentType: 'PullDownMenu'},
+            {componentId: 'group', componentType: 'PullDownMenu'},
+            {componentId: 'dividerHorizontal', componentType: 'Spacing'},
+            {componentId: 'unpin', componentType: 'PullDownMenu'},
+            {componentId: 'pin', componentType: 'PullDownMenu'},
+        ],
+    },
+    {
+        _id: 'textMenu',
+        paneIntWidth: 185,
+        isActive: false,
+        components: [
+            {componentId: 'highlight', componentType: 'PullDownMenu'},
+            {componentId: 'dividerHorizontal', componentType: 'Spacing'},
+            {componentId: 'split', componentType: 'PullDownMenu'},
+            {componentId: 'join', componentType: 'PullDownMenu'},
+            {componentId: 'dividerHorizontal', componentType: 'Spacing'},
+            {componentId: 'moveUp', componentType: 'PullDownMenu'},
+            {componentId: 'moveDown', componentType: 'PullDownMenu'},  
+        ],
+    },
+    {
+        _id: 'literaryMenu',
+        paneIntWidth: 199,
+        isActive: false,
+        components: [
+            {componentId: 'chiasim', componentType: 'PullDownMenu'},
+            {componentId: 'paralellism', componentType: 'PullDownMenu'},
+            {componentId: 'repetition', componentType: 'PullDownMenu'},
+            {componentId: 'intensification', componentType: 'PullDownMenu'},
+        ],
+    },
+    {
+        _id: 'colorMenu',
+        paneIntWidth: 87,
+        isActive: false,
+        components: [
+            {componentId: 'red', componentType: 'PullDownMenu'},
+            {componentId: 'orange', componentType: 'PullDownMenu'},
+            {componentId: 'yellow', componentType: 'PullDownMenu'},
+            {componentId: 'green', componentType: 'PullDownMenu'},
+            {componentId: 'aqua', componentType: 'PullDownMenu'},
+            {componentId: 'blue', componentType: 'PullDownMenu'},
+            {componentId: 'purple', componentType: 'PullDownMenu'},
+            {componentId: 'pink', componentType: 'PullDownMenu'},
+        ],
+    },
+    {
+        _id: 'settingsMenu',
+        paneIntWidth: 164,
+        isActive: false,
+        components: [
+            {componentId: 'account', componentType: 'PullDownMenu'},
+            {componentId: 'toolbar', componentType: 'PullDownMenu'},
+            {componentId: 'help', componentType: 'PullDownMenu'},
+            {componentId: 'dividerHorizontal', componentType: 'Spacing'},
+            {componentId: 'signout', componentType: 'PullDownMenu'},      
+        ],
+    },
+]);
+
+export const menusState = writable({});

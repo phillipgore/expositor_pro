@@ -1,6 +1,7 @@
 import {readable, writable} from 'svelte/store';
 
 export const buttonsSetup = readable([
+    // Studies Buttons
     {
         _id: 'studies',
         menuId: 'studiesMenu',
@@ -10,78 +11,7 @@ export const buttonsSetup = readable([
         isActive: false,
         isDisabled: false,
     },
-    {
-        _id: 'zoom',
-        menuId: 'zoomMenu',
-        label:'100%',  
-        underLabel:'Zoom', 
-        hasSheet: false,
-        isActive: false,
-        isDisabled: false,
-    },
-    {
-        _id: 'outline',
-        menuId: 'outlineMenu',
-        iconName:'pin', 
-        underLabel:'Outline', 
-        hasSheet: true,
-        isActive: false,
-        isDisabled: false,
-    },
-    {
-        _id: 'text',
-        menuId: 'textMenu',
-        iconName:'text-join', 
-        underLabel:'Text',  
-        hasSheet: true,
-        isActive: false,
-        isDisabled: false,
-    },
-    {
-        _id: 'literary',
-        menuId: 'literaryMenu',
-        iconName:'literary-chiasim',  
-        underLabel:'Literary', 
-        hasSheet: true,
-        isActive: false,
-        isDisabled: false,
-    },
-    {
-        _id: 'color',
-        menuId: 'colorMenu',
-        iconName:'paintbrush',  
-        underLabel:'Color', 
-        hasSheet: true,
-        isActive: false,
-        isDisabled: false,
-    },
-    {
-        _id: 'settings',
-        menuId: 'settingsMenu',
-        iconName:'ellipsis',
-        underLabel:'Settings',   
-        hasSheet: true,
-        isActive: false,
-        isDisabled: false,
-    },
-    {
-        _id: 'note',
-        iconName: 'note', 
-        underLabel:'Note', 
-        isDisabled: false,
-    },
-    {
-        _id: 'options',
-        iconName: 'checkbox-checked', 
-        underLabel:'Options', 
-        isDisabled: false,
-    },
-    {
-        _id: 'delete',
-        iconName:'delete', 
-        underLabel:'Delete', 
-        isDisabled: false,
-    },
+
     {
         _id: 'new', 
         iconName: 'plus-circle', 
@@ -119,6 +49,20 @@ export const buttonsSetup = readable([
         shortcut: '<span>&#8984;NC</span>', 
         hasPanel: true,
     },
+
+
+
+    // Zoom Buttons
+    {
+        _id: 'zoom',
+        menuId: 'zoomMenu',
+        label:'100%',  
+        underLabel:'Zoom', 
+        hasSheet: false,
+        isActive: false,
+        isDisabled: false,
+    },
+
     {_id: '25', label: '25%'},
     {_id: '50', label: '50%'},
     {_id: '75', label: '75%'},
@@ -130,6 +74,20 @@ export const buttonsSetup = readable([
     {_id: '400', label: '400%'},
     {_id: 'fitWidth', label: 'Fit Width'},
     {_id: 'fitPage', label: 'Fit Page'},
+
+
+
+    // Outline Buttons
+    {
+        _id: 'outline',
+        menuId: 'outlineMenu',
+        iconName:'pin', 
+        underLabel:'Outline', 
+        hasSheet: true,
+        isActive: false,
+        isDisabled: false,
+    },
+
     {
         _id: 'section',
         iconName: 'outline-section', 
@@ -165,6 +123,20 @@ export const buttonsSetup = readable([
         shortcut: '<span>&#8984;OP</span>',
         isDisabled: true,
     },
+
+
+
+    // Text Buttons
+    {
+        _id: 'text',
+        menuId: 'textMenu',
+        iconName:'text-join', 
+        underLabel:'Text',  
+        hasSheet: true,
+        isActive: false,
+        isDisabled: false,
+    },
+
     {
         _id: 'highlight',
         iconName: 'highlight', 
@@ -200,6 +172,20 @@ export const buttonsSetup = readable([
         shortcut: '<span>&#8984;MD</span>',
         isDisabled: true,
     },
+
+
+
+    // Literary Buttons
+    {
+        _id: 'literary',
+        menuId: 'literaryMenu',
+        iconName:'literary-chiasim',  
+        underLabel:'Literary', 
+        hasSheet: true,
+        isActive: false,
+        isDisabled: false,
+    },
+
     {
         _id: 'chiasim',
         iconName: 'literary-chiasim', 
@@ -228,6 +214,20 @@ export const buttonsSetup = readable([
         shortcut: '<span>&#8984;LI</span>',
         isDisabled: true,
     },
+
+
+
+    // Color Buttons
+    {
+        _id: 'color',
+        menuId: 'colorMenu',
+        iconName:'paintbrush',  
+        underLabel:'Color', 
+        hasSheet: true,
+        isActive: false,
+        isDisabled: false,
+    },
+
     {
         _id: 'red',
         shapeClass: 'circle', 
@@ -284,6 +284,72 @@ export const buttonsSetup = readable([
         label: 'Pink',
         isDisabled: true,
     },
+
+
+    
+    // Note Button
+    {
+        _id: 'note',
+        iconName: 'note', 
+        underLabel:'Note', 
+        isDisabled: false,
+    },
+
+
+    
+    // Options Button
+    {
+        _id: 'options',
+        iconName: 'checkbox-checked', 
+        underLabel:'Options', 
+        isDisabled: false,
+    },
+
+
+    
+    // Delete Button
+    {
+        _id: 'delete',
+        iconName:'delete', 
+        underLabel:'Delete', 
+        isDisabled: false,
+    },
+
+
+    
+    // Structure Button
+    {
+        _id: 'structure', 
+        groupId: 'view', 
+        iconName: 'structure',
+        underLabel:'Structure',  
+        isSelected: true
+    },
+
+
+    
+    // Document Button
+    {
+        _id: 'document', 
+        groupId: 'view', 
+        iconName: 'document', 
+        underLabel:'Document', 
+        isSelected: false
+    },
+
+
+    
+    // Settings Buttons
+    {
+        _id: 'settings',
+        menuId: 'settingsMenu',
+        iconName:'ellipsis',
+        underLabel:'Settings',   
+        hasSheet: true,
+        isActive: false,
+        isDisabled: false,
+    },
+
     {
         _id: 'account', 
         iconName: 'account', 

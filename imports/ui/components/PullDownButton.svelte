@@ -1,14 +1,14 @@
 <script>
-    import {settingsState} from '../../modules/stores/settingsStore.js';
-    import {pullDownButtonsSetup, pullDownButtonsState} from '../../modules/stores/pullDownButtonsStore.js';
-    import {menusSetup, menusState} from '../../modules/stores/menusStore.js';
-    import {getIcon} from '../../modules/stores/iconsStore.js';
+    import {settingsState} from '../../stores/settingsStore.js';
+    import {buttonsSetup, buttonsState} from '../../stores/buttonsStore.js';
+    import {menusSetup, menusState} from '../../stores/menusStore.js';
+    import {getIcon} from '../../stores/iconsStore.js';
     import PullDownMenu from "./PullDownMenu.svelte";
 
     export let _id = _id;
     export let toolbarId = toolbarId;
 
-    let pullDownButtonSetup = $pullDownButtonsSetup.find(pullDownButton => pullDownButton._id === _id);
+    let pullDownButtonSetup = $buttonsSetup.find(pullDownButton => pullDownButton._id === _id);
     let menuId = pullDownButtonSetup.menuId;
     let menuSetup = $menusSetup.find(menu => menu._id === menuId);
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
@@ -16,12 +16,12 @@
     let windowHeight;
     let windowWidth;
 
-    $pullDownButtonsState[_id] = {isActive: pullDownButtonSetup.isActive};
+    $buttonsState[_id] = {isActive: pullDownButtonSetup.isActive};
 
     const pullDownButtonClick = () => {
         pullDownButtonPosition();
         pullDownButtonsReset(_id);
-        $pullDownButtonsState[_id].isActive = !$pullDownButtonsState[_id].isActive;
+        $buttonsState[_id].isActive = !$buttonsState[_id].isActive;
         $menusState[menuId].isActive = !$menusState[menuId].isActive;
     };
 
@@ -34,36 +34,36 @@
             intHeight:  Math.ceil(pullDownButtonRect.height),
             intWidth:  Math.ceil(pullDownButtonRect.width),
         }
-        $pullDownButtonsState[_id] = {...$pullDownButtonsState[_id], ...pullDownButtonPosition};
+        $buttonsState[_id] = {...$buttonsState[_id], ...pullDownButtonPosition};
         
         let pullDownMenuPosition = {}
 
-        pullDownMenuPosition.remLeft = `${($pullDownButtonsState[_id].intOffsetLeft) / $settingsState.baseFontSize}rem`;
-        pullDownMenuPosition.remWidth = `${($pullDownButtonsState[_id].intWidth) / $settingsState.baseFontSize}rem`;
-        pullDownMenuPosition.paneRemMaxHeight = `${(windowHeight - ($pullDownButtonsState[_id].intHeight + $pullDownButtonsState[_id].intOffsetTop) - 23) / $settingsState.baseFontSize}rem`;
+        pullDownMenuPosition.remLeft = `${($buttonsState[_id].intOffsetLeft) / $settingsState.baseFontSize}rem`;
+        pullDownMenuPosition.remWidth = `${($buttonsState[_id].intWidth) / $settingsState.baseFontSize}rem`;
+        pullDownMenuPosition.paneRemMaxHeight = `${(windowHeight - ($buttonsState[_id].intHeight + $buttonsState[_id].intOffsetTop) - 23) / $settingsState.baseFontSize}rem`;
         
         if (hasArrows) {
-            pullDownMenuPosition.remTop = `${($pullDownButtonsState[_id].intOffsetTop + $pullDownButtonsState[_id].intHeight - 5)  / $settingsState.baseFontSize}rem`;
+            pullDownMenuPosition.remTop = `${($buttonsState[_id].intOffsetTop + $buttonsState[_id].intHeight - 5)  / $settingsState.baseFontSize}rem`;
         } else {
-            pullDownMenuPosition.remTop = `${($pullDownButtonsState[_id].intOffsetTop + $pullDownButtonsState[_id].intHeight + 2)  / $settingsState.baseFontSize}rem`;
+            pullDownMenuPosition.remTop = `${($buttonsState[_id].intOffsetTop + $buttonsState[_id].intHeight + 2)  / $settingsState.baseFontSize}rem`;
         }
 
-        if ((menuSetup.paneIntWidth - $pullDownButtonsState[_id].intWidth)  / 2 > $pullDownButtonsState[_id].intOffsetLeft) {
-            pullDownMenuPosition.paneRemLeft = `${0 - (($pullDownButtonsState[_id].intOffsetLeft - $settingsState.baseFontSize) / $settingsState.baseFontSize)}rem`;
+        if ((menuSetup.paneIntWidth - $buttonsState[_id].intWidth)  / 2 > $buttonsState[_id].intOffsetLeft) {
+            pullDownMenuPosition.paneRemLeft = `${0 - (($buttonsState[_id].intOffsetLeft - $settingsState.baseFontSize) / $settingsState.baseFontSize)}rem`;
         }
 
-        if ($pullDownButtonsState[_id].intOffsetLeft + ((menuSetup.paneIntWidth + $pullDownButtonsState[_id].intWidth)  / 2) > windowWidth) {
-            pullDownMenuPosition.paneRemRight = `${0 - ((windowWidth - $pullDownButtonsState[_id].intOffsetRight - $settingsState.baseFontSize) / $settingsState.baseFontSize)}rem`;
+        if ($buttonsState[_id].intOffsetLeft + ((menuSetup.paneIntWidth + $buttonsState[_id].intWidth)  / 2) > windowWidth) {
+            pullDownMenuPosition.paneRemRight = `${0 - ((windowWidth - $buttonsState[_id].intOffsetRight - $settingsState.baseFontSize) / $settingsState.baseFontSize)}rem`;
         }
         $menusState[menuId] = {...$menusState[menuId], ...pullDownMenuPosition};
     };
 
     const pullDownButtonsReset = (buttonId) => {
-        let menuId = buttonId? $pullDownButtonsSetup.find(pullDownButton => pullDownButton._id === buttonId).menuId : undefined;
+        let menuId = buttonId? $buttonsSetup.find(pullDownButton => pullDownButton._id === buttonId).menuId : undefined;
 
-        Object.keys($pullDownButtonsState).forEach(key => {
+        Object.keys($buttonsState).forEach(key => {
             if (key != buttonId) {
-                $pullDownButtonsState[key].isActive = false;
+                $buttonsState[key].isActive = false;
             }
         });
 
@@ -157,7 +157,7 @@
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:resize={() => pullDownButtonPosition()} on:click={evaluateClick}/>
 
 <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
-    <button id="{pullDownButtonSetup._id}" class="js-pull-down-button {$pullDownButtonsState[_id].isActive ? 'active' : ''}" on:click={() => pullDownButtonClick()}>
+    <button id="{pullDownButtonSetup._id}" class="js-pull-down-button {$buttonsState[_id].isActive ? 'active' : ''}" on:click={() => pullDownButtonClick()}>
         {#if pullDownButtonSetup.iconName}
             <svg class="icon" viewBox="{getIcon(pullDownButtonSetup.iconName).viewBox}">
                 <path d={getIcon(pullDownButtonSetup.iconName).d}/>
