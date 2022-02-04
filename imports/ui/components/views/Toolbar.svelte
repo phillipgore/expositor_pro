@@ -1,10 +1,11 @@
 <script>
-    import {settingsState} from '../../stores/settingsStore.js';
-    import {toolbarsSetup, toolbarsState} from '../../stores/toolbarsStore.js';
-    import PullDownButton from "./PullDownButton.svelte";
-    import PushButton from "./PushButton.svelte";
-    import SegmentedControl from "./SegmentedControl.svelte";
-    import Spacing from "./Spacing.svelte";
+    import {settingsState} from '../../../stores/settingsStore.js';
+    import {toolbarsSetup, toolbarsState} from '../../../stores/toolbarsStore.js';
+    import PullDownButton from "../buttons/PullDownButton.svelte";
+    import PushButton from "../buttons/PushButton.svelte";
+    import SegmentedControl from "../selectors/SegmentedControl.svelte";
+    import Space from "../spacing/Space.svelte";
+    import FlexibleSpace from "../spacing/FlexibleSpace.svelte";
 
     export let _id = _id;
     let toolbarSetup = $toolbarsSetup.find(toolbar => toolbar._id === _id);
@@ -40,9 +41,10 @@
 
 <nav id="{toolbarSetup._id}" class="{hasLabels ? '' : 'nav-short'}">
     {#each toolbarSetup.components as component}
-        {#if component.componentType === 'PullDownButton'}<PullDownButton _id={component.componentId} toolbarId={_id}/>{/if}
+        {#if component.componentType === 'PullDownButton'}<PullDownButton _id={component.componentId}/>{/if}
         {#if component.componentType === 'PushButton'}<PushButton _id={component.componentId} />{/if}
         {#if component.componentType === 'SegmentedControl'}<SegmentedControl _id={component.componentId} />{/if}
-        {#if component.componentType === 'Spacing'}<Spacing _id={component.componentId} />{/if}
+        {#if component.componentType === 'Space'}<Space />{/if}
+        {#if component.componentType === 'FlexibleSpace'}<FlexibleSpace />{/if}
     {/each}
 </nav>

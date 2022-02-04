@@ -1,7 +1,7 @@
 <script>
-    import {settingsState} from '../../stores/settingsStore.js';
-    import {buttonsSetup} from '../../stores/buttonsStore.js';
-    import {getIcon} from '../../stores/iconsStore.js';
+    import {settingsState} from '../../../stores/settingsStore.js';
+    import {buttonsSetup} from '../../../stores/buttonsStore.js';
+    import {getIcon} from '../../../stores/iconsStore.js';
 
     export let _id = _id;
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
@@ -13,6 +13,10 @@
 </script>
 
 <style>
+    .btn-container {
+        display: inline-block;
+    }
+
     .btn-wrapper {
         display: flex;
         flex-direction: column;
@@ -74,19 +78,21 @@
     }
 </style>
 
-<div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
-    <button id="{pushButtonSetup._id}" on:click={() => pushButtonClick()}>
-        {#if pushButtonSetup.iconName}
-            <svg class="icon" viewBox="{getIcon(pushButtonSetup.iconName).viewBox}">
-                <path d={getIcon(pushButtonSetup.iconName).d}/>
-            </svg>
-        {:else if pushButtonSetup.label}
-            <span class="btn-label">{pushButtonSetup.label}</span>
-        {:else}
-            <span class="btn-label">No Text</span>
+<div class="btn-container">
+    <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
+        <button id="{pushButtonSetup._id}" on:click={() => pushButtonClick()}>
+            {#if pushButtonSetup.iconName}
+                <svg class="icon" viewBox="{getIcon(pushButtonSetup.iconName).viewBox}">
+                    <path d={getIcon(pushButtonSetup.iconName).d}/>
+                </svg>
+            {:else if pushButtonSetup.label}
+                <span class="btn-label">{pushButtonSetup.label}</span>
+            {:else}
+                <span class="btn-label">No Text</span>
+            {/if}
+        </button>
+        {#if pushButtonSetup.underLabel}
+            <div class="btn-under-label">{pushButtonSetup.underLabel}</div>
         {/if}
-    </button>
-    {#if pushButtonSetup.underLabel}
-        <div class="btn-under-label">{pushButtonSetup.underLabel}</div>
-    {/if}
+    </div>
 </div>

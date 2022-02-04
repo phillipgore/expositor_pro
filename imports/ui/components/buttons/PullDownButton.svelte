@@ -1,12 +1,11 @@
 <script>
-    import {settingsState} from '../../stores/settingsStore.js';
-    import {buttonsSetup, buttonsState} from '../../stores/buttonsStore.js';
-    import {menusSetup, menusState} from '../../stores/menusStore.js';
-    import {getIcon} from '../../stores/iconsStore.js';
+    import {settingsState} from '../../../stores/settingsStore.js';
+    import {buttonsSetup, buttonsState} from '../../../stores/buttonsStore.js';
+    import {menusSetup, menusState} from '../../../stores/menusStore.js';
+    import {getIcon} from '../../../stores/iconsStore.js';
     import PullDownMenu from "./PullDownMenu.svelte";
 
     export let _id = _id;
-    export let toolbarId = toolbarId;
 
     let pullDownButtonSetup = $buttonsSetup.find(pullDownButton => pullDownButton._id === _id);
     let menuId = pullDownButtonSetup.menuId;
@@ -18,15 +17,15 @@
 
     $buttonsState[_id] = {isActive: pullDownButtonSetup.isActive};
 
-    const pullDownButtonClick = () => {
-        pullDownButtonPosition();
+    const pullDownButtonClick = (event) => {
+        pullDownButtonPosition(event);
         pullDownButtonsReset(_id);
         $buttonsState[_id].isActive = !$buttonsState[_id].isActive;
         $menusState[menuId].isActive = !$menusState[menuId].isActive;
     };
 
-    const pullDownButtonPosition = () => {
-        let pullDownButtonRect = document.getElementById(_id).getBoundingClientRect();
+    const pullDownButtonPosition = (event) => {
+        let pullDownButtonRect = event.currentTarget.getBoundingClientRect();
         let pullDownButtonPosition = {
             intOffsetTop:  Math.ceil(pullDownButtonRect.top),
             intOffsetRight:  Math.ceil(pullDownButtonRect.right),
@@ -88,6 +87,10 @@
 </script>
 
 <style>
+    .btn-container {
+        display: inline-block;
+    }
+
     .btn-wrapper {
         display: flex;
         flex-direction: column;
@@ -154,26 +157,28 @@
     }
 </style>
 
-<svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:resize={() => pullDownButtonPosition()} on:click={evaluateClick}/>
+<svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:resize={pullDownButtonPosition} on:click={evaluateClick}/>
 
-<div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
-    <button id="{pullDownButtonSetup._id}" class="js-pull-down-button {$buttonsState[_id].isActive ? 'active' : ''}" on:click={() => pullDownButtonClick()}>
-        {#if pullDownButtonSetup.iconName}
-            <svg class="icon" viewBox="{getIcon(pullDownButtonSetup.iconName).viewBox}">
-                <path d={getIcon(pullDownButtonSetup.iconName).d}/>
+<div class="btn-container">
+    <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
+        <button id="{pullDownButtonSetup._id}" class="js-pull-down-button {$buttonsState[_id].isActive ? 'active' : ''}" on:click|capture={pullDownButtonClick}>
+            {#if pullDownButtonSetup.iconName}
+                <svg class="icon" viewBox="{getIcon(pullDownButtonSetup.iconName).viewBox}">
+                    <path d={getIcon(pullDownButtonSetup.iconName).d}/>
+                </svg>
+            {:else if pullDownButtonSetup.label}
+                <span class="btn-label">{pullDownButtonSetup.label}</span>
+            {:else}
+                <span class="btn-label">No Text</span>
+            {/if}
+            <svg class="caret-down" viewBox="{getIcon('caret-down').viewBox}">
+                <path d={getIcon('caret-down').d}/>
             </svg>
-        {:else if pullDownButtonSetup.label}
-            <span class="btn-label">{pullDownButtonSetup.label}</span>
-        {:else}
-            <span class="btn-label">No Text</span>
+        </button>
+        {#if pullDownButtonSetup.underLabel}
+            <div class="btn-under-label">{pullDownButtonSetup.underLabel}</div>
         {/if}
-        <svg class="caret-down" viewBox="{getIcon('caret-down').viewBox}">
-            <path d={getIcon('caret-down').d}/>
-        </svg>
-    </button>
-    {#if pullDownButtonSetup.underLabel}
-        <div class="btn-under-label">{pullDownButtonSetup.underLabel}</div>
-    {/if}
+    </div>
 </div>
 
 <PullDownMenu _id={pullDownButtonSetup.menuId}/>

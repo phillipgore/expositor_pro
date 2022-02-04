@@ -1,8 +1,8 @@
 <script>
-    import {settingsState} from '../../stores/settingsStore.js';
-    import {segmentedControlsSetup, segmentedControlsState} from '../../stores/segmentedControlsStore.js';
-    import {buttonsSetup, buttonsState} from '../../stores/buttonsStore.js';
-    import {getIcon} from '../../stores/iconsStore.js';
+    import {settingsState} from '../../../stores/settingsStore.js';
+    import {segmentedControlsSetup, segmentedControlsState} from '../../../stores/segmentedControlsStore.js';
+    import {buttonsSetup, buttonsState} from '../../../stores/buttonsStore.js';
+    import {getIcon} from '../../../stores/iconsStore.js';
     
     export let _id = _id;
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
@@ -26,11 +26,16 @@
 </script>
 
 <style>
+    .btn-container {
+        display: inline-block;
+    }
+
     .btn-grouped {
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 0.0rem 0.3rem;
+        height: auto;
     }
 
     .btn-wrapper {
@@ -109,23 +114,25 @@
     }
 </style>
 
-<div class="btn-grouped">
-    {#each segments as segment}
-        <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
-            <button id="{segment._id}" class="{$buttonsState[segment._id].isSelected ? 'selected' : ''}" on:click={() => segmentedControlClick(segment._id)}>
-                {#if segment.iconName}
-                    <svg class="icon" viewBox="{getIcon(segment.iconName).viewBox}">
-                        <path d={getIcon(segment.iconName).d}/>
-                    </svg>
-                {:else if segment.label}
-                    <span class="btn-label">{segment.label}</span>
-                {:else}
-                    <span class="btn-label">No Text</span>
+<div class="btn-container">
+    <div class="btn-grouped">
+        {#each segments as segment}
+            <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
+                <button id="{segment._id}" class="{$buttonsState[segment._id].isSelected ? 'selected' : ''}" on:click={() => segmentedControlClick(segment._id)}>
+                    {#if segment.iconName}
+                        <svg class="icon" viewBox="{getIcon(segment.iconName).viewBox}">
+                            <path d={getIcon(segment.iconName).d}/>
+                        </svg>
+                    {:else if segment.label}
+                        <span class="btn-label">{segment.label}</span>
+                    {:else}
+                        <span class="btn-label">No Text</span>
+                    {/if}
+                </button>
+                {#if segment.underLabel}
+                    <div class="btn-under-label">{segment.underLabel}</div>
                 {/if}
-            </button>
-            {#if segment.underLabel}
-                <div class="btn-under-label">{segment.underLabel}</div>
-            {/if}
-        </div>
-    {/each}
+            </div>
+        {/each}
+    </div>
 </div>
