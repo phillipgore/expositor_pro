@@ -3,13 +3,41 @@
     import {getIcon} from '../../../stores/iconsStore.js';
 
     export let _id = _id;
+    export let color = 'interface';
     export let isChecked = isChecked;
 
     let menuButton = $buttonsSetup.find(button => button._id === _id);
 </script>
 
+<li class="{color}">
+    <button disabled="{menuButton.isDisabled}"> 
+        {#if isChecked}
+            <div class="icon-container">
+                <svg class="icon-left {menuButton.isActive ? '' : 'inactive'}" viewBox="{getIcon('check').viewBox}">
+                    <path d={getIcon('check').d}/>
+                </svg>
+            </div>
+        {:else if menuButton.iconName}
+            <div class="icon-container">
+                <svg class="icon-left" viewBox="{getIcon(menuButton.iconName).viewBox}">
+                    <path d={getIcon(menuButton.iconName).d}/>
+                </svg>
+            </div>
+        {/if}
+        {#if menuButton.shapeClass}
+            <div class="shape-container">
+                <div class="{menuButton.shapeClass} {menuButton.shapeColorClass}"></div>
+            </div>
+        {/if}
+        <div class="main-text">{menuButton.label}</div>
+        {#if menuButton.shortcut}
+            <div class="text-right">{@html menuButton.shortcut}</div>
+        {/if}
+    </button>
+</li>
+
 <style>
-@media only screen and (min-width: 0px) {
+    @media only screen and (min-width: 0px) {
         li {
             display: flex;
             align-items: center;
@@ -24,7 +52,7 @@
             width: 100%;
             align-items: center;
             color: var(--black);
-            background: var(--white);
+            background-color: var(--white);
             border: none;
             border-radius: 0.3rem;
             text-decoration: none;
@@ -119,7 +147,7 @@
 
         li button:hover:enabled {
             color: var(--white);
-            background-color: var(--interface-blue);
+            background-color: var(--interface-600);
         }
 
         li button .main-text {
@@ -158,32 +186,76 @@
             width: 1.4rem;
             border-radius: 0.7rem;
         }
+
+
+
+        /* .toolbar styles */
+        li.toolbar button:hover:enabled {
+            background-color: var(--interface-blue);
+        }
+
+
+
+        /* .gray styles */
+        li.gray button:hover:enabled {
+            background-color: var(--gray);
+        }
+
+
+
+        /* .red styles */
+        li.red button:hover:enabled {
+            background-color: var(--red);
+        }
+
+
+
+        /* .orange styles */
+        li.orange button:hover:enabled {
+            background-color: var(--orange);
+        }
+
+
+
+        /* .yellow styles */
+        li.yellow button:hover:enabled {
+            background-color: var(--yellow);
+        }
+
+
+
+        /* .green styles */
+        li.green button:hover:enabled {
+            background-color: var(--green);
+        }
+
+
+
+        /* .aqua styles */
+        li.aqua button:hover:enabled {
+            background-color: var(--aqua);
+        }
+
+
+
+        /* .blue styles */
+        li.blue button:hover:enabled {
+            background-color: var(--blue);
+        }
+
+
+
+        /* .purple styles */
+        li.purple button:hover:enabled {
+            background-color: var(--purple);
+        }
+
+
+
+        /* .pink styles */
+        li.pink button:hover:enabled {
+            background-color: var(--pink);
+        }
+
     }
 </style>
-
-<li>
-    <button disabled="{menuButton.isDisabled}"> 
-        {#if isChecked}
-            <div class="icon-container">
-                <svg class="icon-left {menuButton.isActive ? '' : 'inactive'}" viewBox="{getIcon('check').viewBox}">
-                    <path d={getIcon('check').d}/>
-                </svg>
-            </div>
-        {:else if menuButton.iconName}
-            <div class="icon-container">
-                <svg class="icon-left" viewBox="{getIcon(menuButton.iconName).viewBox}">
-                    <path d={getIcon(menuButton.iconName).d}/>
-                </svg>
-            </div>
-        {/if}
-        {#if menuButton.shapeClass}
-            <div class="shape-container">
-                <div class="{menuButton.shapeClass} {menuButton.shapeColorClass}"></div>
-            </div>
-        {/if}
-        <div class="main-text">{menuButton.label}</div>
-        {#if menuButton.shortcut}
-            <div class="text-right">{@html menuButton.shortcut}</div>
-        {/if}
-    </button>
-</li>

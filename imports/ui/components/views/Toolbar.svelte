@@ -25,12 +25,24 @@
             right: 0;
             left: 0;
         }
+
+        .component {
+            margin: 0rem 0.3rem;
+        }
+
+        .component:first-child {
+            margin-left: 0rem;
+        }
+
+        .component:last-child {
+            margin-right: 0rem;
+        }
     }
 
 	@media only screen and (min-width: 768px) {
 		nav {
 			height: 5.0rem;
-			padding: 0.0rem 0.6rem;
+			padding: 0.0rem 0.9rem;
 		}
 
         nav.nav-short {
@@ -41,10 +53,26 @@
 
 <nav id="{toolbarSetup._id}" class="{hasLabels ? '' : 'nav-short'}">
     {#each toolbarSetup.components as component}
-        {#if component.componentType === 'PullDownButton'}<PullDownButton _id={component.componentId}/>{/if}
-        {#if component.componentType === 'PushButton'}<PushButton _id={component.componentId} />{/if}
-        {#if component.componentType === 'SegmentedControl'}<SegmentedControl _id={component.componentId} />{/if}
-        {#if component.componentType === 'Space'}<Space />{/if}
-        {#if component.componentType === 'FlexibleSpace'}<FlexibleSpace />{/if}
+            {#if component.componentType === 'PullDownButton'}
+                <div class="component">
+                    <PullDownButton _id={component.componentId} hasLabels={hasLabels} color={'toolbar'}/>
+                </div>
+            {/if}
+            {#if component.componentType === 'PushButton'}
+                <div class="component">
+                    <PushButton _id={component.componentId} hasLabels={hasLabels} color={'toolbar'}/>
+                </div>
+            {/if}
+            {#if component.componentType === 'SegmentedControl'}
+                <div class="component">
+                    <SegmentedControl _id={component.componentId} hasLabels={hasLabels} color={'toolbar'}/>
+                </div>
+            {/if}
+            {#if component.componentType === 'Space'}
+                    <Space />
+            {/if}
+            {#if component.componentType === 'FlexibleSpace'}
+                    <FlexibleSpace />
+            {/if}
     {/each}
 </nav>

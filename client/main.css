@@ -1,4 +1,8 @@
 :root {
+  --gray-dark: #262524;
+  --gray: #9E9D9C;
+  --gray-light: #E8E7E6;
+
   --red-dark: hsl(359, 81%, 17%);
   --red: hsl(359, 37%, 68%);
   --red-light: hsl(0, 100%, 93%);
@@ -41,18 +45,19 @@
   --gray-600: hsl(30, 1%, 57%);
   --gray-700: hsl(30, 1%, 71%);
   --gray-700-alpha: hsla(30, 1%, 71%, 0.65);
-  --gray-800: hsl(30, 7%, 95%);
+  --gray-800: hsl(30, 8%, 95%);
   --gray-900: hsl(0, 0%, 92%);
   --gray-900-alpha: hsla(0, 0%, 92%, 0.69);
 
   --white: hsl(0, 0%, 100%);
 
-  --interface-blue: hsl(210, 100%, 55%);
+  --interface-blue-dark: #08274e;
+  --interface-blue: #5ca3ff;
+  --interface-blue-light: #dbeaff;
 }
 
 html { 
   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300;
   line-height: 1.15;
   font-size: 62.5%;
   -webkit-text-size-adjust: 100%;

@@ -1,5 +1,7 @@
 <script></script>
 
+<div class="divider-horizontal"></div>
+
 <style>
     .divider-horizontal {
         height: auto;
@@ -8,6 +10,3 @@
         padding-bottom: 0.4rem;
     }
 </style>
-
-
-<div class="divider-horizontal"></div>
