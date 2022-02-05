@@ -27,7 +27,7 @@
         }
 
         .component {
-            margin: 0rem 0.3rem;
+            margin: 0rem 0.25rem;
         }
 
         .component:first-child {

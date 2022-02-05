@@ -44,7 +44,6 @@
         display: flex;
         flex-direction: column;
         position: relative;
-        margin: 0.0rem 0.3rem;
     }
 
     button {

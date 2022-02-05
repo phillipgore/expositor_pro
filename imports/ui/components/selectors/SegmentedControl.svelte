@@ -59,7 +59,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 0.0rem 0.3rem;
         height: auto;
     }
 
