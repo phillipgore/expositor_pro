@@ -4,14 +4,16 @@
     import {menusSetup, menusState} from '../../../stores/menusStore.js';
     import DividerHorizontal from "../spacing/DividerHorizontal.svelte";
     import MenuButton from "./MenuButton.svelte";
+    import { Random } from 'meteor/random'
     
-    export let _id = _id;
+    export let _id;
+    export let menuStateId;
 
     let menuSetup = $menusSetup.find(menu => menu._id === _id);
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
     let hasArrows = $settingsState.pullDownMenus.hasArrows;
     
-    $menusState[_id] = {
+    $menusState[menuStateId] = {
         isChecked: menuSetup.isChecked,
         isActive: menuSetup.isActive,
         paneIntWidth: menuSetup.paneIntWidth,
@@ -118,26 +120,26 @@
     }
 </style>
 
-{#if $menusState[_id].isActive}
+{#if $menusState[menuStateId].isActive}
     <div 
         class="pull-down {hasArrows ? 'has-pull-down-arrow' : ''}" 
         style="
-            top: {$menusState[_id].remTop}; 
-            left: {$menusState[_id].remLeft}; 
-            width: {$menusState[_id].remWidth}"
+            top: {$menusState[menuStateId].remTop}; 
+            left: {$menusState[menuStateId].remLeft}; 
+            width: {$menusState[menuStateId].remWidth}"
         out:fade="{{ delay: 0, duration: 100 }}"
     >
         {#if hasArrows}
             <div class="pull-down-arrow {hasLabels ? 'has-button-labels' : ''}"></div>
         {/if}
-        <div class="pull-down-pane {hasLabels ? 'has-button-labels' : ''}" style="width: {$menusState[_id].paneRemWidth}; max-height: {$menusState[_id].paneRemMaxHeight}; left: {$menusState[_id].paneRemLeft}; right: {$menusState[_id].paneRemRight}">
+        <div class="pull-down-pane {hasLabels ? 'has-button-labels' : ''}" style="width: {$menusState[menuStateId].paneRemWidth}; max-height: {$menusState[menuStateId].paneRemMaxHeight}; left: {$menusState[menuStateId].paneRemLeft}; right: {$menusState[menuStateId].paneRemRight}">
             <ul>
                 {#each menuSetup.components as component}
                     {#if component.componentType === 'DividerHorizontal'}
                         <DividerHorizontal />
                     {/if}
                     {#if component.componentType === 'MenuButton'}
-                        <MenuButton _id={component.componentId} isChecked={$menusState[_id].isChecked}/>
+                        <MenuButton _id={component.componentId} isChecked={$menusState[menuStateId].isChecked}/>
                     {/if}
                 {/each}
             </ul>

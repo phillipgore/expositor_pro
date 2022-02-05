@@ -4,24 +4,31 @@
     import {menusSetup, menusState} from '../../../stores/menusStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
     import PullDownMenu from "./PullDownMenu.svelte";
+    import { Random } from 'meteor/random'
 
-    export let _id = _id;
+    export let _id;
 
-    let pullDownButtonSetup = $buttonsSetup.find(pullDownButton => pullDownButton._id === _id);
-    let menuId = pullDownButtonSetup.menuId;
+    let randomId = Random.id();
+    let buttonStateId = `${_id}-${randomId}`;
+    let buttonSetup = $buttonsSetup.find(button => button._id === _id);
+
+    let menuId = buttonSetup.menuId;
+    let menuStateId = `${menuId}-${randomId}`;
     let menuSetup = $menusSetup.find(menu => menu._id === menuId);
+
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
     let hasArrows = $settingsState.pullDownMenus.hasArrows;
+
     let windowHeight;
     let windowWidth;
 
-    $buttonsState[_id] = {isActive: pullDownButtonSetup.isActive};
+    $buttonsState[buttonStateId] = {isActive: buttonSetup.isActive};
 
     const pullDownButtonClick = (event) => {
         pullDownButtonPosition(event);
-        pullDownButtonsReset(_id);
-        $buttonsState[_id].isActive = !$buttonsState[_id].isActive;
-        $menusState[menuId].isActive = !$menusState[menuId].isActive;
+        pullDownButtonsReset(buttonStateId, menuStateId);
+        $buttonsState[buttonStateId].isActive = !$buttonsState[buttonStateId].isActive;
+        $menusState[menuStateId].isActive = !$menusState[menuStateId].isActive;
     };
 
     const pullDownButtonPosition = (event) => {
@@ -33,41 +40,39 @@
             intHeight:  Math.ceil(pullDownButtonRect.height),
             intWidth:  Math.ceil(pullDownButtonRect.width),
         }
-        $buttonsState[_id] = {...$buttonsState[_id], ...pullDownButtonPosition};
+        $buttonsState[buttonStateId] = {...$buttonsState[buttonStateId], ...pullDownButtonPosition};
         
         let pullDownMenuPosition = {}
 
-        pullDownMenuPosition.remLeft = `${($buttonsState[_id].intOffsetLeft) / $settingsState.baseFontSize}rem`;
-        pullDownMenuPosition.remWidth = `${($buttonsState[_id].intWidth) / $settingsState.baseFontSize}rem`;
-        pullDownMenuPosition.paneRemMaxHeight = `${(windowHeight - ($buttonsState[_id].intHeight + $buttonsState[_id].intOffsetTop) - 23) / $settingsState.baseFontSize}rem`;
+        pullDownMenuPosition.remLeft = `${($buttonsState[buttonStateId].intOffsetLeft) / $settingsState.baseFontSize}rem`;
+        pullDownMenuPosition.remWidth = `${($buttonsState[buttonStateId].intWidth) / $settingsState.baseFontSize}rem`;
+        pullDownMenuPosition.paneRemMaxHeight = `${(windowHeight - ($buttonsState[buttonStateId].intHeight + $buttonsState[buttonStateId].intOffsetTop) - 23) / $settingsState.baseFontSize}rem`;
         
         if (hasArrows) {
-            pullDownMenuPosition.remTop = `${($buttonsState[_id].intOffsetTop + $buttonsState[_id].intHeight - 5)  / $settingsState.baseFontSize}rem`;
+            pullDownMenuPosition.remTop = `${($buttonsState[buttonStateId].intOffsetTop + $buttonsState[buttonStateId].intHeight - 5)  / $settingsState.baseFontSize}rem`;
         } else {
-            pullDownMenuPosition.remTop = `${($buttonsState[_id].intOffsetTop + $buttonsState[_id].intHeight + 2)  / $settingsState.baseFontSize}rem`;
+            pullDownMenuPosition.remTop = `${($buttonsState[buttonStateId].intOffsetTop + $buttonsState[buttonStateId].intHeight + 2)  / $settingsState.baseFontSize}rem`;
         }
 
-        if ((menuSetup.paneIntWidth - $buttonsState[_id].intWidth)  / 2 > $buttonsState[_id].intOffsetLeft) {
-            pullDownMenuPosition.paneRemLeft = `${0 - (($buttonsState[_id].intOffsetLeft - $settingsState.baseFontSize) / $settingsState.baseFontSize)}rem`;
+        if ((menuSetup.paneIntWidth - $buttonsState[buttonStateId].intWidth)  / 2 > $buttonsState[buttonStateId].intOffsetLeft) {
+            pullDownMenuPosition.paneRemLeft = `${0 - (($buttonsState[buttonStateId].intOffsetLeft - $settingsState.baseFontSize) / $settingsState.baseFontSize)}rem`;
         }
 
-        if ($buttonsState[_id].intOffsetLeft + ((menuSetup.paneIntWidth + $buttonsState[_id].intWidth)  / 2) > windowWidth) {
-            pullDownMenuPosition.paneRemRight = `${0 - ((windowWidth - $buttonsState[_id].intOffsetRight - $settingsState.baseFontSize) / $settingsState.baseFontSize)}rem`;
+        if ($buttonsState[buttonStateId].intOffsetLeft + ((menuSetup.paneIntWidth + $buttonsState[buttonStateId].intWidth)  / 2) > windowWidth) {
+            pullDownMenuPosition.paneRemRight = `${0 - ((windowWidth - $buttonsState[buttonStateId].intOffsetRight - $settingsState.baseFontSize) / $settingsState.baseFontSize)}rem`;
         }
-        $menusState[menuId] = {...$menusState[menuId], ...pullDownMenuPosition};
+        $menusState[menuStateId] = {...$menusState[menuStateId], ...pullDownMenuPosition};
     };
 
-    const pullDownButtonsReset = (buttonId) => {
-        let menuId = buttonId? $buttonsSetup.find(pullDownButton => pullDownButton._id === buttonId).menuId : undefined;
-
+    const pullDownButtonsReset = (buttonStateId, menuStateId) => {
         Object.keys($buttonsState).forEach(key => {
-            if (key != buttonId) {
+            if (key != buttonStateId) {
                 $buttonsState[key].isActive = false;
             }
         });
 
         Object.keys($menusState).forEach(key => {
-            if (key != menuId) {
+            if (key != menuStateId) {
                 $menusState[key].isActive = false;
             }
         });
@@ -81,7 +86,7 @@
 		].includes(true);
 
         if (isNotPullDownButton) {
-            pullDownButtonsReset(undefined)
+            pullDownButtonsReset(undefined, undefined)
         }
     }
 </script>
@@ -161,13 +166,13 @@
 
 <div class="btn-container">
     <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
-        <button id="{pullDownButtonSetup._id}" class="js-pull-down-button {$buttonsState[_id].isActive ? 'active' : ''}" on:click|capture={pullDownButtonClick}>
-            {#if pullDownButtonSetup.iconName}
-                <svg class="icon" viewBox="{getIcon(pullDownButtonSetup.iconName).viewBox}">
-                    <path d={getIcon(pullDownButtonSetup.iconName).d}/>
+        <button id="{buttonSetup._id}" class="js-pull-down-button {$buttonsState[buttonStateId].isActive ? 'active' : ''}" on:click|capture={pullDownButtonClick}>
+            {#if buttonSetup.iconName}
+                <svg class="icon" viewBox="{getIcon(buttonSetup.iconName).viewBox}">
+                    <path d={getIcon(buttonSetup.iconName).d}/>
                 </svg>
-            {:else if pullDownButtonSetup.label}
-                <span class="btn-label">{pullDownButtonSetup.label}</span>
+            {:else if buttonSetup.label}
+                <span class="btn-label">{buttonSetup.label}</span>
             {:else}
                 <span class="btn-label">No Text</span>
             {/if}
@@ -175,10 +180,10 @@
                 <path d={getIcon('caret-down').d}/>
             </svg>
         </button>
-        {#if pullDownButtonSetup.underLabel}
-            <div class="btn-under-label">{pullDownButtonSetup.underLabel}</div>
+        {#if buttonSetup.underLabel}
+            <div class="btn-under-label">{buttonSetup.underLabel}</div>
         {/if}
     </div>
 </div>
 
-<PullDownMenu _id={pullDownButtonSetup.menuId}/>
+<PullDownMenu _id={buttonSetup.menuId} menuStateId={menuStateId}/>
