@@ -1,10 +1,10 @@
 <script>
+    import {Random} from 'meteor/random'
     import {settingsState} from '../../../stores/settingsStore.js';
     import {buttonsSetup, buttonsState} from '../../../stores/buttonsStore.js';
     import {menusSetup, menusState} from '../../../stores/menusStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
     import PullDownMenu from "./PullDownMenu.svelte";
-    import { Random } from 'meteor/random'
 
     export let _id;
 
