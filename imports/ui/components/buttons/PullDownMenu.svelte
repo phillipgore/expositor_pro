@@ -46,21 +46,10 @@
             overflow-x: hidden; 
             overflow-x: auto; 
             padding: 0.4rem 0.0rem;
-            box-shadow: 0.0rem 0.0rem 0.8rem var(--black-alpha);
-            -webkit-backdrop-filter: blur(1.0rem);
+            box-shadow: 0.0rem 0.0rem 1.2rem var(--black-alpha);
+            background-color: var(--gray-800);
             backdrop-filter: blur(1.0rem);
-            border: 0.1rem solid var(--gray-700-alpha);
-        }
-
-        .pull-down-menu:after {
-            content: " ";
-            background-color: var(--gray-900-alpha);
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
+            border: 0.1rem solid var(--gray-700);
         }
 
         ul {

@@ -107,9 +107,6 @@
         margin: 0.0rem;
     }
 
-    button.selected .icon {
-    }
-
     .btn-label {
         font-size: 1.2rem;
         font-weight: 500;
@@ -130,8 +127,10 @@
     
     /* .toolbar styles */
     .toolbar button {
-        border-color: var(--gray-200);
+        border-color: transparent;
         background-color: var(--gray-400);
+        height: 2.2rem;
+        min-width: 4.6rem; 
     }
 
     .toolbar button.selected {
