@@ -133,7 +133,7 @@
 
     /* .toolbar styles */
     .toolbar button {
-        border: var(--gray-200);
+        border-color: var(--gray-200);
         background-color: var(--gray-400);
     }
 
