@@ -128,14 +128,6 @@
     }
 
     @media only screen and (min-width: 768px) {
-        .pull-down {
-            display: flex;
-        }
-
-        ul {
-            margin: 0.0rem;
-        }
-        
         li button,
         li button:hover:enabled {
             background: transparent;
@@ -189,68 +181,51 @@
 
 
 
+    /* Color Options */
         /* .toolbar styles */
         li.toolbar button:hover:enabled {
             background-color: var(--interface-blue);
         }
-
-
-
+        
         /* .gray styles */
         li.gray button:hover:enabled {
             background-color: var(--gray);
         }
-
-
-
+        
         /* .red styles */
         li.red button:hover:enabled {
             background-color: var(--red);
         }
 
-
-
         /* .orange styles */
         li.orange button:hover:enabled {
             background-color: var(--orange);
         }
-
-
-
+        
         /* .yellow styles */
         li.yellow button:hover:enabled {
             background-color: var(--yellow);
         }
-
-
-
+        
         /* .green styles */
         li.green button:hover:enabled {
             background-color: var(--green);
         }
-
-
-
+        
         /* .aqua styles */
         li.aqua button:hover:enabled {
             background-color: var(--aqua);
         }
-
-
-
+        
         /* .blue styles */
         li.blue button:hover:enabled {
             background-color: var(--blue);
         }
-
-
-
+        
         /* .purple styles */
         li.purple button:hover:enabled {
             background-color: var(--purple);
         }
-
-
 
         /* .pink styles */
         li.pink button:hover:enabled {

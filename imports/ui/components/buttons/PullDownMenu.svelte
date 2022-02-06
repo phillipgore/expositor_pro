@@ -1,7 +1,9 @@
 <script>
     import {fade} from 'svelte/transition';
+
     import {settingsState} from '../../../stores/settingsStore.js';
     import {menusSetup, menusState} from '../../../stores/menusStore.js';
+    
     import DividerHorizontal from "../spacing/DividerHorizontal.svelte";
     import MenuButton from "./MenuButton.svelte";
     
@@ -21,7 +23,7 @@
 </script>
 
 {#if $menusState[menuStateId].isActive}
-    <div class="pull-down-menu {hasLabels ? 'has-button-labels' : ''}" style="width: {$menusState[menuStateId].paneRemWidth}; max-height: {$menusState[menuStateId].paneRemMaxHeight}; top: {$menusState[menuStateId].paneRemTop}; right: {$menusState[menuStateId].paneRemRight}">
+    <div class="pull-down-menu {hasLabels ? 'has-button-labels' : ''}" style="width: {$menusState[menuStateId].paneRemWidth}; max-height: {$menusState[menuStateId].paneRemMaxHeight}; top: {$menusState[menuStateId].paneRemTop}; right: {$menusState[menuStateId].paneRemRight}" in:fade="{{duration: 100}}" out:fade="{{duration: 200}}">
         <ul>
             {#each menuSetup.components as component}
                 {#if component.componentType === 'DividerHorizontal'}

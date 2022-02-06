@@ -1,6 +1,5 @@
 <script>
-    import {settingsState} from '../../../stores/settingsStore.js';
-    import {segmentedControlsSetup, segmentedControlsState} from '../../../stores/segmentedControlsStore.js';
+    import {segmentedControlsSetup} from '../../../stores/segmentedControlsStore.js';
     import {buttonsSetup, buttonsState} from '../../../stores/buttonsStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
     
@@ -13,7 +12,7 @@
     let segments = $buttonsSetup.filter(button => components.includes(button._id));
 
     segments.forEach(segment => {
-        $buttonsState[segment._id] = {isSelected: segment.isSelected}
+        $buttonsState[segment._id] = {isSelected: segment.isSelected};
     });
 
     const segmentedControlClick = (buttonId) => {
@@ -128,9 +127,7 @@
         margin-top:  0.3rem;
         font-weight: 500;
     }
-
-
-
+    
     /* .toolbar styles */
     .toolbar button {
         border-color: var(--gray-200);
@@ -157,9 +154,7 @@
         color: var(--gray-800);
         font-weight: normal;
     }
-
-
-
+    
     /* .gray styles */
     .gray button {
         border-color: var(--gray);
@@ -182,9 +177,7 @@
         fill: var(--white);
         color: var(--white);
     }
-
-
-
+    
     /* .red styles */
     .red button {
         border-color: var(--red);
@@ -207,9 +200,7 @@
         fill: var(--white);
         color: var(--white);
     }
-
-
-
+    
     /* .orange styles */
     .orange button {
         border-color: var(--orange);
@@ -232,9 +223,7 @@
         fill: var(--white);
         color: var(--white);
     }
-
-
-
+    
     /* .yellow styles */
     .yellow button {
         border-color: var(--yellow);
@@ -257,9 +246,7 @@
         fill: var(--white);
         color: var(--white);
     }
-
-
-
+    
     /* .green styles */
     .green button {
         border-color: var(--green);
@@ -282,9 +269,7 @@
         fill: var(--white);
         color: var(--white);
     }
-
-
-
+    
     /* .aqua styles */
     .aqua button {
         border-color: var(--aqua);
@@ -307,9 +292,7 @@
         fill: var(--white);
         color: var(--white);
     }
-
-
-
+    
     /* .blue styles */
     .blue button {
         border-color: var(--blue);
@@ -332,9 +315,7 @@
         fill: var(--white);
         color: var(--white);
     }
-
-
-
+    
     /* .purple styles */
     .purple button {
         border-color: var(--purple);
@@ -357,9 +338,7 @@
         fill: var(--white);
         color: var(--white);
     }
-
-
-
+    
     /* .pink styles */
     .pink button {
         border-color: var(--pink);

@@ -1,12 +1,8 @@
 <script>
 	import Toolbar from "./components/views/Toolbar.svelte";
-	import PullDownButton from "./components/buttons/PullDownButton.svelte";
-	import PushButton from "./components/buttons/PushButton.svelte";
-	import SegmentedControl from "./components/selectors/SegmentedControl.svelte";
 </script>
 
 <Toolbar _id={'mainToolbar'}/>	
-
 <main>
 	
 </main>

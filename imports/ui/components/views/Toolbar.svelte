@@ -1,6 +1,7 @@
 <script>
     import {settingsState} from '../../../stores/settingsStore.js';
-    import {toolbarsSetup, toolbarsState} from '../../../stores/toolbarsStore.js';
+    import {toolbarsSetup} from '../../../stores/toolbarsStore.js';
+    
     import PullDownButton from "../buttons/PullDownButton.svelte";
     import PushButton from "../buttons/PushButton.svelte";
     import SegmentedControl from "../selectors/SegmentedControl.svelte";
@@ -11,6 +12,32 @@
     let toolbarSetup = $toolbarsSetup.find(toolbar => toolbar._id === _id);
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
 </script>
+
+<nav id="{toolbarSetup._id}" class="{hasLabels ? '' : 'nav-short'}">
+    {#each toolbarSetup.components as component}
+            {#if component.componentType === 'PullDownButton'}
+                <div class="component-container">
+                    <PullDownButton _id={component.componentId} hasLabels={hasLabels} color={'toolbar'}/>
+                </div>
+            {/if}
+            {#if component.componentType === 'PushButton'}
+                <div class="component-container">
+                    <PushButton _id={component.componentId} hasLabels={hasLabels} color={'toolbar'}/>
+                </div>
+            {/if}
+            {#if component.componentType === 'SegmentedControl'}
+                <div class="component-container">
+                    <SegmentedControl _id={component.componentId} hasLabels={hasLabels} color={'toolbar'}/>
+                </div>
+            {/if}
+            {#if component.componentType === 'Space'}
+                    <Space />
+            {/if}
+            {#if component.componentType === 'FlexibleSpace'}
+                    <FlexibleSpace />
+            {/if}
+    {/each}
+</nav>
 
 <style>
 	@media only screen and (min-width: 0px) {
@@ -26,15 +53,15 @@
             left: 0;
         }
 
-        .component {
+        .component-container {
             margin: 0rem 0.25rem;
         }
 
-        .component:first-child {
+        .component-container:first-child {
             margin-left: 0rem;
         }
 
-        .component:last-child {
+        .component-container:last-child {
             margin-right: 0rem;
         }
     }
@@ -50,29 +77,3 @@
         }
 	}
 </style>
-
-<nav id="{toolbarSetup._id}" class="{hasLabels ? '' : 'nav-short'}">
-    {#each toolbarSetup.components as component}
-            {#if component.componentType === 'PullDownButton'}
-                <div class="component">
-                    <PullDownButton _id={component.componentId} hasLabels={hasLabels} color={'toolbar'}/>
-                </div>
-            {/if}
-            {#if component.componentType === 'PushButton'}
-                <div class="component">
-                    <PushButton _id={component.componentId} hasLabels={hasLabels} color={'toolbar'}/>
-                </div>
-            {/if}
-            {#if component.componentType === 'SegmentedControl'}
-                <div class="component">
-                    <SegmentedControl _id={component.componentId} hasLabels={hasLabels} color={'toolbar'}/>
-                </div>
-            {/if}
-            {#if component.componentType === 'Space'}
-                    <Space />
-            {/if}
-            {#if component.componentType === 'FlexibleSpace'}
-                    <FlexibleSpace />
-            {/if}
-    {/each}
-</nav>
