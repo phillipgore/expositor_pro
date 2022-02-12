@@ -5,7 +5,7 @@
     import {menusSetup, menusState} from '../../../stores/menusStore.js';
     
     import DividerHorizontal from "../spacing/DividerHorizontal.svelte";
-    import MenuButton from "./MenuButton.svelte";
+    import MenuButton from "../buttons/MenuButton.svelte";
     
     export let _id;
     export let menuStateId;

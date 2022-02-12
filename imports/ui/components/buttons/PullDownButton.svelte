@@ -6,7 +6,7 @@
     import {menusSetup, menusState} from '../../../stores/menusStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
 
-    import PullDownMenu from "./PullDownMenu.svelte";
+    import PullDownMenu from "../menus/PullDownMenu.svelte";
 
     export let _id;
     export let color = 'gray';
