@@ -5,6 +5,7 @@ export const menusSetup = readable([
         _id:'studiesMenu',
         paneIntWidth: 221,
         isChecked: false,
+        isShowHide: false,
         isActive: false,
         components: [
             {componentId: 'new', componentType: 'MenuButton'},
@@ -20,6 +21,7 @@ export const menusSetup = readable([
         _id: 'zoomMenu',
         paneIntWidth: 97,
         isChecked: true,
+        isShowHide: false,
         isActive: false,
         components: [
             {componentId: '25', componentType: 'MenuButton'},
@@ -40,6 +42,7 @@ export const menusSetup = readable([
         _id: 'outlineMenu',
         paneIntWidth: 160,
         isChecked: false,
+        isShowHide: false,
         isActive: false,
         components: [
             {componentId: 'section', componentType: 'MenuButton'},
@@ -54,6 +57,7 @@ export const menusSetup = readable([
         _id: 'textMenu',
         paneIntWidth: 185,
         isChecked: false,
+        isShowHide: false,
         isActive: false,
         components: [
             {componentId: 'highlight', componentType: 'MenuButton'},
@@ -69,6 +73,7 @@ export const menusSetup = readable([
         _id: 'literaryMenu',
         paneIntWidth: 199,
         isChecked: false,
+        isShowHide: false,
         isActive: false,
         components: [
             {componentId: 'chiasim', componentType: 'MenuButton'},
@@ -78,9 +83,23 @@ export const menusSetup = readable([
         ],
     },
     {
+        _id: 'optionsMenu',
+        paneIntWidth: 230,
+        isChecked: false,
+        isShowHide: true,
+        isActive: false,
+        components: [
+            {componentId: 'references', componentType: 'MenuButton'},
+            {componentId: 'footnotes', componentType: 'MenuButton'},
+            {componentId: 'verses', componentType: 'MenuButton'},
+            {componentId: 'headings', componentType: 'MenuButton'},
+        ],
+    },
+    {
         _id: 'colorMenu',
         paneIntWidth: 87,
         isChecked: false,
+        isShowHide: false,
         isActive: false,
         components: [
             {componentId: 'red', componentType: 'MenuButton'},
@@ -97,6 +116,7 @@ export const menusSetup = readable([
         _id: 'settingsMenu',
         paneIntWidth: 164,
         isChecked: false,
+        isShowHide: false,
         isActive: false,
         components: [
             {componentId: 'account', componentType: 'MenuButton'},

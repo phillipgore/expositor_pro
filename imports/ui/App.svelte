@@ -1,17 +1,17 @@
 <script>
 	import Toolbar from "./components/views/Toolbar.svelte";
-	import SegmentedControl from "./components/selectors/SegmentedControl.svelte";
 </script>
 
 <Toolbar _id={'mainToolbar'}/>	
 <main>
 	
 </main>
-
+		
 <style>
 	@media only screen and (min-width: 0px) {
 		main {
 			display: flex;
+			flex-direction: row;
 			min-height: 100vh;
 			padding-top: 4.5rem;
 		}

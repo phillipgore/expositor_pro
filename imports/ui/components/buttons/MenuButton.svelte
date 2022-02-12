@@ -2,9 +2,10 @@
     import {buttonsSetup, buttonsState} from '../../../stores/buttonsStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
 
-    export let _id = _id;
+    export let _id;
     export let color = 'interface';
-    export let isChecked = isChecked;
+    export let isChecked;
+    export let isShowHide;
 
     let menuButton = $buttonsSetup.find(button => button._id === _id);
 </script>
@@ -24,12 +25,27 @@
                 </svg>
             </div>
         {/if}
+        {#if isShowHide}
+            <div class="icon-container">
+                {#if menuButton.isActive}
+                    <svg class="icon-left" viewBox="{getIcon('checkbox-checked').viewBox}">
+                        <path d={getIcon('checkbox-checked').d}/>
+                    </svg>
+                {:else}
+                    <svg class="icon-left" viewBox="{getIcon('checkbox-unchecked').viewBox}">
+                        <path d={getIcon('checkbox-unchecked').d}/>
+                    </svg>
+                {/if} 
+            </div>
+        {/if}
         {#if menuButton.shapeClass}
             <div class="shape-container">
                 <div class="{menuButton.shapeClass} {menuButton.shapeColorClass}"></div>
             </div>
         {/if}
-        <div class="main-text">{menuButton.label}</div>
+        <div class="main-text">
+            {menuButton.label}
+        </div>
         {#if menuButton.shortcut}
             <div class="text-right">{@html menuButton.shortcut}</div>
         {/if}

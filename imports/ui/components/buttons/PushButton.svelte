@@ -13,13 +13,13 @@
     let buttonSetup = $buttonsSetup.find(pushButton => pushButton._id === _id);
     
     const pushButtonClick = () => {
-
+        alert('Clicked');
     };
 </script>
 
 <div class="btn-container {color}">
     <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
-        <button id="{buttonStateId}" on:click={() => pushButtonClick()} aria-label="{buttonSetup.underLabel}">
+        <button id="{buttonStateId}" on:click={() => pushButtonClick()} aria-label="{buttonSetup.underLabel}" disabled="{buttonSetup.isDisabled}">
             {#if buttonSetup.iconName}
                 <svg class="icon" viewBox="{getIcon(buttonSetup.iconName).viewBox}">
                     <path d={getIcon(buttonSetup.iconName).d}/>
@@ -100,11 +100,11 @@
     /* .toolbar styles */
     .toolbar button {
         border-color: var(--gray-200);
-        background-color: var(--gray-400);
+        background-color: var(--gray-500);
     }
 
-    .toolbar button:active,
-    .toolbar button.active {
+    .toolbar button:active:enabled,
+    .toolbar button.active:enabled {
         background-color: var(--gray-800);
     }
 
@@ -114,10 +114,10 @@
         color: var(--white);
     }
 
-    .toolbar button:active .icon,
-    .toolbar button.active .icon,
-    .toolbar button:active .btn-label,
-    .toolbar button.active .btn-label {
+    .toolbar button:active .icon:enabled,
+    .toolbar button.active .icon:enabled,
+    .toolbar button:active .btn-label:enabled,
+    .toolbar button.active .btn-label:enabled {
         fill: var(--gray-200);
         color: var(--gray-200);
     }
@@ -133,8 +133,8 @@
         background-color: var(--gray-light);
     }
 
-    .gray button:active,
-    .gray button.active {
+    .gray button:active:enabled,
+    .gray button.active:enabled {
         border-color: var(--gray);
         background-color: var(--gray);
     }
@@ -145,10 +145,10 @@
         color: var(--gray-dark);
     }
 
-    .gray button:active .icon,
-    .gray button.active .icon,
-    .gray button:active .btn-label,
-    .gray button.active .btn-label {
+    .gray button:active:enabled .icon,
+    .gray button.active:enabled .icon,
+    .gray button:active:enabled .btn-label,
+    .gray button.active:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -159,8 +159,8 @@
         background-color: var(--red-light);
     }
 
-    .red button:active,
-    .red button.active {
+    .red button:active:enabled,
+    .red button.active:enabled {
         border-color: var(--red);
         background-color: var(--red);
     }
@@ -171,10 +171,10 @@
         color: var(--red-dark);
     }
 
-    .red button:active .icon,
-    .red button.active .icon,
-    .red button:active .btn-label,
-    .red button.active .btn-label {
+    .red button:active:enabled .icon,
+    .red button.active:enabled .icon,
+    .red button:active:enabled .btn-label,
+    .red button.active:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -185,8 +185,8 @@
         background-color: var(--orange-light);
     }
 
-    .orange button:active,
-    .orange button.active {
+    .orange button:active:enabled,
+    .orange button.active:enabled {
         border-color: var(--orange);
         background-color: var(--orange);
     }
@@ -197,10 +197,10 @@
         color: var(--orange-dark);
     }
 
-    .orange button:active .icon,
-    .orange button.active .icon,
-    .orange button:active .btn-label,
-    .orange button.active .btn-label {
+    .orange button:active:enabled .icon,
+    .orange button.active:enabled .icon,
+    .orange button:active:enabled .btn-label,
+    .orange button.active:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -211,8 +211,8 @@
         background-color: var(--yellow-light);
     }
 
-    .yellow button:active,
-    .yellow button.active {
+    .yellow button:active:enabled,
+    .yellow button.active:enabled {
         border-color: var(--yellow);
         background-color: var(--yellow);
     }
@@ -223,10 +223,10 @@
         color: var(--yellow-dark);
     }
 
-    .yellow button:active .icon,
-    .yellow button.active .icon,
-    .yellow button:active .btn-label,
-    .yellow button.active .btn-label {
+    .yellow button:active:enabled .icon,
+    .yellow button.active:enabled .icon,
+    .yellow button:active:enabled .btn-label,
+    .yellow button.active:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -237,8 +237,8 @@
         background-color: var(--green-light);
     }
 
-    .green button:active,
-    .green button.active {
+    .green button:active:enabled,
+    .green button.active:enabled {
         border-color: var(--green);
         background-color: var(--green);
     }
@@ -249,10 +249,10 @@
         color: var(--green-dark);
     }
 
-    .green button:active .icon,
-    .green button.active .icon,
-    .green button:active .btn-label,
-    .green button.active .btn-label {
+    .green button:active:enabled .icon,
+    .green button.active:enabled .icon,
+    .green button:active:enabled .btn-label,
+    .green button.active:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -263,8 +263,8 @@
         background-color: var(--aqua-light);
     }
 
-    .aqua button:active,
-    .aqua button.active {
+    .aqua button:active:enabled,
+    .aqua button.active:enabled {
         border-color: var(--aqua);
         background-color: var(--aqua);
     }
@@ -275,10 +275,10 @@
         color: var(--aqua-dark);
     }
 
-    .aqua button:active .icon,
-    .aqua button.active .icon,
-    .aqua button:active .btn-label,
-    .aqua button.active .btn-label {
+    .aqua button:active:enabled .icon,
+    .aqua button.active:enabled .icon,
+    .aqua button:active:enabled .btn-label,
+    .aqua button.active:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -289,8 +289,8 @@
         background-color: var(--blue-light);
     }
 
-    .blue button:active,
-    .blue button.active {
+    .blue button:active:enabled,
+    .blue button.active:enabled {
         border-color: var(--blue);
         background-color: var(--blue);
     }
@@ -301,10 +301,10 @@
         color: var(--blue-dark);
     }
 
-    .blue button:active .icon,
-    .blue button.active .icon,
-    .blue button:active .btn-label,
-    .blue button.active .btn-label {
+    .blue button:active:enabled .icon,
+    .blue button.active:enabled .icon,
+    .blue button:active:enabled .btn-label,
+    .blue button.active:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -315,8 +315,8 @@
         background-color: var(--purple-light);
     }
 
-    .purple button:active,
-    .purple button.active {
+    .purple button:active:enabled,
+    .purple button.active:enabled {
         border-color: var(--purple);
         background-color: var(--purple);
     }
@@ -327,10 +327,10 @@
         color: var(--purple-dark);
     }
 
-    .purple button:active .icon,
-    .purple button.active .icon,
-    .purple button:active .btn-label,
-    .purple button.active .btn-label {
+    .purple button:active:enabled .icon,
+    .purple button.active:enabled .icon,
+    .purple button:active:enabled .btn-label,
+    .purple button.active:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -341,8 +341,8 @@
         background-color: var(--pink-light);
     }
 
-    .pink button:active,
-    .pink button.active {
+    .pink button:active:enabled,
+    .pink button.active:enabled {
         border-color: var(--pink);
         background-color: var(--pink);
     }
@@ -353,11 +353,27 @@
         color: var(--pink-dark);
     }
 
-    .pink button:active .icon,
-    .pink button.active .icon,
-    .pink button:active .btn-label,
-    .pink button.active .btn-label {
+    .pink button:active:enabled .icon,
+    .pink button.active:enabled .icon,
+    .pink button:active:enabled .btn-label,
+    .pink button.active:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
+    }
+    
+
+
+
+    button:disabled {
+        opacity: 0.55;
+    }
+
+    button:disabled  .icon,
+    button:disabled  .btn-label {
+        opacity: 0.75;
+    }
+
+    button:disabled + .btn-under-label {
+        opacity: 0.65;
     }
 </style>

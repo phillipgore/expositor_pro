@@ -13,7 +13,7 @@ export const toolbarsSetup = readable([
             {componentType: 'Space'},
             {componentId: 'color', componentType: 'PullDownButton'},
             {componentId: 'note', componentType: 'PushButton'},
-            {componentId: 'options', componentType: 'PushButton'},
+            {componentId: 'options', componentType: 'PullDownButton'},
             {componentType: 'Space'},
             {componentId: 'delete', componentType: 'PushButton'},
             {componentType: 'FlexibleSpace'},

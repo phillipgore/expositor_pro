@@ -292,17 +292,41 @@ export const buttonsSetup = readable([
         _id: 'note',
         iconName: 'note', 
         underLabel:'Note', 
-        isDisabled: false,
+        isDisabled: true,
     },
 
 
     
-    // Options Button
+    // Options Buttons
     {
         _id: 'options',
-        iconName: 'checkbox-checked', 
+        menuId: 'optionsMenu',
+        iconName:'checkbox-checked',  
         underLabel:'Options', 
+        hasSheet: true,
+        isActive: false,
         isDisabled: false,
+    },
+    {
+        _id: 'references',
+        label: 'Cross Refrences', 
+        shortcut: '<span>&#8984;OR</span>',
+    },
+    {
+        _id: 'footnotes',
+        label: 'Footnotes', 
+        shortcut: '<span>&#8984;OF</span>',
+    },
+    {
+        _id: 'verses',
+        label: 'Verse Numbers', 
+        shortcut: '<span>&#8984;OV</span>',
+        isActive: true,
+    },
+    {
+        _id: 'headings',
+        label: 'Headings', 
+        shortcut: '<span>&#8984;OH</span>',
     },
 
 
@@ -312,7 +336,7 @@ export const buttonsSetup = readable([
         _id: 'delete',
         iconName:'delete', 
         underLabel:'Delete', 
-        isDisabled: false,
+        isDisabled: true,
     },
 
 
@@ -334,7 +358,7 @@ export const buttonsSetup = readable([
         groupId: 'view', 
         iconName: 'document', 
         underLabel:'Document', 
-        isSelected: false
+        isSelected: false,
     },
 
 
@@ -347,7 +371,6 @@ export const buttonsSetup = readable([
         underLabel:'Settings',   
         hasSheet: true,
         isActive: false,
-        isDisabled: false,
     },
 
     {

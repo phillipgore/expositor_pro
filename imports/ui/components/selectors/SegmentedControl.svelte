@@ -30,7 +30,7 @@
     <div class="btn-grouped">
         {#each segments as segment}
             <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
-                <button id="{_id}" class="{$buttonsState[segment._id].isSelected ? 'selected' : ''}" on:click={() => segmentedControlClick(segment._id)} aria-label="{segment.underLabel}">
+                <button id="{_id}" class="{$buttonsState[segment._id].isSelected ? 'selected' : ''}" on:click={() => segmentedControlClick(segment._id)} aria-label="{segment.underLabel}" disabled="{segment.isDisabled}">
                     {#if segment.iconName}
                         <svg class="icon" viewBox="{getIcon(segment.iconName).viewBox}">
                             <path d={getIcon(segment.iconName).d}/>
@@ -133,7 +133,7 @@
         min-width: 4.6rem; 
     }
 
-    .toolbar button.selected {
+    .toolbar button.selected:enabled {
         background-color: var(--gray-800);
     }
 
@@ -143,8 +143,8 @@
         color: var(--white);
     }
 
-    .toolbar button.selected .icon,
-    .toolbar button.selected .btn-label  {
+    .toolbar button.selected:enabled .icon,
+    .toolbar button.selected:enabled .btn-label  {
         fill: var(--gray-200);
         color: var(--gray-200);
     }
@@ -160,7 +160,7 @@
         background-color: var(--gray-light);
     }
 
-    .gray button.selected {
+    .gray button.selected:enabled {
         border-color: var(--gray);
         background-color: var(--gray);
     }
@@ -171,8 +171,8 @@
         color: var(--gray-dark);
     }
 
-    .gray button.selected .icon,
-    .gray button.selected .btn-label {
+    .gray button.selected:enabled .icon,
+    .gray button.selected:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -183,7 +183,7 @@
         background-color: var(--red-light);
     }
 
-    .red button.selected {
+    .red button.selected:enabled {
         border-color: var(--red);
         background-color: var(--red);
     }
@@ -194,8 +194,8 @@
         color: var(--red-dark);
     }
 
-    .red button.selected .icon,
-    .red button.selected .btn-label {
+    .red button.selected:enabled .icon,
+    .red button.selected:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -206,7 +206,7 @@
         background-color: var(--orange-light);
     }
 
-    .orange button.selected {
+    .orange button.selected:enabled {
         border-color: var(--orange);
         background-color: var(--orange);
     }
@@ -217,8 +217,8 @@
         color: var(--orange-dark);
     }
 
-    .orange button.selected .icon,
-    .orange button.selected .btn-label {
+    .orange button.selected:enabled .icon,
+    .orange button.selected:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -229,7 +229,7 @@
         background-color: var(--yellow-light);
     }
 
-    .yellow button.selected {
+    .yellow button.selected:enabled {
         border-color: var(--yellow);
         background-color: var(--yellow);
     }
@@ -240,8 +240,8 @@
         color: var(--yellow-dark);
     }
 
-    .yellow button.selected .icon,
-    .yellow button.selected .btn-label {
+    .yellow button.selected:enabled .icon,
+    .yellow button.selected:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -252,7 +252,7 @@
         background-color: var(--green-light);
     }
 
-    .green button.selected {
+    .green button.selected:enabled {
         border-color: var(--green);
         background-color: var(--green);
     }
@@ -263,8 +263,8 @@
         color: var(--green-dark);
     }
 
-    .green button.selected .icon,
-    .green button.selected .btn-label {
+    .green button.selected:enabled .icon,
+    .green button.selected:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -275,7 +275,7 @@
         background-color: var(--aqua-light);
     }
 
-    .aqua button.selected {
+    .aqua button.selected:enabled {
         border-color: var(--aqua);
         background-color: var(--aqua);
     }
@@ -286,8 +286,8 @@
         color: var(--aqua-dark);
     }
 
-    .aqua button.selected .icon,
-    .aqua button.selected .btn-label {
+    .aqua button.selected:enabled .icon,
+    .aqua button.selected:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -298,7 +298,7 @@
         background-color: var(--blue-light);
     }
 
-    .blue button.selected {
+    .blue button.selected:enabled {
         border-color: var(--blue);
         background-color: var(--blue);
     }
@@ -309,8 +309,8 @@
         color: var(--blue-dark);
     }
 
-    .blue button.selected .icon,
-    .blue button.selected .btn-label {
+    .blue button.selected:enabled .icon,
+    .blue button.selected:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -321,7 +321,7 @@
         background-color: var(--purple-light);
     }
 
-    .purple button.selected {
+    .purple button.selected:enabled {
         border-color: var(--purple);
         background-color: var(--purple);
     }
@@ -332,8 +332,8 @@
         color: var(--purple-dark);
     }
 
-    .purple button.selected .icon,
-    .purple button.selected .btn-label {
+    .purple button.selected:enabled .icon,
+    .purple button.selected:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
     }
@@ -344,7 +344,7 @@
         background-color: var(--pink-light);
     }
 
-    .pink button.selected {
+    .pink button.selected:enabled {
         border-color: var(--pink);
         background-color: var(--pink);
     }
@@ -355,9 +355,25 @@
         color: var(--pink-dark);
     }
 
-    .pink button.selected .icon,
-    .pink button.selected .btn-label {
+    .pink button.selected:enabled .icon,
+    .pink button.selected:enabled .btn-label {
         fill: var(--white);
         color: var(--white);
+    }
+    
+
+
+
+    button:disabled {
+        opacity: 0.55;
+    }
+
+    button:disabled .icon,
+    button:disabled .btn-label {
+        opacity: 0.75;
+    }
+
+    button:disabled + .btn-under-label {
+        opacity: 0.65;
     }
 </style>
