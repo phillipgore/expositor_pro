@@ -47,10 +47,11 @@
     };
 
     const evaluateClick = (event) => {
+        let target = event.target;
         let isNotPullDownButton = ![
-			event.target.classList ? event.target.classList.contains('js-pull-down-button') : false, 
-			event.target.parentNode && event.target.parentNode.classList ? event.target.parentNode.classList.contains('js-pull-down-button') : false, 
-			event.target.parentNode && event.target.parentNode.parentNode && event.target.parentNode.parentNode.classList ? event.target.parentNode.parentNode.classList.contains('js-pull-down-button') : false,
+			target.classList ? target.classList.contains('js-pull-down-button') : false, 
+			target.parentNode && target.parentNode.classList ? target.parentNode.classList.contains('js-pull-down-button') : false, 
+			target.parentNode && target.parentNode.parentNode && target.parentNode.parentNode.classList ? target.parentNode.parentNode.classList.contains('js-pull-down-button') : false,
 		].includes(true);
 
         if (isNotPullDownButton) {
@@ -58,25 +59,23 @@
         }
     }
 
-    const pullDownButtonPosition = (event) => {
-        let pullDownButtonRect = event.currentTarget.getBoundingClientRect();
-        let pullDownButtonPosition = {
-            intOffsetTop:  Math.ceil(pullDownButtonRect.top),
-            intOffsetRight:  Math.ceil(pullDownButtonRect.right),
-            intOffsetLeft:  Math.ceil(pullDownButtonRect.left),
-            intHeight:  Math.ceil(pullDownButtonRect.height),
-            intWidth:  Math.ceil(pullDownButtonRect.width),
-        }
-        $buttonsState[buttonStateId] = {...$buttonsState[buttonStateId], ...pullDownButtonPosition};
-        
-        let pullDownMenuPosition = {}
-        pullDownMenuPosition.paneRemTop = `${($buttonsState[buttonStateId].intHeight + 2) / $settingsState.baseFontSize}rem`;
-        if ($buttonsState[buttonStateId].intOffsetLeft + menuSetup.paneIntWidth > windowWidth) {
-            pullDownMenuPosition.paneRemRight = `${0 - ((windowWidth - $buttonsState[buttonStateId].intOffsetRight - 9) / $settingsState.baseFontSize)}rem`;
-        }
-        pullDownMenuPosition.paneRemMaxHeight = `${(windowHeight - ($buttonsState[buttonStateId].intHeight + $buttonsState[buttonStateId].intOffsetTop) - 23) / $settingsState.baseFontSize}rem`;
+    const pullDownButtonPosition = () => {
+        let buttonRect = document.getElementById(buttonStateId).getBoundingClientRect();
 
-        $menusState[menuStateId] = {...$menusState[menuStateId], ...pullDownMenuPosition};
+        let buttonTop = Math.ceil(buttonRect.top);
+        let buttonRight = Math.ceil(buttonRect.right);
+        let buttonLeft = Math.ceil(buttonRect.left);
+        let buttonHeight = Math.ceil(buttonRect.height);
+        
+        let menuPosition = {}
+        menuPosition.paneRemTop = `${(buttonHeight + 2) / $settingsState.baseFontSize}rem`;
+
+        if (buttonLeft + menuSetup.paneIntWidth > windowWidth) {
+            menuPosition.paneRemRight = `${0 - ((windowWidth - buttonRight - 9) / $settingsState.baseFontSize)}rem`;
+        }
+        menuPosition.paneRemMaxHeight = `${(windowHeight - (buttonHeight + buttonTop) - 23) / $settingsState.baseFontSize}rem`;
+
+        $menusState[menuStateId] = {...$menusState[menuStateId], ...menuPosition};
     };
 </script>
 

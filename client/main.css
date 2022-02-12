@@ -65,6 +65,7 @@ html {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   overflow: hidden;
+  background-color: var(--black);
 }
 
 *, *::before, *::after { 
@@ -91,4 +92,5 @@ body {
   min-height: 100%;
   margin: 0;
   padding: 0;
+  background-color: var(--white);
 }
