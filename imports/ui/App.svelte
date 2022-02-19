@@ -2,7 +2,7 @@
 	import Toolbar from "./components/views/Toolbar.svelte";
 </script>
 
-<Toolbar _id={'mainToolbar'}/>	
+<Toolbar _id={'toolbarApp'}/>	
 <main>
 	
 </main>

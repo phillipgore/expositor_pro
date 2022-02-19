@@ -155,7 +155,7 @@
 
         li button:hover:enabled {
             color: var(--white);
-            background-color: var(--interface-600);
+            background-color: var(--interface-blue);
         }
 
         li button .main-text {
