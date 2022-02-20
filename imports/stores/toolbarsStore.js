@@ -2,7 +2,7 @@ import {readable, writable} from 'svelte/store';
 
 export const toolbarsSetup = readable([
     {
-        _id: 'toolbarApp',
+        _id: 'toolbar',
         components: [
             {componentId: 'studies', componentType: 'PullDownButton'},
             {componentId: 'zoom', componentType: 'PullDownButton'},

@@ -13,15 +13,7 @@
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
 </script>
 
-<nav class="toolbar-phone">
-    <div>Phone</div>
-</nav>
-
-<nav class="toolbar-tablet">
-    <div>Tablet</div>
-</nav>
-
-<nav id="{toolbarSetup._id}" class="{hasLabels ? '' : 'toolbar-short'} toolbar-computer">
+<nav id="{toolbarSetup._id}" class="{hasLabels ? '' : 'toolbar-short'}">
     {#each toolbarSetup.components as component}
         {#if component.componentType === 'PullDownButton'}
             <div class="component-container">
@@ -52,7 +44,8 @@
         nav {
             display: flex;
             align-items: center;
-			padding: 0.0rem 0.9rem;
+            margin: 0.0rem -0.9rem;
+			padding: 0.0rem 1.8rem;
             background-color: var(--gray-200);
             position: fixed;
             top: 0;
@@ -62,21 +55,10 @@
             height: 4.5rem;
             color: var(--white);
         }
-
-        nav.toolbar-tablet,
-        nav.toolbar-computer {
-            display: none;
-        }
     }
 
     @media only screen and (min-width: 768px) {
-        nav.toolbar-tablet {
-            display: flex;
-        }
-
-        nav.toolbar-phone {
-            display: none;
-        }
+        
     }
 
 	@media only screen and (min-width: 1024px) {
@@ -86,15 +68,6 @@
 
         nav.toolbar-short {
             height: 3.8rem;
-        }
-
-        nav.toolbar-phone,
-        nav.toolbar-tablet {
-            display: none;
-        }
-
-        nav.toolbar-computer {
-            display: flex;
         }
 
         .component-container {
