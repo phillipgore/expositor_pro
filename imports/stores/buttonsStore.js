@@ -5,9 +5,9 @@ export const buttonsSetup = readable([
     {
         _id: 'studies',
         menuId: 'studiesMenu',
+        sheetId: 'studiesSheet',
         iconName:'book', 
         underLabel:'Studies', 
-        hasSheet: true,
         isActive: false,
         isDisabled: false,
     },
@@ -58,7 +58,6 @@ export const buttonsSetup = readable([
         menuId: 'zoomMenu',
         label:'100%',  
         underLabel:'Zoom', 
-        hasSheet: false,
         isActive: false,
         isDisabled: false,
     },
@@ -77,13 +76,24 @@ export const buttonsSetup = readable([
 
 
 
+    // Tools Button
+    {
+        _id: 'tools',
+        sheetId: 'toolsSheet',
+        iconName:'tools',
+        underLabel: 'Tools',
+        isActive: false,
+        isDisabled: false,
+    },
+
+
+
     // Outline Buttons
     {
         _id: 'outline',
         menuId: 'outlineMenu',
         iconName:'pin', 
         underLabel:'Outline', 
-        hasSheet: true,
         isActive: false,
         isDisabled: false,
     },
@@ -132,7 +142,6 @@ export const buttonsSetup = readable([
         menuId: 'textMenu',
         iconName:'text-join', 
         underLabel:'Text',  
-        hasSheet: true,
         isActive: false,
         isDisabled: false,
     },
@@ -181,7 +190,6 @@ export const buttonsSetup = readable([
         menuId: 'literaryMenu',
         iconName:'literary-chiasim',  
         underLabel:'Literary', 
-        hasSheet: true,
         isActive: false,
         isDisabled: false,
     },
@@ -223,7 +231,6 @@ export const buttonsSetup = readable([
         menuId: 'colorMenu',
         iconName:'paintbrush',  
         underLabel:'Color', 
-        hasSheet: true,
         isActive: false,
         isDisabled: false,
     },
@@ -290,9 +297,11 @@ export const buttonsSetup = readable([
     // Note Button
     {
         _id: 'note',
+        sheetId: 'noteSheet',
         iconName: 'note', 
         underLabel:'Note', 
-        isDisabled: true,
+        isActive: false,
+        isDisabled: false,
     },
 
 
@@ -303,7 +312,6 @@ export const buttonsSetup = readable([
         menuId: 'optionsMenu',
         iconName:'checkbox-checked',  
         underLabel:'Options', 
-        hasSheet: true,
         isActive: false,
         isDisabled: false,
     },
@@ -341,6 +349,17 @@ export const buttonsSetup = readable([
 
 
     
+    // View Button
+    {
+        _id: 'view',
+        sheetId: 'viewsSheet',
+        iconName:'glasses',
+        underLabel:'View',   
+        isActive: true,
+    },
+
+
+    
     // Structure Button
     {
         _id: 'structure', 
@@ -369,7 +388,15 @@ export const buttonsSetup = readable([
         menuId: 'settingsMenu',
         iconName:'ellipsis',
         underLabel:'Settings',   
-        hasSheet: true,
+        isActive: false,
+    },
+
+    {
+        _id: 'settingsCircle',
+        menuId: 'settingsMenu',
+        sheetId: 'settingsSheet',
+        iconName:'ellipsis-circle',
+        underLabel:'Settings',   
         isActive: false,
     },
 

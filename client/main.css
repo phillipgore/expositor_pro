@@ -1,10 +1,7 @@
 :root {
-  --xs-breakpoint: 0,
-  --sm-breakpoint: 576px,
-  --md-breakpoint: 768px,
-  --lg-breakpoint: 834px,
-  --xl-breakpoint: 1200px,
-  --xxl-breakpoint: 1400px
+  --phone-breakpoint: 0;
+  --tablet-breakpoint: 768px;
+  --laptop-breakpoint: 1024px;
 
   --gray-dark: hsl(30, 3%, 15%);
   --gray: hsl(30, 1%, 62%);
@@ -72,7 +69,7 @@ html {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: var(--black);
+  background-color: var(--gray-400);
 }
 
 *, *::before, *::after { 
@@ -85,6 +82,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: var(--black);
 }
 
 body {
@@ -99,5 +97,38 @@ body {
   min-height: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--white);
+  background-color: var(--black);
+}
+
+@media only screen and (min-width: 0px) {
+  .laptop,
+  .tablet {
+    display: none !important;
+  }
+
+  .phone {
+    display: unset !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .laptop,
+  .phone {
+    display: none !important;
+  }
+
+  .tablet {
+    display: unset !important;
+  }  
+}
+
+@media only screen and (min-width: 1024px) {
+  .tablet,
+  .phone {
+    display: none !important;
+  }
+  
+  .laptop {
+    display: unset !important;
+  }  
 }

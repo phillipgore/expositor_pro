@@ -5,7 +5,7 @@
     import {menusSetup, menusState} from '../../../stores/menusStore.js';
     
     import DividerHorizontal from "../spacing/DividerHorizontal.svelte";
-    import MenuButton from "../buttons/MenuButton.svelte";
+    import MenuPushButton from "../buttons/MenuPushButton.svelte";
     
     export let _id;
     export let menuStateId;
@@ -29,8 +29,8 @@
                 {#if component.componentType === 'DividerHorizontal'}
                     <DividerHorizontal />
                 {/if}
-                {#if component.componentType === 'MenuButton'}
-                    <MenuButton _id={component.componentId} isChecked={$menusState[menuStateId].isChecked} isShowHide={menuSetup.isShowHide} color={color}/>
+                {#if component.componentType === 'MenuPushButton'}
+                    <MenuPushButton _id={component.componentId} isChecked={$menusState[menuStateId].isChecked} isShowHide={menuSetup.isShowHide} color={color}/>
                 {/if}
             {/each}
         </ul>
@@ -38,29 +38,20 @@
 {/if}
 
 <style>
-    @media only screen and (min-width: 0px) {
-        .pull-down-menu {
-            position: absolute;
-            z-index: 10;
-            border-radius: 0.3rem;
-            overflow-x: hidden; 
-            overflow-x: auto; 
-            padding: 0.4rem 0.0rem;
-            box-shadow: 0.0rem 0.0rem 0.9rem var(--black-alpha);
-            background-color: var(--gray-800);
-            backdrop-filter: blur(1.0rem);
-        }
-
-        ul {
-            list-style: none;
-            padding: 0.0rem;
-            margin: 1.6rem 1.6rem 1.2rem;
-        }
+    .pull-down-menu {
+        position: absolute;
+        z-index: 10;
+        border-radius: 0.3rem;
+        overflow-x: hidden; 
+        overflow-x: auto; 
+        padding: 0.4rem 0.0rem;
+        box-shadow: 0.0rem 0.0rem 0.9rem var(--black-alpha);
+        background-color: var(--gray-800);
     }
 
-    @media only screen and (min-width: 768px) {
-        ul {
-            margin: 0.0rem;
-        }
+    ul {
+        list-style: none;
+        padding: 0.0rem;
+        margin: 0.0rem;
     }
 </style>

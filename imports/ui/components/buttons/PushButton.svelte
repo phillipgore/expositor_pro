@@ -5,6 +5,7 @@
     import {getIcon} from '../../../stores/iconsStore.js';
 
     export let _id;
+    export let device;
     export let color = 'gray';
     export let hasLabels = false;
 
@@ -17,7 +18,7 @@
     };
 </script>
 
-<div class="btn-container {color}">
+<div class="btn-container {color} {device}">
     <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
         <button id="{buttonStateId}" on:click={() => pushButtonClick()} aria-label="{buttonSetup.underLabel}" disabled="{buttonSetup.isDisabled}">
             {#if buttonSetup.iconName}
@@ -61,7 +62,6 @@
         outline: 0;
     }
 
-    .btn-no-under-label button,
     .btn-no-under-label button {
         height: 2.6rem;
     }
@@ -96,15 +96,14 @@
 
 
 
-/* Color Options */
+    /* --- Color Options --- */
     /* .toolbar styles */
     .toolbar button {
         border-color: var(--gray-200);
-        background-color: var(--gray-500);
+        background-color: var(--gray-400);
     }
 
-    .toolbar button:active:enabled,
-    .toolbar button.active:enabled {
+    .toolbar button:active:enabled {
         background-color: var(--gray-800);
     }
 
@@ -133,8 +132,7 @@
         background-color: var(--gray-light);
     }
 
-    .gray button:active:enabled,
-    .gray button.active:enabled {
+    .gray button:active:enabled {
         border-color: var(--gray);
         background-color: var(--gray);
     }
@@ -159,8 +157,7 @@
         background-color: var(--red-light);
     }
 
-    .red button:active:enabled,
-    .red button.active:enabled {
+    .red button:active:enabled {
         border-color: var(--red);
         background-color: var(--red);
     }
@@ -185,8 +182,7 @@
         background-color: var(--orange-light);
     }
 
-    .orange button:active:enabled,
-    .orange button.active:enabled {
+    .orange button:active:enabled {
         border-color: var(--orange);
         background-color: var(--orange);
     }
@@ -211,8 +207,7 @@
         background-color: var(--yellow-light);
     }
 
-    .yellow button:active:enabled,
-    .yellow button.active:enabled {
+    .yellow button:active:enabled {
         border-color: var(--yellow);
         background-color: var(--yellow);
     }
@@ -237,8 +232,7 @@
         background-color: var(--green-light);
     }
 
-    .green button:active:enabled,
-    .green button.active:enabled {
+    .green button:active:enabled {
         border-color: var(--green);
         background-color: var(--green);
     }
@@ -263,8 +257,7 @@
         background-color: var(--aqua-light);
     }
 
-    .aqua button:active:enabled,
-    .aqua button.active:enabled {
+    .aqua button:active:enabled {
         border-color: var(--aqua);
         background-color: var(--aqua);
     }
@@ -289,8 +282,7 @@
         background-color: var(--blue-light);
     }
 
-    .blue button:active:enabled,
-    .blue button.active:enabled {
+    .blue button:active:enabled {
         border-color: var(--blue);
         background-color: var(--blue);
     }
@@ -315,8 +307,7 @@
         background-color: var(--purple-light);
     }
 
-    .purple button:active:enabled,
-    .purple button.active:enabled {
+    .purple button:active:enabled {
         border-color: var(--purple);
         background-color: var(--purple);
     }
@@ -341,8 +332,7 @@
         background-color: var(--pink-light);
     }
 
-    .pink button:active:enabled,
-    .pink button.active:enabled {
+    .pink button:active:enabled {
         border-color: var(--pink);
         background-color: var(--pink);
     }

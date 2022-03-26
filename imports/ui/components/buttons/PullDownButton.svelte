@@ -9,6 +9,7 @@
     import PullDownMenu from "../menus/PullDownMenu.svelte";
 
     export let _id;
+    export let device;
     export let color = 'gray';
     export let hasLabels = false;
 
@@ -66,12 +67,13 @@
         let buttonRight = Math.ceil(buttonRect.right);
         let buttonLeft = Math.ceil(buttonRect.left);
         let buttonHeight = Math.ceil(buttonRect.height);
+        let buttonWidth = Math.ceil(buttonRect.width);
         
         let menuPosition = {}
         menuPosition.paneRemTop = `${(buttonHeight + 2) / $settingsState.baseFontSize}rem`;
 
         if (buttonLeft + menuSetup.paneIntWidth > windowWidth) {
-            menuPosition.paneRemRight = `${0 - ((windowWidth - buttonRight - 9) / $settingsState.baseFontSize)}rem`;
+            menuPosition.paneRemRight = `${0 - ((windowWidth - buttonRight - 12) / $settingsState.baseFontSize)}rem`;
         }
         menuPosition.paneRemMaxHeight = `${(windowHeight - (buttonHeight + buttonTop) - 23) / $settingsState.baseFontSize}rem`;
 
@@ -81,7 +83,7 @@
 
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:resize={pullDownButtonPosition} on:click={evaluateClick}/>
 
-<div class="btn-container {color}">
+<div class="btn-container {color} {device}">
     <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
         <button id="{buttonStateId}" class="js-pull-down-button {$buttonsState[buttonStateId].isActive ? 'active' : ''}" on:click|capture={pullDownButtonClick} aria-label="{buttonSetup.underLabel}" disabled="{buttonSetup.isDisabled}">
             {#if buttonSetup.iconName}
@@ -168,7 +170,7 @@
 
 
 
-/* Color Options */
+    /* --- Color Options --- */
     /* .toolbar styles */
     .toolbar button {
         border-color: var(--gray-200);

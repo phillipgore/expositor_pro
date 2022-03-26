@@ -1,6 +1,8 @@
-<script></script>
+<script>
+    export let device;
+</script>
 
-<div class="space"></div>
+<div class="space {device}"></div>
 
 <style>
     .space {

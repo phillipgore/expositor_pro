@@ -1,6 +1,8 @@
-<script></script>
+<script>
+    export let device;
+</script>
 
-<div class="flexible-space"></div>
+<div class="flexible-space {device}"></div>
 
 <style>
     .flexible-space {

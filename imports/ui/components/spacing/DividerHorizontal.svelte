@@ -1,6 +1,8 @@
-<script></script>
+<script>
+    export let device;
+</script>
 
-<div class="divider-horizontal"></div>
+<div class="divider-horizontal {device}"></div>
 
 <style>
     .divider-horizontal {

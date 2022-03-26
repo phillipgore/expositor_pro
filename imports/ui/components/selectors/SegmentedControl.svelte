@@ -4,6 +4,7 @@
     import {getIcon} from '../../../stores/iconsStore.js';
     
     export let _id;
+    export let device;
     export let color = 'gray';
     export let hasLabels = false;
 
@@ -26,7 +27,7 @@
     };
 </script>
 
-<div class="btn-container {color}">
+<div class="btn-container {color} {device}">
     <div class="btn-grouped">
         {#each segments as segment}
             <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
