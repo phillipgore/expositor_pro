@@ -3,6 +3,7 @@ import {readable, writable} from 'svelte/store';
 export const toolbarsSetup = readable([
     {
         _id: 'toolbar',
+        isHidden: false,
         components: [
             // Laptop & Tablet
             {componentId: 'studies', componentType: 'PullDownButton', componentDevice: 'laptop tablet'},
@@ -22,17 +23,17 @@ export const toolbarsSetup = readable([
             {componentId: 'settings', componentType: 'PullDownButton', componentDevice: 'laptop tablet'},
 
             // Phone
-            {componentId: 'studies', componentType: 'SlideUpButton', componentDevice: 'phone'},
+            {componentId: 'studies', componentType: 'SlideUpButton', componentDevice: 'phone', hidesToolbarIds: ['toolbar']},
             {componentType: 'FlexibleSpace', componentDevice: 'phone'},
-            {componentId: 'tools', componentType: 'SlideUpButton', componentDevice: 'phone'},
+            {componentId: 'tools', componentType: 'SlideUpButton', componentDevice: 'phone', hidesToolbarIds: ['toolbar']},
             {componentType: 'FlexibleSpace', componentDevice: 'phone'},
-            {componentId: 'note', componentType: 'SlideUpButton', componentDevice: 'phone'},
+            {componentId: 'note', componentType: 'SlideUpButton', componentDevice: 'phone', hidesToolbarIds: ['toolbar']},
             {componentType: 'FlexibleSpace', componentDevice: 'phone'},
             {componentId: 'delete', componentType: 'SlideUpButton', componentDevice: 'phone'},
             {componentType: 'FlexibleSpace', componentDevice: 'phone'},
-            {componentId: 'view', componentType: 'SlideUpButton', componentDevice: 'phone'},
+            {componentId: 'view', componentType: 'SlideUpButton', componentDevice: 'phone', hidesToolbarIds: ['toolbar']},
             {componentType: 'FlexibleSpace', componentDevice: 'phone'},
-            {componentId: 'settingsCircle', componentType: 'SlideUpButton', componentDevice: 'phone'},
+            {componentId: 'settingsCircle', componentType: 'SlideUpButton', componentDevice: 'phone', hidesToolbarIds: ['toolbar']},
         ],
     }
 ]);

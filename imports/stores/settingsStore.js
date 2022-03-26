@@ -4,5 +4,4 @@ export const settingsState = writable({
 	baseFontSize: 10,
 	toolbarButtons: { hasLabels: true },
 	wrapperIsRecessed: false,
-	toolBarIsHidden: false,
 });

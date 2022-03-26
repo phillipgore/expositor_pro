@@ -2,12 +2,14 @@
     import {Random} from 'meteor/random';
     
     import {buttonsSetup, buttonsState} from '../../../stores/buttonsStore.js';
+    import {toolbarsState} from '../../../stores/toolbarsStore.js';
     import {settingsState} from '../../../stores/settingsStore.js';
     import {sheetsSetup, sheetsState} from '../../../stores/sheetsStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
 
     export let _id;
     export let device;
+    export let hidesToolbarIds;
     export let color = 'gray';
 
     let randomId = Random.id();
@@ -22,7 +24,9 @@
         if (sheetSetup.isFullHeight) {
             $settingsState.wrapperIsRecessed = true;
         }
-        $settingsState.toolBarIsHidden = true;
+        hidesToolbarIds.forEach(toolbarId => {
+            $toolbarsState[toolbarId].isHidden = true;
+        });
         $sheetsState[buttonSetup.sheetId].isActive =  true;
     };
 

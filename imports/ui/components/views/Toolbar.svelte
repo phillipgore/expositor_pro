@@ -2,7 +2,7 @@
     import {fly} from 'svelte/transition';
 
     import {settingsState} from '../../../stores/settingsStore.js';
-    import {toolbarsSetup} from '../../../stores/toolbarsStore.js';
+    import {toolbarsSetup, toolbarsState} from '../../../stores/toolbarsStore.js';
     
     import PullDownButton from "../buttons/PullDownButton.svelte";
     import PushButton from "../buttons/PushButton.svelte";
@@ -14,9 +14,11 @@
     export let _id = _id;
     let toolbarSetup = $toolbarsSetup.find(toolbar => toolbar._id === _id);
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
+
+    $toolbarsState[_id] = {isHidden: toolbarsSetup.isHidden};
 </script>
 
-{#if !$settingsState.toolBarIsHidden}
+{#if !$toolbarsState[_id].isHidden}
     <nav id="{toolbarSetup._id}" class="{hasLabels ? '' : 'toolbar-short'}" in:fly="{{ y: -45, duration: 200, opacity: 100, delay: 200 }}" out:fly="{{ y: -45, duration: 300, opacity: 100 }}">
         {#each toolbarSetup.components as component}
             {#if component.componentType === 'PullDownButton'}
@@ -31,7 +33,7 @@
             {/if}
             {#if component.componentType === 'SlideUpButton'}
                 <div class="component-container {component.componentDevice}">
-                    <SlideUpButton _id={component.componentId} device={component.componentDevice} color={'toolbar'}/>
+                    <SlideUpButton _id={component.componentId} device={component.componentDevice} hidesToolbarIds={component.hidesToolbarIds} color={'toolbar'}/>
                 </div>
             {/if}
             {#if component.componentType === 'SegmentedControl'}

@@ -2,6 +2,7 @@
     import {fly} from 'svelte/transition';
 
     import {sheetsSetup, sheetsState} from '../../../stores/sheetsStore.js';
+    import {toolbarsState} from '../../../stores/toolbarsStore.js';
     import {settingsState} from '../../../stores/settingsStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
 
@@ -25,8 +26,14 @@
     const closeSheet = () => {
         $sheetsState[_id].isActive = false;
         $settingsState.wrapperIsRecessed = false;
-        $settingsState.toolBarIsHidden = false;
+        resetToolbars();
     };
+
+    const resetToolbars = () => {
+        Object.keys($toolbarsState).forEach(key => {
+            $toolbarsState[key].isHidden = false;
+        });
+    }
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight}/>
