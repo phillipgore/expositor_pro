@@ -6,8 +6,6 @@
     import {menusSetup, menusState} from '../../../stores/menusStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
 
-    import PullDownMenu from "../menus/PullDownMenu.svelte";
-
     export let _id;
     export let device;
     export let color = 'gray';
@@ -17,9 +15,8 @@
     let buttonStateId = `${_id}-${randomId}`;
     let buttonSetup = $buttonsSetup.find(button => button._id === _id);
 
-    let menuId = buttonSetup.menuId;
-    let menuStateId = `${menuId}-${randomId}`;
-    let menuSetup = $menusSetup.find(menu => menu._id === menuId);
+    let menuStateId = buttonSetup.menuId;
+    let menuSetup = $menusSetup.find(menu => menu._id === menuStateId);
 
     let windowHeight;
     let windowWidth;
@@ -69,11 +66,12 @@
         let buttonHeight = Math.ceil(buttonRect.height);
         let buttonWidth = Math.ceil(buttonRect.width);
         
-        let menuPosition = {}
-        menuPosition.paneRemTop = `${(buttonHeight + 2) / $settingsState.baseFontSize}rem`;
+        let menuPosition = {};
 
+        menuPosition.paneRemTop = `${(buttonTop + buttonHeight + 2) / $settingsState.baseFontSize}rem`;
+        menuPosition.paneRemLeft = `${(buttonLeft) / $settingsState.baseFontSize}rem`;
         if (buttonLeft + menuSetup.paneIntWidth > windowWidth) {
-            menuPosition.paneRemRight = `${0 - ((windowWidth - buttonRight - 12) / $settingsState.baseFontSize)}rem`;
+            menuPosition.paneRemLeft = `${(buttonLeft - (buttonLeft + menuSetup.paneIntWidth - windowWidth) - 13) / $settingsState.baseFontSize}rem`;
         }
         menuPosition.paneRemMaxHeight = `${(windowHeight - (buttonHeight + buttonTop) - 23) / $settingsState.baseFontSize}rem`;
 
@@ -102,7 +100,6 @@
         {#if buttonSetup.underLabel}
             <div class="btn-under-label">{buttonSetup.underLabel}</div>
         {/if}
-        <PullDownMenu _id={buttonSetup.menuId} menuStateId={menuStateId} color={color}/>
     </div>
 </div>
 

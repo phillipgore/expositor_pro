@@ -1,15 +1,21 @@
 <script>
 	import Toolbar from "./components/views/Toolbar.svelte";
+	import PullDownMenu from "./components/menus/PullDownMenu.svelte";
 	import Sheet from "./components/views/Sheet.svelte";
 
 	import {settingsState} from '../stores/settingsStore.js';
-    import {sheetsSetup, sheetsState} from '../stores/sheetsStore.js';
+    import {menusSetup} from '../stores/menusStore.js';
+    import {sheetsSetup} from '../stores/sheetsStore.js';
 </script>
 
 <div class="wrapper {$settingsState.wrapperIsRecessed ? 'recess' : ''}">
 	<Toolbar _id={'toolbar'}/>	
 	<main></main>
 </div>
+
+{#each $menusSetup as menu}
+	<PullDownMenu _id={menu._id} color={'blue'}/>
+{/each}
 
 {#each $sheetsSetup as sheet}
 	<Sheet _id={sheet._id}/>

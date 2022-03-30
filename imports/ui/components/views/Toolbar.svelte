@@ -42,7 +42,7 @@
                 </div>
             {/if}
             {#if component.componentType === 'Space'}
-                    <Space  device={component.componentDevice}/>
+                    <Space device={component.componentDevice}/>
             {/if}
             {#if component.componentType === 'FlexibleSpace'}
                     <FlexibleSpace  device={component.componentDevice}/>

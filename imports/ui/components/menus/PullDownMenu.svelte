@@ -8,13 +8,12 @@
     import MenuPushButton from "../buttons/MenuPushButton.svelte";
     
     export let _id;
-    export let menuStateId;
     export let color = 'interface';
 
     let menuSetup = $menusSetup.find(menu => menu._id === _id);
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
     
-    $menusState[menuStateId] = {
+    $menusState[_id] = {
         isChecked: menuSetup.isChecked,
         isActive: menuSetup.isActive,
         paneIntWidth: menuSetup.paneIntWidth,
@@ -22,15 +21,15 @@
     };
 </script>
 
-{#if $menusState[menuStateId].isActive}
-    <div id={menuStateId} class="pull-down-menu {hasLabels ? 'has-button-labels' : ''}" style="width: {$menusState[menuStateId].paneRemWidth}; max-height: {$menusState[menuStateId].paneRemMaxHeight}; top: {$menusState[menuStateId].paneRemTop}; right: {$menusState[menuStateId].paneRemRight}" in:fade="{{duration: 100}}" out:fade="{{duration: 200}}">
+{#if $menusState[_id].isActive}
+    <div id={_id} class="pull-down-menu {hasLabels ? 'has-button-labels' : ''}" style="width: {$menusState[_id].paneRemWidth}; max-height: {$menusState[_id].paneRemMaxHeight}; top: {$menusState[_id].paneRemTop}; left: {$menusState[_id].paneRemLeft}" in:fade="{{duration: 100}}" out:fade="{{duration: 200}}">
         <ul>
             {#each menuSetup.components as component}
                 {#if component.componentType === 'DividerHorizontal'}
-                    <DividerHorizontal />
+                    <DividerHorizontal device={component.componentDevice}/>
                 {/if}
                 {#if component.componentType === 'MenuPushButton'}
-                    <MenuPushButton _id={component.componentId} isChecked={$menusState[menuStateId].isChecked} isShowHide={menuSetup.isShowHide} color={color}/>
+                    <MenuPushButton _id={component.componentId} isChecked={$menusState[_id].isChecked} isShowHide={menuSetup.isShowHide} color={color}/>
                 {/if}
             {/each}
         </ul>
