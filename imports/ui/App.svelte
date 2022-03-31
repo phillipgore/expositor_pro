@@ -9,7 +9,7 @@
 </script>
 
 <div class="wrapper {$settingsState.wrapperIsRecessed ? 'recess' : ''}">
-	<Toolbar _id={'toolbar'}/>	
+	<Toolbar _id={'mainToolbar'}/>	
 	<main></main>
 </div>
 

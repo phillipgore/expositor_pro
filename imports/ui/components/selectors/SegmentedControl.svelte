@@ -1,5 +1,5 @@
 <script>
-    import {segmentedControlsSetup} from '../../../stores/segmentedControlsStore.js';
+    import {selectorsSetup} from '../../../stores/selectorsStore.js';
     import {buttonsSetup, buttonsState} from '../../../stores/buttonsStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
     
@@ -8,7 +8,7 @@
     export let color = 'gray';
     export let hasLabels = false;
 
-    let segmentedControlSetup = $segmentedControlsSetup.find(segmentedControl => segmentedControl._id === _id);
+    let segmentedControlSetup = $selectorsSetup.find(segmentedControl => segmentedControl._id === _id);
     let components = segmentedControlSetup.components.map(component => component.componentId);
     let segments = $buttonsSetup.filter(button => components.includes(button._id));
 

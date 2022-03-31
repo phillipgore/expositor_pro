@@ -2,7 +2,7 @@ import {readable, writable} from 'svelte/store';
 
 export const toolbarsSetup = readable([
     {
-        _id: 'toolbar',
+        _id: 'mainToolbar',
         isHidden: false,
         components: [
             // Laptop & Tablet

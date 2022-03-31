@@ -1,6 +1,6 @@
 import {readable, writable} from 'svelte/store';
 
-export const segmentedControlsSetup = readable([
+export const selectorsSetup = readable([
     {
         _id: 'view',
         components: [
@@ -19,4 +19,4 @@ export const segmentedControlsSetup = readable([
     },
 ]);
 
-export const segmentedControlsState = writable({});
+export const selectorsState = writable({});
