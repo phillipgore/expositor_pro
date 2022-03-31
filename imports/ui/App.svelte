@@ -5,7 +5,7 @@
 
 	import {settingsState} from '../stores/settingsStore.js';
     import {menusSetup} from '../stores/menusStore.js';
-    import {sheetsSetup} from '../stores/sheetsStore.js';
+    import {viewsSetup} from '../stores/viewsStore.js';
 </script>
 
 <div class="wrapper {$settingsState.wrapperIsRecessed ? 'recess' : ''}">
@@ -17,7 +17,7 @@
 	<PullDownMenu _id={menu._id} color={'blue'}/>
 {/each}
 
-{#each $sheetsSetup as sheet}
+{#each $viewsSetup as sheet}
 	<Sheet _id={sheet._id}/>
 {/each}
 		

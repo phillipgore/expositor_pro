@@ -1,19 +1,18 @@
 <script>
     import {fly} from 'svelte/transition';
 
-    import {sheetsSetup, sheetsState} from '../../../stores/sheetsStore.js';
-    import {toolbarsState} from '../../../stores/toolbarsStore.js';
+    import {viewsSetup, viewsState} from '../../../stores/viewsStore.js';
     import {settingsState} from '../../../stores/settingsStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
 
     export let _id;
 
-    let sheetSetup = $sheetsSetup.find(sheet => sheet._id === _id);
+    let sheetSetup = $viewsSetup.find(sheet => sheet._id === _id);
     let windowWidth;
     let windowHeight;
 
-    $sheetsState[_id] = {
-        isActive: sheetsSetup.isActive,
+    $viewsState[_id] = {
+        isActive: viewsSetup.isActive,
     };
 
     const getFlyY = () => {
@@ -24,21 +23,21 @@
     };
 
     const closeSheet = () => {
-        $sheetsState[_id].isActive = false;
+        $viewsState[_id].isActive = false;
         $settingsState.wrapperIsRecessed = false;
         resetToolbars();
     };
 
     const resetToolbars = () => {
-        Object.keys($toolbarsState).forEach(key => {
-            $toolbarsState[key].isHidden = false;
+        Object.keys($viewsState).forEach(key => {
+            $viewsState[key].isHidden = false;
         });
     }
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight}/>
 
-{#if $sheetsState[_id].isActive}
+{#if $viewsState[_id].isActive}
     <div class="sheet {sheetSetup.isFullHeight ? 'sheet-full' : ''}" in:fly="{{ y: getFlyY(), duration: 200, opacity: 100 }}" out:fly="{{ y: getFlyY(), duration: 300, opacity: 100 }}">
         <div class="sheet-title-bar">
             <h1 class="sheet-title">{sheetSetup.label}</h1>

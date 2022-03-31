@@ -2,7 +2,7 @@
     import {fly} from 'svelte/transition';
 
     import {settingsState} from '../../../stores/settingsStore.js';
-    import {toolbarsSetup, toolbarsState} from '../../../stores/toolbarsStore.js';
+    import {viewsSetup, viewsState} from '../../../stores/viewsStore.js';
     
     import PullDownButton from "../buttons/PullDownButton.svelte";
     import PushButton from "../buttons/PushButton.svelte";
@@ -12,13 +12,13 @@
     import FlexibleSpace from "../spacing/FlexibleSpace.svelte";
 
     export let _id = _id;
-    let toolbarSetup = $toolbarsSetup.find(toolbar => toolbar._id === _id);
+    let toolbarSetup = $viewsSetup.find(toolbar => toolbar._id === _id);
     let hasLabels = $settingsState.toolbarButtons.hasLabels;
 
-    $toolbarsState[_id] = {isHidden: toolbarsSetup.isHidden};
+    $viewsState[_id] = {isHidden: viewsSetup.isHidden};
 </script>
 
-{#if !$toolbarsState[_id].isHidden}
+{#if !$viewsState[_id].isHidden}
     <nav id="{toolbarSetup._id}" class="{hasLabels ? '' : 'toolbar-short'}" in:fly="{{ y: -45, duration: 200, opacity: 100, delay: 200 }}" out:fly="{{ y: -45, duration: 300, opacity: 100 }}">
         {#each toolbarSetup.components as component}
             {#if component.componentType === 'PullDownButton'}

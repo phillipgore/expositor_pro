@@ -2,9 +2,8 @@
     import {Random} from 'meteor/random';
     
     import {buttonsSetup, buttonsState} from '../../../stores/buttonsStore.js';
-    import {toolbarsState} from '../../../stores/toolbarsStore.js';
+    import {viewsSetup, viewsState} from '../../../stores/viewsStore.js';
     import {settingsState} from '../../../stores/settingsStore.js';
-    import {sheetsSetup, sheetsState} from '../../../stores/sheetsStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
 
     export let _id;
@@ -20,20 +19,20 @@
     
     const pushButtonClick = () => {
         sheetsReset(buttonSetup.sheetId);
-        let sheetSetup = $sheetsSetup.find(sheet => sheet._id === buttonSetup.sheetId);
+        let sheetSetup = $viewsSetup.find(sheet => sheet._id === buttonSetup.sheetId);
         if (sheetSetup.isFullHeight) {
             $settingsState.wrapperIsRecessed = true;
         }
         hidesToolbarIds.forEach(toolbarId => {
-            $toolbarsState[toolbarId].isHidden = true;
+            $viewsState[toolbarId].isHidden = true;
         });
-        $sheetsState[buttonSetup.sheetId].isActive =  true;
+        $viewsState[buttonSetup.sheetId].isActive =  true;
     };
 
     const sheetsReset = (sheetId) => {
-        Object.keys($sheetsState).forEach(key => {
+        Object.keys($viewsState).forEach(key => {
             if (key != sheetId) {
-                $sheetsState[key].isActive = false;
+                $viewsState[key].isActive = false;
             }
         });
     };
