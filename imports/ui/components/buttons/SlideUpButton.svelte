@@ -3,7 +3,7 @@
     
     import {buttonsSetup, buttonsState} from '../../../stores/buttonsStore.js';
     import {viewsSetup, viewsState} from '../../../stores/viewsStore.js';
-    import {settingsState} from '../../../stores/settingsStore.js';
+    import {appState} from '../../../stores/appStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
 
     export let _id;
@@ -21,7 +21,7 @@
         sheetsReset(buttonSetup.sheetId);
         let sheetSetup = $viewsSetup.find(sheet => sheet._id === buttonSetup.sheetId);
         if (sheetSetup.isFullHeight) {
-            $settingsState.wrapperIsRecessed = true;
+            $appState.wrapperIsRecessed = true;
         }
         hidesToolbarIds.forEach(toolbarId => {
             $viewsState[toolbarId].isHidden = true;

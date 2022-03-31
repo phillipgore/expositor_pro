@@ -1,7 +1,7 @@
 <script>
     import {fade} from 'svelte/transition';
 
-    import {settingsState} from '../../../stores/settingsStore.js';
+    import {appState} from '../../../stores/appStore.js';
     import {menusSetup, menusState} from '../../../stores/menusStore.js';
     
     import DividerHorizontal from "../spacing/DividerHorizontal.svelte";
@@ -11,13 +11,13 @@
     export let color = 'interface';
 
     let menuSetup = $menusSetup.find(menu => menu._id === _id);
-    let hasLabels = $settingsState.toolbarButtons.hasLabels;
+    let hasLabels = $appState.toolbarButtons.hasLabels;
     
     $menusState[_id] = {
         isChecked: menuSetup.isChecked,
         isActive: menuSetup.isActive,
         paneIntWidth: menuSetup.paneIntWidth,
-        paneRemWidth: `${menuSetup.paneIntWidth / $settingsState.baseFontSize}rem`,
+        paneRemWidth: `${menuSetup.paneIntWidth / $appState.baseFontSize}rem`,
     };
 </script>
 

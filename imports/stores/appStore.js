@@ -1,6 +1,6 @@
 import {writable} from 'svelte/store';
 
-export const settingsState = writable({
+export const appState = writable({
 	baseFontSize: 10,
 	toolbarButtons: { hasLabels: true },
 	wrapperIsRecessed: false,

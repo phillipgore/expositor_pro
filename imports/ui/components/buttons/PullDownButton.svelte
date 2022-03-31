@@ -1,7 +1,7 @@
 <script>
     import {Random} from 'meteor/random';
 
-    import {settingsState} from '../../../stores/settingsStore.js';
+    import {appState} from '../../../stores/appStore.js';
     import {buttonsSetup, buttonsState} from '../../../stores/buttonsStore.js';
     import {menusSetup, menusState} from '../../../stores/menusStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
@@ -68,12 +68,12 @@
         
         let menuPosition = {};
 
-        menuPosition.paneRemTop = `${(buttonTop + buttonHeight + 2) / $settingsState.baseFontSize}rem`;
-        menuPosition.paneRemLeft = `${(buttonLeft) / $settingsState.baseFontSize}rem`;
+        menuPosition.paneRemTop = `${(buttonTop + buttonHeight + 2) / $appState.baseFontSize}rem`;
+        menuPosition.paneRemLeft = `${(buttonLeft) / $appState.baseFontSize}rem`;
         if (buttonLeft + menuSetup.paneIntWidth > windowWidth) {
-            menuPosition.paneRemLeft = `${(buttonLeft - (buttonLeft + menuSetup.paneIntWidth - windowWidth) - 13) / $settingsState.baseFontSize}rem`;
+            menuPosition.paneRemLeft = `${(buttonLeft - (buttonLeft + menuSetup.paneIntWidth - windowWidth) - 13) / $appState.baseFontSize}rem`;
         }
-        menuPosition.paneRemMaxHeight = `${(windowHeight - (buttonHeight + buttonTop) - 23) / $settingsState.baseFontSize}rem`;
+        menuPosition.paneRemMaxHeight = `${(windowHeight - (buttonHeight + buttonTop) - 23) / $appState.baseFontSize}rem`;
 
         $menusState[menuStateId] = {...$menusState[menuStateId], ...menuPosition};
     };

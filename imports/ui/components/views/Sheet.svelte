@@ -2,7 +2,7 @@
     import {fly} from 'svelte/transition';
 
     import {viewsSetup, viewsState} from '../../../stores/viewsStore.js';
-    import {settingsState} from '../../../stores/settingsStore.js';
+    import {appState} from '../../../stores/appStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
 
     export let _id;
@@ -24,7 +24,7 @@
 
     const closeSheet = () => {
         $viewsState[_id].isActive = false;
-        $settingsState.wrapperIsRecessed = false;
+        $appState.wrapperIsRecessed = false;
         resetToolbars();
     };
 

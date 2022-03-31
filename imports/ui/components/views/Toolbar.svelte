@@ -1,7 +1,7 @@
 <script>
     import {fly} from 'svelte/transition';
 
-    import {settingsState} from '../../../stores/settingsStore.js';
+    import {appState} from '../../../stores/appStore.js';
     import {viewsSetup, viewsState} from '../../../stores/viewsStore.js';
     
     import PullDownButton from "../buttons/PullDownButton.svelte";
@@ -13,7 +13,7 @@
 
     export let _id = _id;
     let toolbarSetup = $viewsSetup.find(toolbar => toolbar._id === _id);
-    let hasLabels = $settingsState.toolbarButtons.hasLabels;
+    let hasLabels = $appState.toolbarButtons.hasLabels;
 
     $viewsState[_id] = {isHidden: viewsSetup.isHidden};
 </script>

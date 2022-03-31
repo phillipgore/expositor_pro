@@ -3,12 +3,12 @@
 	import PullDownMenu from "./components/menus/PullDownMenu.svelte";
 	import Sheet from "./components/views/Sheet.svelte";
 
-	import {settingsState} from '../stores/settingsStore.js';
+	import {appState} from '../stores/appStore.js';
     import {menusSetup} from '../stores/menusStore.js';
     import {viewsSetup} from '../stores/viewsStore.js';
 </script>
 
-<div class="wrapper {$settingsState.wrapperIsRecessed ? 'recess' : ''}">
+<div class="wrapper {$appState.wrapperIsRecessed ? 'recess' : ''}">
 	<Toolbar _id={'mainToolbar'}/>	
 	<main></main>
 </div>
