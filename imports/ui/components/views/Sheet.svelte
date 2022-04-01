@@ -24,7 +24,7 @@
 
     const closeSheet = () => {
         $viewsState[_id].isActive = false;
-        $appState.wrapperIsRecessed = false;
+        $appState.containerIsRecessed = false;
         resetToolbars();
     };
 

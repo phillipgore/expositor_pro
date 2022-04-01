@@ -3,6 +3,7 @@ import {readable, writable} from 'svelte/store';
 export const menusSetup = readable([
     {
         _id:'studiesMenu',
+        type: 'pullDown',
         paneIntWidth: 221,
         isChecked: false,
         isShowHide: false,
@@ -19,6 +20,7 @@ export const menusSetup = readable([
     },
     {
         _id: 'zoomMenu',
+        type: 'pullDown',
         paneIntWidth: 97,
         isChecked: true,
         isShowHide: false,
@@ -40,6 +42,7 @@ export const menusSetup = readable([
     },
     {
         _id: 'outlineMenu',
+        type: 'pullDown',
         paneIntWidth: 160,
         isChecked: false,
         isShowHide: false,
@@ -55,6 +58,7 @@ export const menusSetup = readable([
     },
     {
         _id: 'textMenu',
+        type: 'pullDown',
         paneIntWidth: 185,
         isChecked: false,
         isShowHide: false,
@@ -71,6 +75,7 @@ export const menusSetup = readable([
     },
     {
         _id: 'literaryMenu',
+        type: 'pullDown',
         paneIntWidth: 199,
         isChecked: false,
         isShowHide: false,
@@ -84,6 +89,7 @@ export const menusSetup = readable([
     },
     {
         _id: 'optionsMenu',
+        type: 'pullDown',
         paneIntWidth: 230,
         isChecked: false,
         isShowHide: true,
@@ -97,6 +103,7 @@ export const menusSetup = readable([
     },
     {
         _id: 'colorMenu',
+        type: 'pullDown',
         paneIntWidth: 87,
         isChecked: false,
         isShowHide: false,
@@ -114,6 +121,7 @@ export const menusSetup = readable([
     },
     {
         _id: 'settingsMenu',
+        type: 'pullDown',
         paneIntWidth: 164,
         isChecked: false,
         isShowHide: false,

@@ -106,7 +106,7 @@ body {
   }
 
   .phone {
-    display: unset !important;
+    display: inherit !important;
   }
 }
 
@@ -117,7 +117,7 @@ body {
   }
 
   .tablet {
-    display: unset !important;
+    display: inherit !important;
   }  
 }
 
@@ -128,6 +128,6 @@ body {
   }
   
   .laptop {
-    display: unset !important;
+    display: inherit !important;
   }  
 }

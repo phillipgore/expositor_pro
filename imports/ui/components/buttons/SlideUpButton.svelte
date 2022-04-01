@@ -21,7 +21,7 @@
         sheetsReset(buttonSetup.sheetId);
         let sheetSetup = $viewsSetup.find(sheet => sheet._id === buttonSetup.sheetId);
         if (sheetSetup.isFullHeight) {
-            $appState.wrapperIsRecessed = true;
+            $appState.containerIsRecessed = true;
         }
         hidesToolbarIds.forEach(toolbarId => {
             $viewsState[toolbarId].isHidden = true;
