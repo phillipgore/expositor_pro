@@ -12,11 +12,11 @@
 	<Toolbar _id={'mainToolbar'}/>	
 </div>
 
-{#each $menusSetup.filter(menu => menu.type === 'pullDown') as menu}
+{#each $menusSetup.filter(menu => menu.componentType === 'PullDownMenu') as menu}
 	<PullDownMenu _id={menu._id} color={'blue'}/>
 {/each}
 
-{#each $viewsSetup.filter(view => view.type === 'sheet') as sheet}
+{#each $viewsSetup.filter(view => view.componentType === 'Sheet') as sheet}
 	<Sheet _id={sheet._id}/>
 {/each}
 		

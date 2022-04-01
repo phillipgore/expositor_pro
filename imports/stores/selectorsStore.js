@@ -3,6 +3,7 @@ import {readable, writable} from 'svelte/store';
 export const selectorsSetup = readable([
     {
         _id: 'view',
+        componentType: 'SegmentedControl',
         components: [
             {componentId: 'structure'},
             {componentId: 'document'},
@@ -10,6 +11,7 @@ export const selectorsSetup = readable([
     },
     {
         _id: 'tools',
+        componentType: 'SegmentedControl',
         components: [
             {componentId: 'outline'},
             {componentId: 'text'},

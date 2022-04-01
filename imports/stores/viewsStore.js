@@ -3,7 +3,7 @@ import {readable, writable} from 'svelte/store';
 export const viewsSetup = readable([
     {
         _id: 'mainToolbar',
-        type: 'toolbar',
+        componentType: 'Toolbar',
         isHidden: false,
         components: [
             // Laptop & Tablet
@@ -39,7 +39,7 @@ export const viewsSetup = readable([
     },
     {
         _id: 'studiesSheet',
-        type: 'sheet',
+        componentType: 'Sheet',
         label: "Studies",
         isFullHeight: true,
         isActive: false,
@@ -53,7 +53,7 @@ export const viewsSetup = readable([
     },
     {
         _id: 'toolsSheet',
-        type: 'sheet',
+        componentType: 'Sheet',
         label: "Tools",
         isFullHeight: false,
         isActive: false,
@@ -63,7 +63,7 @@ export const viewsSetup = readable([
     },
     {
         _id: 'noteSheet',
-        type: 'sheet',
+        componentType: 'Sheet',
         label: "Note",
         isFullHeight: false,
         isActive: false,
@@ -73,7 +73,7 @@ export const viewsSetup = readable([
     },
     {
         _id: 'viewsSheet',
-        type: 'sheet',
+        componentType: 'Sheet',
         label: "Views",
         isFullHeight: true,
         isActive: false,
@@ -84,7 +84,7 @@ export const viewsSetup = readable([
     },
     {
         _id: 'settingsSheet',
-        type: 'sheet',
+        componentType: 'Sheet',
         label: "Settings",
         isFullHeight: true,
         isActive: false,
