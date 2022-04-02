@@ -6,7 +6,6 @@ export const menusSetup = readable([
         componentType: 'PullDownMenu',
         paneIntWidth: 221,
         isChecked: false,
-        isShowHide: false,
         isActive: false,
         components: [
             {componentId: 'new', componentType: 'MenuPushButton'},
@@ -23,7 +22,6 @@ export const menusSetup = readable([
         componentType: 'PullDownMenu',
         paneIntWidth: 97,
         isChecked: true,
-        isShowHide: false,
         isActive: false,
         components: [
             {componentId: '25', componentType: 'MenuPushButton'},
@@ -45,7 +43,6 @@ export const menusSetup = readable([
         componentType: 'PullDownMenu',
         paneIntWidth: 160,
         isChecked: false,
-        isShowHide: false,
         isActive: false,
         components: [
             {componentId: 'section', componentType: 'MenuPushButton'},
@@ -61,7 +58,6 @@ export const menusSetup = readable([
         componentType: 'PullDownMenu',
         paneIntWidth: 185,
         isChecked: false,
-        isShowHide: false,
         isActive: false,
         components: [
             {componentId: 'highlight', componentType: 'MenuPushButton'},
@@ -78,7 +74,6 @@ export const menusSetup = readable([
         componentType: 'PullDownMenu',
         paneIntWidth: 199,
         isChecked: false,
-        isShowHide: false,
         isActive: false,
         components: [
             {componentId: 'chiasim', componentType: 'MenuPushButton'},
@@ -92,7 +87,6 @@ export const menusSetup = readable([
         componentType: 'PullDownMenu',
         paneIntWidth: 230,
         isChecked: false,
-        isShowHide: true,
         isActive: false,
         components: [
             {componentId: 'references', componentType: 'MenuPushButton'},
@@ -106,7 +100,6 @@ export const menusSetup = readable([
         componentType: 'PullDownMenu',
         paneIntWidth: 87,
         isChecked: false,
-        isShowHide: false,
         isActive: false,
         components: [
             {componentId: 'red', componentType: 'MenuPushButton'},
@@ -124,7 +117,6 @@ export const menusSetup = readable([
         componentType: 'PullDownMenu',
         paneIntWidth: 164,
         isChecked: false,
-        isShowHide: false,
         isActive: false,
         components: [
             {componentId: 'account', componentType: 'MenuPushButton'},

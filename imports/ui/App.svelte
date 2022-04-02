@@ -13,7 +13,7 @@
 </div>
 
 {#each $menusSetup.filter(menu => menu.componentType === 'PullDownMenu') as menu}
-	<PullDownMenu _id={menu._id} color={'blue'}/>
+	<PullDownMenu _id={menu._id} color={'toolbar'}/>
 {/each}
 
 {#each $viewsSetup.filter(view => view.componentType === 'Sheet') as sheet}
@@ -27,6 +27,7 @@
 			min-height: 100vh;
 			background-color: var(--white);
 			border-radius: 0.0rem 0.0rem 0.0rem 0.0rem;
+			box-shadow: 0.0rem 0.0rem 0.6rem var(--black-alpha);
 			transition: min-height 200ms ease-in-out, margin 200ms ease-in-out, border-radius 200ms ease-in-out;
 		}
 

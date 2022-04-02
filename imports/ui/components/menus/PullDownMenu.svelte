@@ -29,7 +29,7 @@
                     <DividerHorizontal device={component.componentDevice}/>
                 {/if}
                 {#if component.componentType === 'MenuPushButton'}
-                    <MenuPushButton _id={component.componentId} isChecked={$menusState[_id].isChecked} isShowHide={menuSetup.isShowHide} color={color}/>
+                    <MenuPushButton _id={component.componentId} isChecked={$menusState[_id].isChecked} color={color}/>
                 {/if}
             {/each}
         </ul>

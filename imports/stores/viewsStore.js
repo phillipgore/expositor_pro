@@ -42,13 +42,14 @@ export const viewsSetup = readable([
         componentType: 'Sheet',
         label: "Studies",
         isFullHeight: true,
+        isChecked: false,
         isActive: false,
         components: [
-            {componentId: 'new', componentType: 'SheetButton'},
-            {componentId: 'open', componentType: 'SheetButton'},
-            {componentId: 'newInner', componentType: 'SheetButton'},
-            {componentId: 'newOuter', componentType: 'SheetButton'},
-            {componentId: 'newCompare', componentType: 'SheetButton'},
+            {componentId: 'new', componentType: 'SheetPushButton'},
+            {componentId: 'open', componentType: 'SheetPushButton'},
+            {componentId: 'newInner', componentType: 'SheetPushButton'},
+            {componentId: 'newOuter', componentType: 'SheetPushButton'},
+            {componentId: 'newCompare', componentType: 'SheetPushButton'},
         ],
     },
     {
@@ -56,6 +57,7 @@ export const viewsSetup = readable([
         componentType: 'Sheet',
         label: "Tools",
         isFullHeight: false,
+        isChecked: false,
         isActive: false,
         components: [
             {componentId: 'tools', componentType: 'SegmentedControl'},
@@ -66,6 +68,7 @@ export const viewsSetup = readable([
         componentType: 'Sheet',
         label: "Note",
         isFullHeight: false,
+        isChecked: false,
         isActive: false,
         components: [
             
@@ -76,10 +79,11 @@ export const viewsSetup = readable([
         componentType: 'Sheet',
         label: "Views",
         isFullHeight: true,
+        isChecked: false,
         isActive: false,
         components: [
-            {componentId: 'structure', componentType: 'SheetButton'},
-            {componentId: 'document', componentType: 'SheetButton'},
+            {componentId: 'structure', componentType: 'SheetPushButton'},
+            {componentId: 'document', componentType: 'SheetPushButton'},
         ],
     },
     {
@@ -87,17 +91,18 @@ export const viewsSetup = readable([
         componentType: 'Sheet',
         label: "Settings",
         isFullHeight: true,
+        isChecked: false,
         isActive: false,
         components: [
-            {componentId: 'references', componentType: 'SheetButton'},
-            {componentId: 'footnotes', componentType: 'SheetButton'},
-            {componentId: 'verses', componentType: 'SheetButton'},
-            {componentId: 'headings', componentType: 'SheetButton'},
+            {componentId: 'references', componentType: 'SheetPushButton'},
+            {componentId: 'footnotes', componentType: 'SheetPushButton'},
+            {componentId: 'verses', componentType: 'SheetPushButton'},
+            {componentId: 'headings', componentType: 'SheetPushButton'},
 
-            {componentId: 'account', componentType: 'SheetButton'},
-            {componentId: 'toolbar', componentType: 'SheetButton'},
-            {componentId: 'help', componentType: 'SheetButton'},
-            {componentId: 'signout', componentType: 'SheetButton'},
+            {componentId: 'account', componentType: 'SheetPushButton'},
+            {componentId: 'toolbar', componentType: 'SheetPushButton'},
+            {componentId: 'help', componentType: 'SheetPushButton'},
+            {componentId: 'signout', componentType: 'SheetPushButton'},
         ],
     },
 ]);

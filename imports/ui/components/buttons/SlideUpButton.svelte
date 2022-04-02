@@ -245,8 +245,4 @@
     button:disabled  .btn-label {
         opacity: 0.75;
     }
-
-    button:disabled + .btn-under-label {
-        opacity: 0.65;
-    }
 </style>

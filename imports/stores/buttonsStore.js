@@ -94,6 +94,7 @@ export const buttonsSetup = readable([
         menuId: 'outlineMenu',
         iconName:'pin', 
         underLabel:'Outline', 
+        isSelected: true,
         isActive: false,
         isDisabled: false,
     },
@@ -319,22 +320,26 @@ export const buttonsSetup = readable([
         _id: 'references',
         label: 'Cross Refrences', 
         shortcut: '<span>&#8984;OR</span>',
+        isShowHide: true,
     },
     {
         _id: 'footnotes',
         label: 'Footnotes', 
         shortcut: '<span>&#8984;OF</span>',
+        isShowHide: true,
     },
     {
         _id: 'verses',
         label: 'Verse Numbers', 
         shortcut: '<span>&#8984;OV</span>',
+        isShowHide: true,
         isActive: true,
     },
     {
         _id: 'headings',
         label: 'Headings', 
         shortcut: '<span>&#8984;OH</span>',
+        isShowHide: true,
     },
 
 
@@ -363,6 +368,7 @@ export const buttonsSetup = readable([
     // Structure Button
     {
         _id: 'structure', 
+        label:'Structure', 
         groupId: 'view', 
         iconName: 'structure',
         underLabel:'Structure',  
@@ -374,6 +380,7 @@ export const buttonsSetup = readable([
     // Document Button
     {
         _id: 'document', 
+        label:'Document', 
         groupId: 'view', 
         iconName: 'document', 
         underLabel:'Document', 

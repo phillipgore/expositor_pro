@@ -4,8 +4,11 @@
     import {viewsSetup, viewsState} from '../../../stores/viewsStore.js';
     import {appState} from '../../../stores/appStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
+    import SheetPushButton from "../buttons/SheetPushButton.svelte";
+    import SegmentedControl from "../selectors/SegmentedControl.svelte";
 
     export let _id;
+    export let color = 'interface';
 
     let sheetSetup = $viewsSetup.find(sheet => sheet._id === _id);
     let windowWidth;
@@ -48,7 +51,20 @@
             </button>
         </div>
         <div class="sheet-content">
-            
+            {#each sheetSetup.components as component}
+                {#if component.componentType === 'SegmentedControl'}
+                    <div class="segmented-control">
+                        <SegmentedControl _id={component.componentId} device={component.componentDevice} color={'gray'}/>
+                    </div>
+                {/if}
+            {/each}
+            <ul>
+                {#each sheetSetup.components as component}
+                    {#if component.componentType === 'SheetPushButton'}
+                        <SheetPushButton _id={component.componentId} isChecked={sheetSetup.isChecked} color={color}/>
+                    {/if}
+                {/each}
+            </ul>
         </div>
     </div>
 {/if}
@@ -111,10 +127,23 @@
             overflow-x: hidden; 
             overflow-x: auto; 
             position: absolute;
-            top: 2.8rem;
+            top: 3.2rem;
             right: 0.0rem;
             bottom: 0.0rem;
             left: 0.0rem;
+            padding: 1.5rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0.0rem;
+            margin: 0.0rem;
+        }
+
+        .segmented-control {
+            margin-top: -1.5rem;
+            display: flex;
+            justify-content: center;
         }
     }
     @media only screen and (min-width: 768px) {

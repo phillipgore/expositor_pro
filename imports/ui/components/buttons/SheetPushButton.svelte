@@ -6,27 +6,28 @@
     export let color = 'interface';
     export let isChecked;
 
-    let menuButton = $buttonsSetup.find(button => button._id === _id);
+    let sheetPushButton = $buttonsSetup.find(button => button._id === _id);
+
 </script>
 
 <li class="{color}">
-    <button disabled="{menuButton.isDisabled}"> 
+    <button disabled="{sheetPushButton.isDisabled}"> 
         {#if isChecked}
             <div class="icon-container">
-                <svg class="icon-left {menuButton.isActive ? '' : 'inactive'}" viewBox="{getIcon('check').viewBox}">
+                <svg class="icon-left {sheetPushButton.isActive ? '' : 'inactive'}" viewBox="{getIcon('check').viewBox}">
                     <path d={getIcon('check').d}/>
                 </svg>
             </div>
-        {:else if menuButton.iconName}
+        {:else if sheetPushButton.iconName}
             <div class="icon-container">
-                <svg class="icon-left" viewBox="{getIcon(menuButton.iconName).viewBox}">
-                    <path d={getIcon(menuButton.iconName).d}/>
+                <svg class="icon-left" viewBox="{getIcon(sheetPushButton.iconName).viewBox}">
+                    <path d={getIcon(sheetPushButton.iconName).d}/>
                 </svg>
             </div>
         {/if}
-        {#if menuButton.isShowHide}
+        {#if sheetPushButton.isShowHide}
             <div class="icon-container">
-                {#if menuButton.isActive}
+                {#if sheetPushButton.isActive}
                     <svg class="icon-left" viewBox="{getIcon('checkbox-checked').viewBox}">
                         <path d={getIcon('checkbox-checked').d}/>
                     </svg>
@@ -37,17 +38,14 @@
                 {/if} 
             </div>
         {/if}
-        {#if menuButton.shapeClass}
+        {#if sheetPushButton.shapeClass}
             <div class="shape-container">
-                <div class="{menuButton.shapeClass} {menuButton.shapeColorClass}"></div>
+                <div class="{sheetPushButton.shapeClass} {sheetPushButton.shapeColorClass}"></div>
             </div>
         {/if}
         <div class="main-text">
-            {menuButton.label}
+            {sheetPushButton.label}
         </div>
-        {#if menuButton.shortcut}
-            <div class="text-right">{@html menuButton.shortcut}</div>
-        {/if}
     </button>
 </li>
 
@@ -66,18 +64,13 @@
         width: 100%;
         align-items: center;
         color: var(--black);
-        background: transparent;
+        background-color: var(--white);
         border: none;
         border-radius: 0.3rem;
         text-decoration: none;
-        font-size: 1.3rem;
-        padding: 0.6rem;
-        margin: 0.0rem 0.4rem;
-    }
-
-    li button:hover:enabled {
-        color: var(--white);
-        background-color: var(--interface-600);
+        font-size: 1.6rem;
+        padding: 0.9rem 1.5rem;
+        margin: 0.1rem 0.0rem;
     }
 
     li button .main-text {
@@ -95,29 +88,21 @@
         color: var(--gray-500)
     }
 
-    li button:hover:enabled .text-right {
-        color: var(--white);
-    }
-
     li button .icon-container,
     li button .shape-container  {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 1.4rem;
-        width: 1.4rem;
+        height: 1.7rem;
+        width: 1.7rem;
         margin-right: 0.6rem;
     }
 
     li button .icon-left {
-        height: 1.2rem;
+        height: 1.7rem;
         fill: var(--gray-300);
-        max-height: 1.2rem;
-        max-width: 1.2rem;
-    }
-
-    li button:hover:enabled .icon-left {
-        fill: var(--white);
+        max-height: 1.7rem;
+        max-width: 1.7rem;
     }
 
     li button:disabled .icon-left {
@@ -125,10 +110,6 @@
     }
 
     li button .icon-left.inactive {
-        fill: transparent;
-    }
-
-    li button:hover:enabled .icon-left.inactive {
         fill: transparent;
     }
 
@@ -161,52 +142,52 @@
 
     /* --- Color Options --- */
     /* .toolbar styles */
-    li.toolbar button:hover:enabled {
-        background-color: var(--interface-blue);
+    li.toolbar button {
+        color: var(--interface-blue);
     }
     
     /* .gray styles */
-    li.gray button:hover:enabled {
-        background-color: var(--gray);
+    li.gray button {
+        color: var(--gray);
     }
     
     /* .red styles */
-    li.red button:hover:enabled {
-        background-color: var(--red);
+    li.red button {
+        color: var(--red);
     }
 
     /* .orange styles */
-    li.orange button:hover:enabled {
-        background-color: var(--orange);
+    li.orange button {
+        color: var(--orange);
     }
     
     /* .yellow styles */
-    li.yellow button:hover:enabled {
-        background-color: var(--yellow);
+    li.yellow button {
+        color: var(--yellow);
     }
     
     /* .green styles */
-    li.green button:hover:enabled {
-        background-color: var(--green);
+    li.green button {
+        color: var(--green);
     }
     
     /* .aqua styles */
-    li.aqua button:hover:enabled {
-        background-color: var(--aqua);
+    li.aqua button {
+        color: var(--aqua);
     }
     
     /* .blue styles */
-    li.blue button:hover:enabled {
-        background-color: var(--blue);
+    li.blue button {
+        color: var(--blue);
     }
     
     /* .purple styles */
-    li.purple button:hover:enabled {
-        background-color: var(--purple);
+    li.purple button {
+        color: var(--purple);
     }
 
     /* .pink styles */
-    li.pink button:hover:enabled {
-        background-color: var(--pink);
+    li.pink button {
+        color: var(--pink);
     }
 </style>
