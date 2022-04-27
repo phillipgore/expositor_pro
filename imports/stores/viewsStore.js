@@ -45,11 +45,13 @@ export const viewsSetup = readable([
         isChecked: false,
         isActive: false,
         components: [
-            {componentId: 'new', componentType: 'SheetPushButton'},
-            {componentId: 'open', componentType: 'SheetPushButton'},
-            {componentId: 'newInner', componentType: 'SheetPushButton'},
-            {componentId: 'newOuter', componentType: 'SheetPushButton'},
-            {componentId: 'newCompare', componentType: 'SheetPushButton'},
+            {componentId: 'new', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'open', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentType: 'HorizontalSpace', componentDevice: 'phone'},
+            {componentId: 'newInner', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'newOuter', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentType: 'HorizontalSpace', componentDevice: 'phone'},
+            {componentId: 'newCompare', componentType: 'SheetPushButton', componentDevice: 'phone'},
         ],
     },
     {
@@ -61,7 +63,64 @@ export const viewsSetup = readable([
         isActive: false,
         components: [
             {componentId: 'tools', componentType: 'SegmentedControl'},
+            {componentId: 'outlineScrollView', componentType: 'ScrollView'},
+            {componentId: 'textScrollView', componentType: 'ScrollView'},
+            {componentId: 'literaryScrollView', componentType: 'ScrollView'},
+            {componentId: 'colorScrollView', componentType: 'ScrollView'},
         ],
+    },
+    {
+        _id: 'outlineScrollView',
+        componentType: 'ScrollView',
+        isActive: true,
+        components: [
+            {componentId: 'section', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'column', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'group', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentType: 'HorizontalSpace', componentDevice: 'phone'},
+            {componentId: 'unpin', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'pin', componentType: 'SheetPushButton', componentDevice: 'phone'},
+        ]
+    },
+    {
+        _id: 'textScrollView',
+        componentType: 'ScrollView',
+        isActive: false,
+        components: [
+            {componentId: 'highlight', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentType: 'HorizontalSpace', componentDevice: 'phone'},
+            {componentId: 'split', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'join', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentType: 'HorizontalSpace', componentDevice: 'phone'},
+            {componentId: 'moveUp', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'moveDown', componentType: 'SheetPushButton', componentDevice: 'phone'}, 
+        ]
+    },
+    {
+        _id: 'literaryScrollView',
+        componentType: 'ScrollView',
+        isActive: false,
+        components: [
+            {componentId: 'chiasim', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'paralellism', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'repetition', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'intensification', componentType: 'SheetPushButton', componentDevice: 'phone'},
+        ]
+    },
+    {
+        _id: 'colorScrollView',
+        componentType: 'ScrollView',
+        isActive: false,
+        components: [
+            {componentId: 'red', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'orange', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'yellow', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'green', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'aqua', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'blue', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'purple', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'pink', componentType: 'SheetPushButton', componentDevice: 'phone'},
+        ]
     },
     {
         _id: 'noteSheet',
@@ -82,8 +141,8 @@ export const viewsSetup = readable([
         isChecked: false,
         isActive: false,
         components: [
-            {componentId: 'structure', componentType: 'SheetPushButton'},
-            {componentId: 'document', componentType: 'SheetPushButton'},
+            {componentId: 'structure', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'document', componentType: 'SheetPushButton', componentDevice: 'phone'},
         ],
     },
     {
@@ -94,15 +153,16 @@ export const viewsSetup = readable([
         isChecked: false,
         isActive: false,
         components: [
-            {componentId: 'references', componentType: 'SheetPushButton'},
-            {componentId: 'footnotes', componentType: 'SheetPushButton'},
-            {componentId: 'verses', componentType: 'SheetPushButton'},
-            {componentId: 'headings', componentType: 'SheetPushButton'},
-
-            {componentId: 'account', componentType: 'SheetPushButton'},
-            {componentId: 'toolbar', componentType: 'SheetPushButton'},
-            {componentId: 'help', componentType: 'SheetPushButton'},
-            {componentId: 'signout', componentType: 'SheetPushButton'},
+            {componentId: 'references', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'footnotes', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'verses', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'headings', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentType: 'HorizontalSpace', componentDevice: 'phone'},
+            {componentId: 'account', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'toolbar', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentId: 'help', componentType: 'SheetPushButton', componentDevice: 'phone'},
+            {componentType: 'HorizontalSpace', componentDevice: 'phone'},
+            {componentId: 'signout', componentType: 'SheetPushButton', componentDevice: 'phone'},
         ],
     },
 ]);

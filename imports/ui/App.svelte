@@ -24,7 +24,7 @@
 	@media only screen and (min-width: 0px) {
 		.container {
 			position: relative;
-			min-height: 100vh;
+  			flex-grow: 1;
 			background-color: var(--white);
 			border-radius: 0.0rem 0.0rem 0.0rem 0.0rem;
 			box-shadow: 0.0rem 0.0rem 0.6rem var(--black-alpha);
@@ -32,7 +32,6 @@
 		}
 
 		.container.recess {
-			min-height: calc(100vh - 1.4rem);
 			margin: 1.4rem;
 			border-radius: 1.4rem 1.4rem 0.0rem 0.0rem;
 			transition: min-height 300ms ease-in-out, margin 300ms ease-in-out, border-radius 300ms ease-in-out;

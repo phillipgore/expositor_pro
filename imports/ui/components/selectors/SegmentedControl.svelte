@@ -1,6 +1,7 @@
 <script>
     import {selectorsSetup} from '../../../stores/selectorsStore.js';
     import {buttonsSetup, buttonsState} from '../../../stores/buttonsStore.js';
+    import {viewsSetup, viewsState} from '../../../stores/viewsStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
     
     export let _id;
@@ -16,12 +17,20 @@
         $buttonsState[segment._id] = {isSelected: segment.isSelected};
     });
 
-    const segmentedControlClick = (buttonId) => {
+    const segmentedControlClick = (buttonId, scrollViewId) => {
         segments.forEach(segment => {
             if (segment._id != buttonId) {
                 $buttonsState[segment._id].isSelected = false;
             } else {
                 $buttonsState[segment._id].isSelected = true;
+            }
+
+            if (segment.scrollViewId) {
+                if (segment._id != buttonId) {
+                    $viewsState[segment.scrollViewId].isActive = false;
+                } else {
+                    $viewsState[segment.scrollViewId].isActive = true;
+                }
             }
         });
     };
@@ -31,7 +40,7 @@
     <div class="btn-grouped">
         {#each segments as segment}
             <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
-                <button id="{_id}" class="{$buttonsState[segment._id].isSelected ? 'selected' : ''}" on:click={() => segmentedControlClick(segment._id)} aria-label="{segment.underLabel}" disabled="{segment.isDisabled}">
+                <button id="{_id}" class="{$buttonsState[segment._id].isSelected ? 'selected' : ''}" on:click={() => segmentedControlClick(segment._id, segment.scrollViewId)} aria-label="{segment.underLabel}" disabled="{segment.isDisabled}">
                     {#if segment.iconName}
                         <svg class="icon" viewBox="{getIcon(segment.iconName).viewBox}">
                             <path d={getIcon(segment.iconName).d}/>
@@ -79,7 +88,10 @@
         padding: 0rem 0.6rem;
         margin:  0rem auto;
         outline: 0;
-        border: 0.1rem solid;
+        border: none;
+        border-top: 0.1rem solid;
+        border-bottom: 0.1rem solid;
+        border-left: 0.1rem solid;
         border-radius: 0.0rem;
         width: 100%; 
         min-width: 5.4rem;
@@ -90,6 +102,7 @@
     }
 
     .btn-grouped .btn-wrapper:last-of-type button {
+        border-right: 0.1rem solid;
         border-radius: 0.0rem 0.3rem 0.3rem 0.0rem;
     }
 

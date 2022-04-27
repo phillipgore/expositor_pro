@@ -70,7 +70,7 @@
         text-decoration: none;
         font-size: 1.6rem;
         padding: 0.9rem 1.5rem;
-        margin: 0.1rem 0.0rem;
+        margin: 0.2rem 0.0rem;
     }
 
     li button .main-text {
@@ -78,7 +78,7 @@
     }
 
     li button:disabled .main-text {
-        color: var(--gray-500)
+        color: var(--gray-600)
     }
 
     li button .text-right {
@@ -106,7 +106,7 @@
     }
 
     li button:disabled .icon-left {
-        fill: var(--gray-500)
+        fill: var(--gray-600)
     }
 
     li button .icon-left.inactive {

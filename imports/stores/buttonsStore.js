@@ -92,6 +92,7 @@ export const buttonsSetup = readable([
     {
         _id: 'outline',
         menuId: 'outlineMenu',
+        scrollViewId: 'outlineScrollView',
         iconName:'pin', 
         underLabel:'Outline', 
         isSelected: true,
@@ -141,6 +142,7 @@ export const buttonsSetup = readable([
     {
         _id: 'text',
         menuId: 'textMenu',
+        scrollViewId: 'textScrollView',
         iconName:'text-join', 
         underLabel:'Text',  
         isActive: false,
@@ -189,6 +191,7 @@ export const buttonsSetup = readable([
     {
         _id: 'literary',
         menuId: 'literaryMenu',
+        scrollViewId: 'literaryScrollView',
         iconName:'literary-chiasim',  
         underLabel:'Literary', 
         isActive: false,
@@ -230,6 +233,7 @@ export const buttonsSetup = readable([
     {
         _id: 'color',
         menuId: 'colorMenu',
+        scrollViewId: 'colorScrollView',
         iconName:'paintbrush',  
         underLabel:'Color', 
         isActive: false,
@@ -302,7 +306,7 @@ export const buttonsSetup = readable([
         iconName: 'note', 
         underLabel:'Note', 
         isActive: false,
-        isDisabled: false,
+        isDisabled: true,
     },
 
 
@@ -327,13 +331,13 @@ export const buttonsSetup = readable([
         label: 'Footnotes', 
         shortcut: '<span>&#8984;OF</span>',
         isShowHide: true,
+        isActive: true,
     },
     {
         _id: 'verses',
         label: 'Verse Numbers', 
         shortcut: '<span>&#8984;OV</span>',
         isShowHide: true,
-        isActive: true,
     },
     {
         _id: 'headings',

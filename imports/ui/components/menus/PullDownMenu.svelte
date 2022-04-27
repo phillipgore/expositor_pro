@@ -4,7 +4,7 @@
     import {appState} from '../../../stores/appStore.js';
     import {menusSetup, menusState} from '../../../stores/menusStore.js';
     
-    import DividerHorizontal from "../spacing/DividerHorizontal.svelte";
+    import HorizontalDivider from "../spacing/HorizontalDivider.svelte";
     import MenuPushButton from "../buttons/MenuPushButton.svelte";
     
     export let _id;
@@ -25,8 +25,8 @@
     <div id={_id} class="pull-down-menu {hasLabels ? 'has-button-labels' : ''}" style="width: {$menusState[_id].paneRemWidth}; max-height: {$menusState[_id].paneRemMaxHeight}; top: {$menusState[_id].paneRemTop}; left: {$menusState[_id].paneRemLeft}" in:fade="{{duration: 100}}" out:fade="{{duration: 200}}">
         <ul>
             {#each menuSetup.components as component}
-                {#if component.componentType === 'DividerHorizontal'}
-                    <DividerHorizontal device={component.componentDevice}/>
+                {#if component.componentType === 'HorizontalDivider'}
+                    <HorizontalDivider device={component.componentDevice}/>
                 {/if}
                 {#if component.componentType === 'MenuPushButton'}
                     <MenuPushButton _id={component.componentId} isChecked={$menusState[_id].isChecked} color={color}/>

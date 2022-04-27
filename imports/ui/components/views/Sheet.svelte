@@ -6,11 +6,14 @@
     import {getIcon} from '../../../stores/iconsStore.js';
     import SheetPushButton from "../buttons/SheetPushButton.svelte";
     import SegmentedControl from "../selectors/SegmentedControl.svelte";
+    import ScrollView from "../views/ScrollView.svelte";
+    import HorizontalSpace from "../spacing/HorizontalSpace.svelte";
 
     export let _id;
     export let color = 'interface';
 
     let sheetSetup = $viewsSetup.find(sheet => sheet._id === _id);
+    let hasSegmentedControl = sheetSetup.components.filter(component => component.componentType === 'SegmentedControl').length > 0;
     let windowWidth;
     let windowHeight;
 
@@ -43,7 +46,17 @@
 {#if $viewsState[_id].isActive}
     <div class="sheet {sheetSetup.isFullHeight ? 'sheet-full' : ''}" in:fly="{{ y: getFlyY(), duration: 200, opacity: 100 }}" out:fly="{{ y: getFlyY(), duration: 300, opacity: 100 }}">
         <div class="sheet-title-bar">
-            <h1 class="sheet-title">{sheetSetup.label}</h1>
+            {#if hasSegmentedControl}
+                {#each sheetSetup.components as component}
+                    {#if component.componentType === 'SegmentedControl'}
+                        <div class="segmented-control">
+                            <SegmentedControl _id={component.componentId} device={component.componentDevice} color={'gray'}/>
+                        </div>
+                    {/if}
+                {/each}
+            {:else}
+                <h1 class="sheet-title">{sheetSetup.label}</h1>
+            {/if}
             <button class="sheet-close" on:click={() => closeSheet()}>
                 <svg class="icon-close" viewBox="{getIcon('plus-circle').viewBox}">
                     <path d={getIcon('plus-circle').d}/>
@@ -52,16 +65,17 @@
         </div>
         <div class="sheet-content">
             {#each sheetSetup.components as component}
-                {#if component.componentType === 'SegmentedControl'}
-                    <div class="segmented-control">
-                        <SegmentedControl _id={component.componentId} device={component.componentDevice} color={'gray'}/>
-                    </div>
+                {#if component.componentType === 'ScrollView'}
+                    <ScrollView _id={component.componentId} />
                 {/if}
             {/each}
             <ul>
                 {#each sheetSetup.components as component}
                     {#if component.componentType === 'SheetPushButton'}
                         <SheetPushButton _id={component.componentId} isChecked={sheetSetup.isChecked} color={color}/>
+                    {/if}
+                    {#if component.componentType === 'HorizontalSpace'}
+                        <HorizontalSpace  device={component.componentDevice}/>
                     {/if}
                 {/each}
             </ul>
@@ -131,7 +145,8 @@
             right: 0.0rem;
             bottom: 0.0rem;
             left: 0.0rem;
-            padding: 1.5rem;
+            padding: 1.5rem 1.5rem .7rem;
+            margin-top: .8rem;
         }
 
         ul {
@@ -141,9 +156,10 @@
         }
 
         .segmented-control {
-            margin-top: -1.5rem;
+            height: 3.2rem;
             display: flex;
             justify-content: center;
+            align-items: end;
         }
     }
     @media only screen and (min-width: 768px) {

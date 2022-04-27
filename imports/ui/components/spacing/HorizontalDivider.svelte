@@ -2,10 +2,10 @@
     export let device;
 </script>
 
-<div class="divider-horizontal {device}"></div>
+<div class="horizontal-divider {device}"></div>
 
 <style>
-    .divider-horizontal {
+    .horizontal-divider {
         height: auto;
         margin-top: 0.4rem;
         border-top: 0.1rem solid var(--gray-700);
