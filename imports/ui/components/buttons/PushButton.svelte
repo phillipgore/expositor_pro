@@ -2,23 +2,33 @@
     import {Random} from 'meteor/random';
     
     import {buttonsSetup} from '../../../stores/buttonsStore.js';
+    import {viewsState} from '../../../stores/viewsStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
 
     export let _id;
-    export let device;
-    export let color = 'gray';
+    export let dialogId = undefined;
+    export let dialogIsActive = undefined;
+    export let device = 'laptop tablet';
+    export let _class = 'gray';
     export let hasLabels = false;
+    export let targetId = undefined;
+    export let targetType = undefined;
+    export let targetKey = undefined;
+    export let targetValue = undefined;
 
     let randomId = Random.id();
     let buttonStateId = `${_id}-${randomId}`; 
     let buttonSetup = $buttonsSetup.find(pushButton => pushButton._id === _id);
     
     const pushButtonClick = () => {
-        alert('Clicked');
+        if (targetType === 'Dialog') {
+            console.log(typeof targetKey)
+            $viewsState[targetId][targetKey] = targetValue;
+        }
     };
 </script>
 
-<div class="btn-container {color} {device}">
+<div class="btn-container {_class} {device}">
     <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
         <button id="{buttonStateId}" on:click={() => pushButtonClick()} aria-label="{buttonSetup.underLabel}" disabled="{buttonSetup.isDisabled}">
             {#if buttonSetup.iconName}

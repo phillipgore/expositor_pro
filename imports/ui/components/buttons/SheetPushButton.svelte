@@ -3,14 +3,14 @@
     import {getIcon} from '../../../stores/iconsStore.js';
 
     export let _id;
-    export let color = 'interface';
+    export let _class = 'interface';
     export let isChecked;
 
     let sheetPushButton = $buttonsSetup.find(button => button._id === _id);
 
 </script>
 
-<li class="{color}">
+<li class="{_class}">
     <button disabled="{sheetPushButton.isDisabled}"> 
         {#if isChecked}
             <div class="icon-container">

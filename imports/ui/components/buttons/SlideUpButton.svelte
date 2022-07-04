@@ -9,7 +9,7 @@
     export let _id;
     export let device;
     export let hidesToolbarIds;
-    export let color = 'gray';
+    export let _class = 'gray';
 
     let randomId = Random.id();
     let buttonStateId = `${_id}-${randomId}`; 
@@ -38,7 +38,7 @@
     };
 </script>
 
-<button id="{buttonStateId}" class="{color} {device}" on:click={() => pushButtonClick()} aria-label="{buttonSetup.underLabel}" disabled="{buttonSetup.isDisabled}">
+<button id="{buttonStateId}" class="{_class} {device}" on:click={() => pushButtonClick()} aria-label="{buttonSetup.underLabel}" disabled="{buttonSetup.isDisabled}">
     {#if buttonSetup.iconName}
         <svg class="icon" viewBox="{getIcon(buttonSetup.iconName).viewBox}">
             <path d={getIcon(buttonSetup.iconName).d}/>

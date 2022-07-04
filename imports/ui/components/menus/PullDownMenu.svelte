@@ -8,7 +8,7 @@
     import MenuPushButton from "../buttons/MenuPushButton.svelte";
     
     export let _id;
-    export let color = 'interface';
+    export let _class = 'interface';
 
     let menuSetup = $menusSetup.find(menu => menu._id === _id);
     let hasLabels = $appState.toolbarButtons.hasLabels;
@@ -29,7 +29,7 @@
                     <HorizontalDivider device={component.componentDevice}/>
                 {/if}
                 {#if component.componentType === 'MenuPushButton'}
-                    <MenuPushButton _id={component.componentId} isChecked={$menusState[_id].isChecked} color={color}/>
+                    <MenuPushButton _id={component.componentId} isChecked={$menusState[_id].isChecked} _class={_class}/>
                 {/if}
             {/each}
         </ul>

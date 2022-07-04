@@ -7,8 +7,8 @@
     import {getIcon} from '../../../stores/iconsStore.js';
 
     export let _id;
+    export let _class = 'gray';
     export let device;
-    export let color = 'gray';
     export let hasLabels = false;
 
     let randomId = Random.id();
@@ -81,7 +81,7 @@
 
 <svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:resize={pullDownButtonPosition} on:click={evaluateClick}/>
 
-<div class="btn-container {color} {device}">
+<div class="btn-container {_class} {device}">
     <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
         <button id="{buttonStateId}" class="js-pull-down-button {$buttonsState[buttonStateId].isActive ? 'active' : ''}" on:click|capture={pullDownButtonClick} aria-label="{buttonSetup.underLabel}" disabled="{buttonSetup.isDisabled}">
             {#if buttonSetup.iconName}

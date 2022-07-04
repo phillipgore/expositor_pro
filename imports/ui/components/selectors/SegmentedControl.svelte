@@ -6,7 +6,7 @@
     
     export let _id;
     export let device;
-    export let color = 'gray';
+    export let _class = 'gray';
     export let hasLabels = false;
 
     let segmentedControlSetup = $selectorsSetup.find(segmentedControl => segmentedControl._id === _id);
@@ -36,7 +36,7 @@
     };
 </script>
 
-<div class="btn-container {color} {device}">
+<div class="btn-container {_class} {device}">
     <div class="btn-grouped">
         {#each segments as segment}
             <div class="btn-wrapper {hasLabels ? '' : 'btn-no-under-label'}">
@@ -147,6 +147,10 @@
         min-width: 4.6rem; 
     }
 
+    .toolbar .btn-grouped .btn-wrapper:last-of-type button {
+        border-color: transparent;
+    }
+
     .toolbar button.selected:enabled {
         background-color: var(--gray-800);
     }
@@ -175,8 +179,8 @@
     }
 
     .gray button.selected:enabled {
-        border-color: var(--gray);
-        background-color: var(--gray);
+        border-color: var(--gray-dark);
+        background-color: var(--gray-dark);
     }
 
     .gray .icon,

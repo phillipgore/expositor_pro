@@ -4,6 +4,7 @@
     import {appState} from '../../../stores/appStore.js';
     import {viewsSetup, viewsState} from '../../../stores/viewsStore.js';
     
+    import Heading from "./Heading.svelte";
     import PullDownButton from "../buttons/PullDownButton.svelte";
     import PushButton from "../buttons/PushButton.svelte";
     import SlideUpButton from "../buttons/SlideUpButton.svelte";
@@ -12,6 +13,7 @@
     import FlexibleSpace from "../spacing/FlexibleSpace.svelte";
 
     export let _id = _id;
+    export let _class = 'gray-200';
     let toolbarSetup = $viewsSetup.find(toolbar => toolbar._id === _id);
     let hasLabels = $appState.toolbarButtons.hasLabels;
 
@@ -19,26 +21,41 @@
 </script>
 
 {#if !$viewsState[_id].isHidden}
-    <nav id="{toolbarSetup._id}" class="{hasLabels ? '' : 'toolbar-short'}" in:fly="{{ y: -45, duration: 200, opacity: 100, delay: 200 }}" out:fly="{{ y: -45, duration: 300, opacity: 100 }}">
+    <!-- <nav id="{toolbarSetup._id}" class="{hasLabels ? '' : 'toolbar-short'}" in:fly="{{ y: -45, duration: 200, opacity: 100, delay: 200 }}" out:fly="{{ y: -45, duration: 300, opacity: 100 }}"> -->
+    <nav id="{toolbarSetup._id}" class="{hasLabels ? '' : 'toolbar-short'} {_class}">
         {#each toolbarSetup.components as component}
+            {#if component.componentType === 'Heading'}
+                <div class="component-container {component.componentDevice}">
+                    <Heading _id={component.componentId} />
+                </div>
+            {/if}
             {#if component.componentType === 'PullDownButton'}
                 <div class="component-container {component.componentDevice}">
-                    <PullDownButton _id={component.componentId} device={component.componentDevice} hasLabels={hasLabels} color={'toolbar'}/>
+                    <PullDownButton _id={component.componentId} device={component.componentDevice} hasLabels={hasLabels} _class={component.componentClass}/>
                 </div>
             {/if}
             {#if component.componentType === 'PushButton'}
                 <div class="component-container {component.componentDevice}">
-                    <PushButton _id={component.componentId} device={component.componentDevice} hasLabels={hasLabels} color={'toolbar'}/>
+                    <PushButton 
+                        _id={component.componentId} 
+                        device={component.componentDevice} 
+                        hasLabels={hasLabels} 
+                        _class={component.componentClass}
+                        targetId={component.targetId}
+                        targetType={component.targetType}
+                        targetKey={component.targetKey}
+                        targetValue={component.targetValue}
+                    />
                 </div>
             {/if}
             {#if component.componentType === 'SlideUpButton'}
                 <div class="component-container {component.componentDevice}">
-                    <SlideUpButton _id={component.componentId} device={component.componentDevice} hidesToolbarIds={component.hidesToolbarIds} color={'toolbar'}/>
+                    <SlideUpButton _id={component.componentId} device={component.componentDevice} hidesToolbarIds={component.hidesToolbarIds} _class={component.componentClass}/>
                 </div>
             {/if}
             {#if component.componentType === 'SegmentedControl'}
                 <div class="component-container {component.componentDevice}">
-                    <SegmentedControl _id={component.componentId} device={component.componentDevice} hasLabels={hasLabels} color={'toolbar'}/>
+                    <SegmentedControl _id={component.componentId} device={component.componentDevice} hasLabels={hasLabels} _class={component.componentClass}/>
                 </div>
             {/if}
             {#if component.componentType === 'Space'}
@@ -57,15 +74,27 @@
             display: flex;
             align-items: center;
             margin: 0.0rem;
-			padding: 0.0rem 0.9rem;
-            background-color: var(--gray-200);
-            position: fixed;
+			padding: 0.0rem 1.2rem;
+            position: absolute;
             top: 0;
             right: 0;
             left: 0;
             z-index: 10;
             height: 4.5rem;
-            color: var(--white);
+        }
+
+        nav.bottom {
+            top: unset;
+            bottom: 0;
+        }
+
+        nav.gray-200 {
+            background-color: var(--gray-200);
+            background-color: var(--gray-200);
+        }
+
+        nav.white {
+            background-color: var(--white);
         }
     }
 
@@ -79,7 +108,7 @@
         }
 
         .component-container {
-            margin: 0rem 0.25rem;
+            margin: 0rem 0.2rem;
         }
 
         .component-container:first-child {

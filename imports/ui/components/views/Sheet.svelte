@@ -50,7 +50,7 @@
                 {#each sheetSetup.components as component}
                     {#if component.componentType === 'SegmentedControl'}
                         <div class="segmented-control">
-                            <SegmentedControl _id={component.componentId} device={component.componentDevice} color={'gray'}/>
+                            <SegmentedControl _id={component.componentId} device={component.componentDevice} _class={'gray'}/>
                         </div>
                     {/if}
                 {/each}
@@ -72,7 +72,7 @@
             <ul>
                 {#each sheetSetup.components as component}
                     {#if component.componentType === 'SheetPushButton'}
-                        <SheetPushButton _id={component.componentId} isChecked={sheetSetup.isChecked} color={color}/>
+                        <SheetPushButton _id={component.componentId} isChecked={sheetSetup.isChecked} _class={_class}/>
                     {/if}
                     {#if component.componentType === 'HorizontalSpace'}
                         <HorizontalSpace  device={component.componentDevice}/>

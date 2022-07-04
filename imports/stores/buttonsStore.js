@@ -13,41 +13,49 @@ export const buttonsSetup = readable([
     },
 
     {
-        _id: 'new', 
+        _id: 'new',
+        dialogId: 'newDialog',
         iconName: 'plus-circle', 
         label: 'New', 
         shortcut: '<span>&#8984;SN</span>',
-        hasPanel: true,
     },
     {
-        _id: 'open', 
+        _id: 'open',
+        dialogId: 'openDialog',
         iconName: 'arrow-right-circle', 
         label: 'Open', 
         shortcut: '<span>&#8984;SO</span>', 
-        hasPanel: true,
     },
     {
-        _id: 'newInner', 
+        _id: 'newInner',
+        dialogId: 'newInnerDialog',
         iconName: 'arrow-down-square', 
         label: 'New Inner', 
         shortcut: '<span>&#8984;NI</span>', 
         isDisabled: true,
-        hasPanel: true,
     },
     {
         _id: 'newOuter', 
+        dialogId: 'newOuterDialog',
         iconName: 'arrow-up-square',
         label: 'New Outer', 
         shortcut: '<span>&#8984;NO</span>', 
         isDisabled: true,
-        hasPanel: true,
     },
     {
         _id: 'newCompare', 
+        dialogId: 'newComparativeDialog',
         iconName: 'compare', 
         label: 'New Comparative', 
         shortcut: '<span>&#8984;NC</span>', 
-        hasPanel: true,
+    },
+
+    {
+        _id: 'books',
+        menuId: 'booksMenu',
+        label: 'Books',
+        isActive: false,
+        isDisabled: false,
     },
 
 
@@ -412,31 +420,65 @@ export const buttonsSetup = readable([
     },
 
     {
-        _id: 'account', 
+        _id: 'account',
+        dialogId: 'accountDialog',
         iconName: 'account', 
         label: 'Account', 
         shortcut: '<span>&#8984;SA</span>', 
-        hasPanel: true,
     },
     {
-        _id: 'toolbar', 
+        _id: 'toolbar',
+        dialogId: 'toolbarDialog',
         iconName: 'toolbar', 
         label: 'Toolbar', 
         shortcut: '<span>&#8984;ST</span>', 
-        hasPanel: true,
     },
     {
-        _id: 'help', 
+        _id: 'help',
+        dialogId: 'helpDialog',
         iconName: 'help', 
         label: 'Help', 
         shortcut: '<span>&#8984;SH</span>', 
-        hasPanel: true,
     },
     {
         _id: 'signout', 
         iconName: 'power', 
         label: 'Sign Out', 
-    }, 
+    },
+
+
+    
+    // Standard Buttons
+    {
+        _id: 'create',
+        label:'Create',  
+        isActive: false,
+        isDisabled: false,
+    },
+    {
+        _id: 'edit',
+        label:'Edit',  
+        isActive: false,
+        isDisabled: false,
+    },
+    {
+        _id: 'save',
+        label:'Save',  
+        isActive: false,
+        isDisabled: false,
+    },
+    {
+        _id: 'update',
+        label:'Update',  
+        isActive: false,
+        isDisabled: false,
+    },
+    {
+        _id: 'cancel',
+        label:'Cancel',  
+        isActive: false,
+        isDisabled: false,
+    },
 ]);
 
 export const buttonsState = writable({});

@@ -4,9 +4,9 @@
     import HorizontalSpace from "../spacing/HorizontalSpace.svelte";
 
     export let _id;
-    export let color = 'interface';
+    export let _class = 'interface';
 
-    let scrollViewSetup = $viewsSetup.find(sheet => sheet._id === _id);
+    let scrollViewSetup = $viewsSetup.find(view => view._id === _id);
     
     $viewsState[_id] = {
         isActive: scrollViewSetup.isActive,
@@ -17,7 +17,7 @@
     <ul>
         {#each scrollViewSetup.components as component}
             {#if component.componentType === 'SheetPushButton'}
-                <SheetPushButton _id={component.componentId} isChecked={scrollViewSetup.isChecked} color={color}/>
+                <SheetPushButton _id={component.componentId} isChecked={scrollViewSetup.isChecked} _class={_class}/>
             {/if}
             {#if component.componentType === 'HorizontalSpace'}
                 <HorizontalSpace  device={component.componentDevice}/>

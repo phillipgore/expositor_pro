@@ -1,16 +1,21 @@
 <script>
     import {buttonsSetup, buttonsState} from '../../../stores/buttonsStore.js';
+    import {viewsSetup, viewsState} from '../../../stores/viewsStore.js';
     import {getIcon} from '../../../stores/iconsStore.js';
 
     export let _id;
-    export let color = 'interface';
+    export let _class = 'interface';
     export let isChecked;
 
     let menuButton = $buttonsSetup.find(button => button._id === _id);
+
+    let menuPushButtonClick = () => {
+        $viewsState[menuButton.dialogId].isActive = true;
+    };
 </script>
 
-<li class="{color}">
-    <button disabled="{menuButton.isDisabled}"> 
+<li class="{_class}">
+    <button disabled="{menuButton.isDisabled}" on:click|capture={menuPushButtonClick}> 
         {#if isChecked}
             <div class="icon-container">
                 <svg class="icon-left {menuButton.isActive ? '' : 'inactive'}" viewBox="{getIcon('check').viewBox}">
@@ -77,7 +82,7 @@
 
     li button:hover:enabled {
         color: var(--white);
-        background-color: var(--interface-600);
+        background-color: var(--interface-blue);
     }
 
     li button .main-text {
