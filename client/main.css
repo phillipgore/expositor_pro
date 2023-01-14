@@ -40,7 +40,7 @@
   --pink-light: hsl(300, 100%, 93%);
 
   --black: hsl(0, 0%, 0%);
-  --black-alpha: hsla(0, 0%, 0%, 0.50);
+  --black-alpha: hsla(0, 0%, 0%, 0.30);
 
   --gray-200: hsl(30, 2%, 17%);
   --gray-300: hsl(30, 1%, 33%);
@@ -53,11 +53,19 @@
   --gray-900: hsl(0, 0%, 92%);
   --gray-900-alpha: hsla(0, 0%, 92%, 0.69);
 
-  --white: hsl(0, 0%, 100%);
+  --white: hsl(0, 0%, 98%);
 
-  --interface-blue-dark: hsl(213, 81%, 17%);
-  --interface-blue: hsl(212, 100%, 65%);
-  --interface-blue-light: hsl(215, 100%, 93%);
+  --system-blue-dark: hsl(219, 100%, 35%);
+  --system-blue: hsl(219, 100%, 50%);
+  --system-blue-light: hsl(219, 100%, 85%);
+
+  --system-gray-dark: hsl(240, 1%, 27%);
+  --system-gray: hsl(240, 2%, 57%);
+  --system-gray-light: hsl(240, 10%, 86%);
+
+  --system-red-dark: hsl(3, 68%, 42%);
+  --system-red: hsl(3, 100%, 59%);
+  --system-red-light: hsl(3, 100%, 89%);
 }
 
 html { 
@@ -82,7 +90,6 @@ html {
 html, body {
   margin: 0;
   padding: 0;
-  background-color: var(--gray-200);
 }
 
 body {
@@ -91,6 +98,7 @@ body {
   flex-grow: 1;
   -webkit-tap-highlight-color: var(--gray-200);
   font-size: 1.6rem;
+  background-color: var(--gray-200);
 }
 
 #app {
@@ -99,38 +107,13 @@ body {
   flex-grow: 1;
   margin: 0;
   padding: 0;
-  background-color: var(--gray-200);
+  background-color: var(--white);
 }
 
-@media only screen and (min-width: 0px) {
-  .laptop,
-  .tablet {
-    display: none !important;
-  }
-
-  .phone {
-    display: inherit !important;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .laptop,
-  .phone {
-    display: none !important;
-  }
-
-  .tablet {
-    display: inherit !important;
-  }  
-}
-
-@media only screen and (min-width: 1024px) {
-  .tablet,
-  .phone {
-    display: none !important;
-  }
-  
-  .laptop {
-    display: inherit !important;
-  }  
-}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 { margin: 0.5em 0; }
+h1, .h1 { font-size: 4.0rem }
+h2, .h2 { font-size: 3.2rem }
+h3, .h3 { font-size: 2.8rem }
+h4, .h4 { font-size: 2.4rem }
+h5, .h5 { font-size: 2.0rem }
+h6, .h6 { font-size: 1.6rem }

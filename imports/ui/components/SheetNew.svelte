@@ -1,0 +1,25 @@
+<script>
+    import Sheet from "../elements/Sheet.svelte";
+    import Toolbar from "../elements/Toolbar.svelte";
+    import Box from "../elements/Box.svelte";
+    import SpacerFlex from "../elements/SpacerFlex.svelte";
+    import Button from "../elements/Button.svelte";
+</script>
+
+<Sheet _id='sheetNew'>
+    <Box title="New Study"></Box>
+    <Toolbar color="white" hasBorderTop>
+        <SpacerFlex/>
+
+        <Button 
+            color="system-gray" 
+            label="Cancel"
+            sheetId="sheetNew"
+        /> 
+        
+        <Button 
+            color="system-blue" 
+            label="Create"
+        />
+    </Toolbar>
+</Sheet>
