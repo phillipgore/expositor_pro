@@ -174,8 +174,8 @@
 
     .red .icon,
     .red .btn-label {
-        fill: var(--red-dark);
-        color: var(--red-dark);
+        fill: var(--red);
+        color: var(--red);
     }
 
     .red button:active:enabled .icon,

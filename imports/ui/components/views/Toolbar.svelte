@@ -90,7 +90,6 @@
 
         nav.gray-200 {
             background-color: var(--gray-200);
-            background-color: var(--gray-200);
         }
 
         nav.white {
