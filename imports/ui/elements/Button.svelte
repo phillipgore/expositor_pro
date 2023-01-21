@@ -5,7 +5,7 @@
     import {getIcon} from '../../stores/icons.js';
     import {buttonState, menuState, sheetState} from '../../stores/store.js';
 
-    let _id = Random.id();
+    export let _id = Random.id();
 
     export let classes = undefined;
     export let color = 'system-blue';
@@ -24,6 +24,8 @@
     export let labelActive = undefined;
     export let labelIsLeft = false;
     export let menuId = undefined;
+    export let activatorId = undefined;
+    export let activatorLabel = undefined;
     export let sheetId = undefined;
     export let shortcut = undefined;
 
@@ -63,6 +65,9 @@
                 }
             });
             $buttonState[_id].isActive = !$buttonState[_id].isActive;
+        }
+        if (activatorId) {
+            $buttonState[activatorId].label = activatorLabel;
         }
     }
 
@@ -107,17 +112,17 @@
     }
 
     const menuReset = (buttonId, menuId) => {
-        Object.keys($buttonState).forEach(key => {
-            if (key != buttonId && $buttonState[key].menuId) {
-                $buttonState[key].isActive = false;
-            }
-        });
-
         Object.keys($menuState).forEach(key => {
             if (key != menuId) {
                 $menuState[key].menuTop = 0;
                 $menuState[key].menuLeft = -100000
                 $menuState[key].isActive = false;
+            }
+        });
+
+        Object.keys($buttonState).forEach(key => {
+            if (key != buttonId && $buttonState[key].menuId) {
+                $buttonState[key].isActive = false;
             }
         });
     };

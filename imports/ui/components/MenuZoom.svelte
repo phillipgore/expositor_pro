@@ -7,14 +7,6 @@
 
     let menuId = 'menuZoom'
     let groupId = "zoomGroup";
-
-    let clicked = (buttonLabel) => {
-        Object.keys($buttonState).forEach(key => {
-            if ($buttonState[key].menuId === menuId) {
-                $buttonState[key].label = buttonLabel;
-            }
-        });
-    }
 </script>
 
 <Menu _id={menuId}>
@@ -27,7 +19,8 @@
             iconActive="check"
             labelIsLeft
             isFullWidth
-            on:buttonClick="{() => clicked('25%')}"
+            activatorId="buttonZoom"
+            activatorLabel="25%"
         />
         <Button
             groupId
@@ -37,7 +30,8 @@
             iconActive="check"
             labelIsLeft
             isFullWidth
-            on:buttonClick="{() => clicked('50%')}"
+            activatorId="buttonZoom"
+            activatorLabel="50%"
         />
         <Button
             groupId
@@ -47,7 +41,8 @@
             iconActive="check"
             labelIsLeft
             isFullWidth
-            on:buttonClick="{() => clicked('75%')}"
+            activatorId="buttonZoom"
+            activatorLabel="75%"
         />
         <Button
             groupId
@@ -58,7 +53,8 @@
             labelIsLeft
             isFullWidth
             isActive
-            on:buttonClick="{() => clicked('100%')}"
+            activatorId="buttonZoom"
+            activatorLabel="100%"
         />
         <Button
             groupId
@@ -68,7 +64,8 @@
             iconActive="check"
             labelIsLeft
             isFullWidth
-            on:buttonClick="{() => clicked('125%')}"
+            activatorId="buttonZoom"
+            activatorLabel="125%"
         />
         <Button
             groupId
@@ -78,7 +75,8 @@
             iconActive="check"
             labelIsLeft
             isFullWidth
-            on:buttonClick="{() => clicked('150%')}"
+            activatorId="buttonZoom"
+            activatorLabel="150%"
         />
         <Button
             groupId
@@ -88,7 +86,8 @@
             iconActive="check"
             labelIsLeft
             isFullWidth
-            on:buttonClick="{() => clicked('200%')}"
+            activatorId="buttonZoom"
+            activatorLabel="200%"
         />
         <Button
             groupId
@@ -98,7 +97,8 @@
             iconActive="check"
             labelIsLeft
             isFullWidth
-            on:buttonClick="{() => clicked('300%')}"
+            activatorId="buttonZoom"
+            activatorLabel="300%"
         />
         <Button
             groupId
@@ -108,7 +108,8 @@
             iconActive="check"
             labelIsLeft
             isFullWidth
-            on:buttonClick="{() => clicked('400%')}"
+            activatorId="buttonZoom"
+            activatorLabel="400%"
         />
 
         <DividerHorizontal/>
@@ -121,7 +122,8 @@
             iconActive="check"
             labelIsLeft
             isFullWidth
-            on:buttonClick="{() => clicked('Fit')}"
+            activatorId="buttonZoom"
+            activatorLabel="Fit"
         />
     </ButtonGrouped>
 </Menu>

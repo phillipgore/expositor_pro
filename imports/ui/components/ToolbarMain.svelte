@@ -16,6 +16,7 @@
         icon="book"
     />
     <ButtonUnderLabel 
+        _id="buttonZoom"
         menuId="menuZoom"
         underLabel="Zoom" 
         underLabelColor="light" 
