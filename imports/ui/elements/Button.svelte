@@ -19,6 +19,7 @@
     export let isDisabled = false;
     export let isFullWidth = false;
     export let isMultiSelect = false;
+    export let isSelect = false;
     export let isToggle = false;
     export let label = undefined;
     export let labelActive = undefined;
@@ -132,7 +133,7 @@
 
 <button 
     id={_id}
-    class="{classes? classes: ''} {color? color: ''} {$buttonState[_id].isActive? 'active' : ''} {groupId? 'grouped': ''} {isFullWidth? 'full-width': ''} {labelIsLeft? 'justify-content-left': ''}" 
+    class="{classes? classes: ''} {color? color: ''} {isSelect? 'select': ''} {$buttonState[_id].isActive? 'active' : ''} {groupId? 'grouped': ''} {isFullWidth? 'full-width': ''} {labelIsLeft? 'justify-content-left': ''}" 
     disabled={isDisabled}
     bind:this={button}
     on:click={buttonClick}
@@ -167,6 +168,17 @@
 
     {#if shortcut}
         <div class="shortcut">{@html shortcut}</div>
+    {/if}
+
+    {#if isSelect}
+        <div class="select-handle">
+            <svg class="select-icon" viewBox="{getIcon('caret-up').viewBox}">
+                <path d={getIcon('caret-up').d}/>
+            </svg>
+            <svg class="select-icon" viewBox="{getIcon('caret-down').viewBox}">
+                <path d={getIcon('caret-down').d}/>
+            </svg>
+        </div>
     {/if}
 </button>
 
@@ -234,6 +246,43 @@
         text-align: right;
         margin-left: 1.8rem;
         flex-grow: 1;
+    }
+
+    button.select { 
+        display: inline-flex;
+        justify-content: flex-start;
+        padding: 0.3rem 3.0rem 0.3rem 0.6rem;
+        border-width: 0.1rem;
+        border-style: solid;
+        border-color: var(--gray-700);
+        background-color: var(--white);
+        position: relative;
+        outline: 0;
+    }
+
+    button.select .button-label {
+        font-size: 1.2rem;
+        color: var(--black);
+    }
+
+    button.select .select-handle {
+        display: flex;
+        height: 1.8rem;
+        width: 1.8rem;
+        border-radius: 0.3rem;
+        background-color: var(--system-blue);
+        position: absolute;
+        top: 0.2rem;
+        right: 0.2rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button.select .select-icon {
+        fill: var(--white);
+        width: 0.7rem;
+        padding: 0.15rem 0.0rem;
     }
 
     button:enabled .icon-stroke-red { stroke: var(--red); stroke-width: 0.1rem; }
@@ -704,6 +753,36 @@
         fill: var(--white);
         color: var(--white);
     }
+    
+
+
+    /* .select styles */
+    button.select {
+        border-color: var(--gray-700);
+        background-color: var(--white);
+        color: var(--black);
+    }
+
+    button.select:active:enabled,
+    button.select.active:enabled {
+        border-color: var(--gray-700);
+        background-color: var(--white);
+        color: var(--black);
+    }
+
+    button.select.system-blue .select-handle { background-color: var(--system-blue); }
+    button.select.system-gray .select-handle { background-color: var(--system-gray); }
+    button.select.system-red .select-handle { background-color: var(--system-red); }
+
+    button.select.gray .select-handle { background-color: var(--gray); }
+    button.select.red .select-handle { background-color: var(--red); }
+    button.select.orange .select-handle { background-color: var(--orange); }
+    button.select.yellow .select-handle { background-color: var(--yellow); }
+    button.select.green .select-handle { background-color: var(--green); }
+    button.select.aqua .select-handle { background-color: var(--aqua); }
+    button.select.blue .select-handle { background-color: var(--blue); }
+    button.select.purple .select-handle { background-color: var(--purple); }
+    button.select.pink .select-handle { background-color: var(--pink); }
     
 
 
