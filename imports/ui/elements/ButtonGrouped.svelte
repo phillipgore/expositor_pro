@@ -1,9 +1,9 @@
 <script>
-
+    export let isList = false;
 </script>
 
 <div class="group-container">
-    <div class="group-wrapper {$$props.menuId? '' : 'no-button-container'} {$$props.isList? 'list' : ''}">
+    <div class="group-wrapper {$$props.menuId? '' : 'no-button-container'} {isList? 'list' : ''}">
         <slot />
     </div>
 </div>

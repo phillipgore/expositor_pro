@@ -7,8 +7,8 @@
 </script>
 
 <Sheet _id='sheetNew'>
-    <Box title="New Study"></Box>
-    <Toolbar color="white" hasBorderTop>
+    <Box title="New Study" backgroundColor="gray" hasBorderTop hasBorderBottom></Box>
+    <Toolbar color="white">
         <SpacerFlex/>
 
         <Button 

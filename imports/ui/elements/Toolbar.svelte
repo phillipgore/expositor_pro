@@ -6,8 +6,8 @@
     export let bottom = 'auto';
     export let left = 'auto';
     export let zIndex = 'auto';
-    export let hasBorderTop = 'false';
-    export let hasBorderBottom = 'false';
+    export let hasBorderTop = false;
+    export let hasBorderBottom = false;
 </script>
 
 <nav class="{color} {hasBorderTop? "border-top" : ""} {hasBorderBottom? "border-bottom" : ""}" style:position style:top style:right style:bottom style:left z-index="{zIndex}">

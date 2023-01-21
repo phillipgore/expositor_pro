@@ -1,10 +1,11 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
     import {Random} from 'meteor/random';
 
     import {getIcon} from '../../stores/icons.js';
     import {buttonState, menuState, sheetState} from '../../stores/store.js';
 
-    export let _id = Random.id();
+    let _id = Random.id();
 
     export let classes = undefined;
     export let color = 'system-blue';
@@ -30,16 +31,22 @@
     let windowWidth;
     let windowHeight;
 
+    const dispatch = createEventDispatcher();
+
     /* ---------- Basic Functions ---------- */
     $buttonState[_id]  = {
         _id: _id,
         groupId: groupId,
         isActive: isActive,
+        labelActive: labelActive,
+        label: label,
         menuId: menuId,
         sheetId: sheetId
     }; 
 
     const buttonClick = () => {
+        dispatch('buttonClick');
+        
         if (menuId) {
             menuToggle();
         }
@@ -143,8 +150,8 @@
         </div>
     {/if}
 
-    {#if label}
-        <span class="button-label">{labelActive && $buttonState[_id].isActive? labelActive : label}</span>
+    {#if $buttonState[_id].label}
+        <span class="button-label">{$buttonState[_id].labelActive && $buttonState[_id].isActive? $buttonState[_id].labelActive : $buttonState[_id].label}</span>
     {/if}
 
     {#if hasCaret}
