@@ -33,6 +33,8 @@
     let button;
     let windowWidth;
     let windowHeight;
+    
+    let activeMenuIds = [];
 
     const dispatch = createEventDispatcher();
 
@@ -85,6 +87,8 @@
         let menuHeight = Math.ceil(buttonPosition.top)  + Math.ceil(buttonPosition.height) + 3;
         let menuLeft = Math.ceil(buttonPosition.left);
 
+        activeMenuIds.push(menuId);
+
         menuPosition(menuHeight, menuLeft, windowWidth);
         menuReset(_id, $buttonState[_id].menuId);
 
@@ -113,19 +117,43 @@
     }
 
     const menuReset = (buttonId, menuId) => {
-        Object.keys($menuState).forEach(key => {
-            if (key != menuId) {
-                $menuState[key].menuTop = 0;
-                $menuState[key].menuLeft = -100000
-                $menuState[key].isActive = false;
-            }
-        });
+        activeMenuIds.forEach(activeMenuId => {
+            if (activeMenuId != menuId) {
+                $menuState[activeMenuId].menuTop = 0;
+                $menuState[activeMenuId].menuLeft = -100000
+                $menuState[activeMenuId].isActive = false;
 
-        Object.keys($buttonState).forEach(key => {
-            if (key != buttonId && $buttonState[key].menuId) {
-                $buttonState[key].isActive = false;
+                $buttonState.find(button => button.menuId === menuId).isActive = false;
             }
-        });
+
+            activeMenuIds.filter(function (activeMenuId) {
+                return activeMenuId !== activeMenuId;
+            })
+        })
+
+        // Object.keys($menuState).forEach(key => {
+        //     if (key != menuId) {
+        //         $menuState[key].menuTop = 0;
+        //         $menuState[key].menuLeft = -100000
+        //         $menuState[key].isActive = false;
+        //     }
+        // });
+
+        // activeMenuButtonIds.forEach(activeMenuButtonId => {
+        //     if (activeMenuButtonId != buttonId && $buttonState[activeMenuButtonId].menuId) {
+        //         $buttonState[activeMenuButtonId].isActive = false;
+
+        //         activeMenuButtonIds.filter(function (activeMenuButtonId) {
+        //         return activeMenuButtonId !== activeMenuButtonId;
+        //     })
+        //     }
+        // })
+
+        // Object.keys($buttonState).forEach(key => {
+        //     if (key != buttonId && $buttonState[key].menuId) {
+        //         $buttonState[key].isActive = false;
+        //     }
+        // });
     };
 </script>
 
@@ -277,12 +305,14 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        pointer-events: none;
     }
 
     button.select .select-icon {
         fill: var(--white);
         width: 0.7rem;
         padding: 0.15rem 0.0rem;
+        pointer-events: none;
     }
 
     button:enabled .icon-stroke-red { stroke: var(--red); stroke-width: 0.1rem; }

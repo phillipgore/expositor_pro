@@ -3,16 +3,14 @@
     import ButtonGrouped from "../elements/ButtonGrouped.svelte";
     import Button from "../elements/Button.svelte";
     import DividerHorizontal from "../elements/DividerHorizontal.svelte";
-    import {buttonState} from '../../stores/store.js';
 
-    let menuId = 'menuZoom'
-    let groupId = "zoomGroup";
+    const menuId = 'menuZoom'
 </script>
 
 <Menu _id={menuId}>
     <ButtonGrouped isList >
         <Button
-            groupId
+            groupId="zoomGroup"
             color="system-menu"
             label="25%"
             icon="blank"
@@ -23,7 +21,7 @@
             activatorLabel="25%"
         />
         <Button
-            groupId
+            groupId="zoomGroup"
             color="system-menu"
             label="50%"
             icon="blank"
@@ -34,7 +32,7 @@
             activatorLabel="50%"
         />
         <Button
-            groupId
+            groupId="zoomGroup"
             color="system-menu"
             label="75%"
             icon="blank"
@@ -45,7 +43,7 @@
             activatorLabel="75%"
         />
         <Button
-            groupId
+            groupId="zoomGroup"
             color="system-menu"
             label="100%"
             icon="blank"
@@ -57,7 +55,7 @@
             activatorLabel="100%"
         />
         <Button
-            groupId
+            groupId="zoomGroup"
             color="system-menu"
             label="125%"
             icon="blank"
@@ -68,7 +66,7 @@
             activatorLabel="125%"
         />
         <Button
-            groupId
+            groupId="zoomGroup"
             color="system-menu"
             label="150%"
             icon="blank"
@@ -79,7 +77,7 @@
             activatorLabel="150%"
         />
         <Button
-            groupId
+            groupId="zoomGroup"
             color="system-menu"
             label="200%"
             icon="blank"
@@ -90,7 +88,7 @@
             activatorLabel="200%"
         />
         <Button
-            groupId
+            groupId="zoomGroup"
             color="system-menu"
             label="300%"
             icon="blank"
@@ -101,7 +99,7 @@
             activatorLabel="300%"
         />
         <Button
-            groupId
+            groupId="zoomGroup"
             color="system-menu"
             label="400%"
             icon="blank"
@@ -115,7 +113,7 @@
         <DividerHorizontal/>
         
         <Button
-            groupId
+            groupId="zoomGroup"
             color="system-menu"
             label="Fit Width"
             icon="blank"
