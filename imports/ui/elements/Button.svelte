@@ -36,7 +36,6 @@
     
     const dispatch = createEventDispatcher();
 
-    /* ---------- Basic Functions ---------- */
     $buttonState[_id]  = {
         _id: _id,
         groupId: groupId,
@@ -47,19 +46,17 @@
         sheetId: sheetId
     }; 
 
+    /* ---------- Basic Functions ---------- */
     const buttonClick = () => {
         dispatch('buttonClick');
         
         if (menuId) {
             menuToggle();
-        }
-        if (sheetId) {
+        } else if (sheetId) {
             $sheetState[sheetId].isActive = !$sheetState[sheetId].isActive;
-        }
-        if (isToggle) {
+        } else if (isToggle) {
             $buttonState[_id].isActive = !$buttonState[_id].isActive;
-        }
-        if (groupId) {
+        } else if (groupId) {
             Object.keys($buttonState).forEach(key => {
                 if ($buttonState[key].groupId === $buttonState[_id].groupId) {
                     $buttonState[key].isActive = false;
@@ -67,6 +64,7 @@
             });
             $buttonState[_id].isActive = !$buttonState[_id].isActive;
         }
+        
         if (activatorId) {
             $buttonState[activatorId].label = activatorLabel;
         }

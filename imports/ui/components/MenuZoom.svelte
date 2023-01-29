@@ -121,7 +121,7 @@
             labelIsLeft
             isFullWidth
             activatorId="buttonZoom"
-            activatorLabel="Fit"
+            activatorLabel="Fit Width"
         />
     </ButtonGrouped>
 </Menu>
