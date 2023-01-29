@@ -1,5 +1,5 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+	import {createEventDispatcher} from 'svelte';
     import {Random} from 'meteor/random';
 
     import {getIcon} from '../../stores/icons.js';
@@ -34,8 +34,6 @@
     let windowWidth;
     let windowHeight;
     
-    let activeMenuIds = [];
-
     const dispatch = createEventDispatcher();
 
     /* ---------- Basic Functions ---------- */
@@ -74,12 +72,6 @@
         }
     }
 
-    const evaluateClick = (event) => {
-        if (!event.target.dataset.menuId && event.target.dataset.isMultiSelect === "false" || !event.target.dataset.isMultiSelect) {
-            menuReset(undefined, undefined)
-        }
-    }
-
 
     /* ---------- Menu Functions ---------- */
     const menuToggle = () => {
@@ -87,10 +79,8 @@
         let menuHeight = Math.ceil(buttonPosition.top)  + Math.ceil(buttonPosition.height) + 3;
         let menuLeft = Math.ceil(buttonPosition.left);
 
-        activeMenuIds.push(menuId);
-
         menuPosition(menuHeight, menuLeft, windowWidth);
-        menuReset(_id, $buttonState[_id].menuId);
+        buttonAndMenuReset(_id, $buttonState[_id].menuId);
 
         $buttonState[_id].isActive = !$buttonState[_id].isActive;
         $menuState[menuId].isActive = !$menuState[menuId].isActive;
@@ -98,13 +88,9 @@
 
     const menuPosition = (menuTop, menuLeft, windowWidth) => {
         if ($buttonState[_id].isActive) {
-            menuReset(_id, undefined);
+            buttonAndMenuReset(_id, undefined);
         } else {
-            Object.keys($menuState).forEach(key => {
-                $menuState[key].menuTop = 0;
-                $menuState[key].menuLeft = -100000
-                $menuState[key].isActive = false;
-            });
+            menuReset(undefined);
 
             if (menuLeft + $menuState[menuId].menuWidth > windowWidth) {
                 menuLeft = menuLeft - (menuLeft + $menuState[menuId].menuWidth - windowWidth) - 12;
@@ -116,48 +102,31 @@
         }
     }
 
-    const menuReset = (buttonId, menuId) => {
-        activeMenuIds.forEach(activeMenuId => {
-            if (activeMenuId != menuId) {
-                $menuState[activeMenuId].menuTop = 0;
-                $menuState[activeMenuId].menuLeft = -100000
-                $menuState[activeMenuId].isActive = false;
-
-                $buttonState.find(button => button.menuId === menuId).isActive = false;
-            }
-
-            activeMenuIds.filter(function (activeMenuId) {
-                return activeMenuId !== activeMenuId;
-            })
-        })
-
-        // Object.keys($menuState).forEach(key => {
-        //     if (key != menuId) {
-        //         $menuState[key].menuTop = 0;
-        //         $menuState[key].menuLeft = -100000
-        //         $menuState[key].isActive = false;
-        //     }
-        // });
-
-        // activeMenuButtonIds.forEach(activeMenuButtonId => {
-        //     if (activeMenuButtonId != buttonId && $buttonState[activeMenuButtonId].menuId) {
-        //         $buttonState[activeMenuButtonId].isActive = false;
-
-        //         activeMenuButtonIds.filter(function (activeMenuButtonId) {
-        //         return activeMenuButtonId !== activeMenuButtonId;
-        //     })
-        //     }
-        // })
-
-        // Object.keys($buttonState).forEach(key => {
-        //     if (key != buttonId && $buttonState[key].menuId) {
-        //         $buttonState[key].isActive = false;
-        //     }
-        // });
+    const buttonAndMenuReset = (buttonId, menuId) => {
+        buttonReset(buttonId);
+        menuReset(menuId);
     };
+
+    const buttonReset = (buttonId) => {
+        Object.keys($buttonState).forEach(key => {
+            if (key != buttonId && $buttonState[key].menuId) {
+                $buttonState[key].isActive = false;
+            }
+        });
+    }
+
+    const menuReset = (menuId) => {
+        Object.keys($menuState).forEach(key => {
+            if (key != menuId) {
+                $menuState[key].menuTop = 0;
+                $menuState[key].menuLeft = -100000
+                $menuState[key].isActive = false;
+            }
+        });
+    }
 </script>
 
-<svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:resize={() => menuReset(undefined, undefined)} on:click={(evaluateClick)}/>
+<svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:resize={() => menuReset(undefined, undefined)}/>
 
 <button 
     id={_id}
@@ -296,7 +265,7 @@
     button.select .select-handle {
         display: flex;
         height: 1.8rem;
-        width: 1.8rem;
+        width: 1.9rem;
         border-radius: 0.3rem;
         background-color: var(--system-blue);
         position: absolute;

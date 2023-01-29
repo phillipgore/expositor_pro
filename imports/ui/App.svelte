@@ -1,4 +1,6 @@
 <script>
+    import {buttonState, buttonIds, menuState, menuIds} from "../stores/store.js"
+
 	import ToolbarMain from "./components/ToolbarMain.svelte";
     import MenuStudies from "./components/MenuStudies.svelte";
     import MenuZoom from "./components/MenuZoom.svelte";
@@ -11,7 +13,32 @@
     import MenuBooks from "./components/MenuBooks.svelte";
     import SheetNew from "./components/SheetNew.svelte";
     import Button from "./elements/Button.svelte";
+
+    const evaluateClick = (event) => {
+        if (!event.target.dataset.menuId && event.target.dataset.isMultiSelect === "false" || !event.target.dataset.isMultiSelect) {
+            menuReset(undefined, undefined);
+        }
+    }
+
+    const menuReset = (buttonId, menuId) => {
+        Object.keys($buttonState).forEach(key => {
+            if (key != buttonId && $buttonState[key].menuId) {
+                $buttonState[key].isActive = false;
+            }
+        });
+        
+        Object.keys($menuState).forEach(key => {
+            if (key != menuId) {
+                $menuState[key].menuTop = 0;
+                $menuState[key].menuLeft = -100000
+                $menuState[key].isActive = false;
+            }
+        });
+    };
 </script>
+
+<!-- Window -->
+<svelte:window on:click={evaluateClick}/>
 
 <!-- Toolbars -->
 <ToolbarMain/>
