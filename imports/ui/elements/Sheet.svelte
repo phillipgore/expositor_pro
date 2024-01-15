@@ -25,7 +25,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        z-index: 15;
+        z-index: 5;
         background-color: var(--black-alpha);
         display: flex;
         align-items: center;

@@ -74,27 +74,48 @@
     /* ---------- Menu Functions ---------- */
     const menuToggle = () => {
         let buttonPosition = button.getBoundingClientRect();
-        let menuHeight = Math.ceil(buttonPosition.top)  + Math.ceil(buttonPosition.height) + 3;
+        let menuTop = Math.ceil(buttonPosition.top)  + Math.ceil(buttonPosition.height) + 3;
         let menuLeft = Math.ceil(buttonPosition.left);
 
-        menuPosition(menuHeight, menuLeft, windowWidth);
+        menuPosition(buttonPosition.top, menuTop, menuLeft, windowWidth);
         buttonAndMenuReset(_id, $buttonState[_id].menuId);
 
         $buttonState[_id].isActive = !$buttonState[_id].isActive;
         $menuState[menuId].isActive = !$menuState[menuId].isActive;
     };
 
-    const menuPosition = (menuTop, menuLeft, windowWidth) => {
+    const menuPosition = (buttonTop, menuTop, menuLeft, windowWidth) => {
         if ($buttonState[_id].isActive) {
             buttonAndMenuReset(_id, undefined);
         } else {
             menuReset(undefined);
+            let menuBottom = 'auto';
+            let buttonPosition = button.getBoundingClientRect();
+            let activePosition = isSelect? document.getElementById(menuId).querySelector(".active").getBoundingClientRect() : {};
 
+            if (isSelect) {
+                menuTop = buttonTop - activePosition.top;
+                menuLeft = menuLeft - 26;
+            }
+
+            if (menuTop < 0) { menuTop = $menuState[menuId].menuTopMax; }
+            
+            console.log(buttonPosition.top + buttonPosition.height + $menuState[menuId].menuTopMax)
+            if (menuTop + $menuState[menuId].menuHeight > windowHeight) { 
+                // if (activePosition.top > buttonPosition.top) {
+                //     menuBottom = buttonPosition.top + buttonPosition.height + $menuState[menuId].menuTopMax
+                // } else {
+                //     menuBottom = $menuState[menuId].menuBottomMax; 
+                // }
+                menuBottom = windowHeight - (buttonPosition.top + buttonPosition.height + 4);
+            }
+            
             if (menuLeft + $menuState[menuId].menuWidth > windowWidth) {
                 menuLeft = menuLeft - (menuLeft + $menuState[menuId].menuWidth - windowWidth) - 12;
             }
 
             $menuState[menuId].menuTop = menuTop;
+            $menuState[menuId].menuBottom = menuBottom;
             $menuState[menuId].menuLeft = menuLeft
             $menuState[menuId].isActive = true;
         }
@@ -116,7 +137,8 @@
     const menuReset = (menuId) => {
         Object.keys($menuState).forEach(key => {
             if (key != menuId) {
-                $menuState[key].menuTop = 0;
+                $menuState[key].menuTop = 'auto';
+                $menuState[key].menuBottom = 'auto';
                 $menuState[key].menuLeft = -100000
                 $menuState[key].isActive = false;
             }
@@ -124,7 +146,7 @@
     }
 </script>
 
-<svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:resize={() => menuReset(undefined, undefined)}/>
+<svelte:window bind:innerWidth={windowWidth} bind:innerHeight={windowHeight}/>
 
 <button 
     id={_id}

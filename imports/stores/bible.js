@@ -1,4 +1,4 @@
-import {readable} from 'svelte/store';
+import {readable, get} from 'svelte/store';
 
 export const bible = readable([
     {
@@ -40180,3 +40180,6 @@ export const bible = readable([
         ]
     }
 ]);
+
+export const getOTBooks = get(bible)[0].testamentData.find(testament => testament._id === 'OT').bookData;
+export const getNTBooks = get(bible)[0].testamentData.find(testament => testament._id === 'NT').bookData;

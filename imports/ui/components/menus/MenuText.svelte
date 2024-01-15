@@ -1,7 +1,7 @@
 <script>
-    import Menu from "../elements/Menu.svelte";
-    import Button from "../elements/Button.svelte";
-    import DividerHorizontal from "../elements/DividerHorizontal.svelte";
+    import Menu from "../../elements/Menu.svelte";
+    import Button from "../../elements/Button.svelte";
+    import DividerHorizontal from "../../elements/DividerHorizontal.svelte";
 </script>
 
 <Menu _id='menuText'>

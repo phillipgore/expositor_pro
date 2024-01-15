@@ -1,6 +1,6 @@
 <script>
-    import Menu from "../elements/Menu.svelte";
-    import Button from "../elements/Button.svelte";
+    import Menu from "../../elements/Menu.svelte";
+    import Button from "../../elements/Button.svelte";
 </script>
 
 <Menu _id='menuColor'>

@@ -7,7 +7,9 @@
 </script>
 
 <Sheet _id='sheetNew'>
-    <Box title="New Study" backgroundColor="gray" hasBorderTop hasBorderBottom></Box>
+    <Box title="New Study" backgroundColor="gray" hasBorderTop hasBorderBottom>
+        <Button _id="buttonBibleBooks" label="Revelation" isSelect menuId="menuBibleBooks"/>
+    </Box>
     <Toolbar color="white">
         <SpacerFlex/>
 
